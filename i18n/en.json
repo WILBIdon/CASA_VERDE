@@ -1,0 +1,18 @@
+{
+  "nav": {
+    "inicio": "Home",
+    "quiz": "Your Story",
+    "el_cafe": "The Coffee",
+    "nuestra_gente": "Our People",
+    "sostenibilidad": "Sustainability",
+    "proceso": "Process",
+    "mapa": "Our Land",
+    "compra": "Shop",
+    "contacto": "Contact"
+  },
+  "hero": {
+    "title": "The True Flavor of Tolima Mountains",
+    "subtitle": "Every cup tells a story of hands sowing hope",
+    "cta": "Find Your Mountain Connection"
+  }
+}

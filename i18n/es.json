@@ -1,0 +1,18 @@
+{
+  "nav": {
+    "inicio": "Inicio",
+    "quiz": "Tu Historia",
+    "el_cafe": "El Café",
+    "nuestra_gente": "Nuestra Gente",
+    "sostenibilidad": "Sostenibilidad",
+    "proceso": "Proceso",
+    "mapa": "Nuestra Tierra",
+    "compra": "Comprar",
+    "contacto": "Contacto"
+  },
+  "hero": {
+    "title": "El Verdadero Sabor de las Montañas del Tolima",
+    "subtitle": "Cada taza cuenta una historia de manos que siembran esperanza",
+    "cta": "Descubre Tu Conexión con la Montaña"
+  }
+}

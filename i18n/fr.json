@@ -1,0 +1,18 @@
+{
+  "nav": {
+    "inicio": "Accueil",
+    "quiz": "Ton Histoire",
+    "el_cafe": "Le Café",
+    "nuestra_gente": "Notre Gens",
+    "sostenibilidad": "Durabilité",
+    "proceso": "Processus",
+    "mapa": "Notre Terre",
+    "compra": "Acheter",
+    "contacto": "Contact"
+  },
+  "hero": {
+    "title": "La vraie saveur des montagnes de Tolima",
+    "subtitle": "Chaque tasse raconte l’histoire de mains qui sèment l’espoir",
+    "cta": "Découvre ton lien avec la montagne"
+  }
+}

@@ -1,0 +1,1 @@
+console.log('Café Casa Verde — GitHub Pages Build Ready');
