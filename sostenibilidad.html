@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sostenibilidad - Impacto Real | Casa Verde</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@100..900&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav id="mainNav" class="navbar">
+        <div class="nav-container">
+            <div class="logo"><h1>CASA VERDE</h1></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="historia.html">Historia</a></li>
+                <li><a href="cafe.html">El Café</a></li>
+                <li><a href="productores.html">Productores</a></li>
+                <li><a href="proceso.html">Proceso</a></li>
+                <li><a href="sostenibilidad.html">Impacto</a></li>
+                <li><a href="veredas.html">Nuestra Tierra</a></li>
+                <li><a href="comprar.html">Comprar</a></li>
+            </ul>
+            <select id="langSwitch"><option value="es">ES</option><option value="en">EN</option><option value="fr">FR</option></select>
+        </div>
+    </nav>
+
+    <section id="hero-sostenibilidad" class="hero-page" style="min-height: 40vh; background-color: var(--verde-cafetal);">
+        <div class="hero-content">
+            <h1 style="font-size: 5vw;">CAFÉ QUE CUIDA LO QUE IMPORTA</h1>
+            <p class="microcopy" style="color: var(--niebla-matinal);">Nuestra filosofía: la dignidad del productor y la salud de la tierra.</p>
+        </div>
+    </section>
+
+    <section id="numbers-speak">
+        <h2>Números que Hablan</h2>
+        <p class="microcopy">Medimos el éxito en kg de café orgánico y número de familias apoyadas.</p>
+        <div class="impact-numbers-grid">
+            <div class="impact-card">
+                <div class="number" data-unit=" kg" data-precision="0">502,600</div>
+                <h3>Anuales</h3>
+                <p>Kg de café exportados bajo estándares orgánicos.</p>
+            </div>
+            <div class="impact-card">
+                <div class="number" data-unit="" data-precision="0">100</div>
+                <h3>Familias</h3>
+                <p>Productores directos certificados bajo Comercio Justo.</p>
+            </div>
+            <div class="impact-card">
+                <div class="number" data-unit="+" data-precision="0">20</div>
+                <h3>Años</h3>
+                <p>De compromiso ininterrumpido con la producción sostenible.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications">
+        <h2>Certificaciones y Sellos</h2>
+        <div class="certification-stamps">
+            <div class="stamp-card" style="--rotation: -5;">
+                <h4>ORGÁNICO USDA/EU</h4>
+                <p>Libre de químicos. Tierra sana y viva.</p>
+            </div>
+            <div class="stamp-card" style="--rotation: 3;">
+                <h4>COMERCIO JUSTO</h4>
+                <p>El precio que se paga es digno para el trabajo realizado.</p>
+            </div>
+            <div class="stamp-card" style="--rotation: -2;">
+                <h4>PROVEEDOR N.</h4>
+                <p>Cumplimos con los más altos estándares de calidad global.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="impact-calculator" style="background-color: var(--tierra-humeda); color: #fff; text-align: center;">
+        <h2>Legado 2050</h2>
+        <p class="microcopy" style="color: var(--niebla-matinal);">Tu compra es una inversión en el futuro de Tolima.</p>
+
+        <p style="margin-top: 2rem;">Si compras <span id="kg-slider-value">1 kg</span> al mes:</p>
+        <input type="range" min="1" max="10" value="1" id="kg-slider" style="width: 80%; margin: 1rem auto; display: block;">
+
+        <div class="impact-numbers-grid" style="color: var(--tierra-humeda);">
+            <div class="impact-card">
+                <div class="number" id="trees-planted" style="color: #fff;">12</div>
+                <h3 style="color: var(--rojo-cereza);">ÁRBOLES PLANTADOS</h3>
+                <p style="color: #fff;">Compensación de huella de carbono.</p>
+            </div>
+            <div class="impact-card">
+                <div class="number" id="families-supported" style="color: #fff;">$5.00</div>
+                <h3 style="color: var(--rojo-cereza);">APOYO DIRECTO</h3>
+                <p style="color: #fff;">Dólares adicionales destinados a programas sociales.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer><p>&copy; 2025 Café Casa Verde - Ataco, Tolima, Colombia. Orgánico, Justo, Real.</p></footer>
+    <script src="scripts.js"></script>
+    <script>
+        const slider = document.getElementById('kg-slider');
+        const valueSpan = document.getElementById('kg-slider-value');
+        const treesSpan = document.getElementById('trees-planted');
+        const familiesSpan = document.getElementById('families-supported');
+
+        slider.oninput = function() {
+            const kg = this.value;
+            valueSpan.textContent = kg + ' kg';
+            treesSpan.textContent = kg * 12;
+            familiesSpan.textContent = '$' + (kg * 5).toFixed(2);
+        }
+    </script>
+</body>
+</html>

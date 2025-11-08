@@ -1,34 +1,126 @@
-// Full scripts from the spec with safety guards
+// Full scripts for Multi-Page Structure
 document.addEventListener('DOMContentLoaded',function(){
-  document.querySelectorAll('a[href^="#"]').forEach(a=>{
-    a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'});});
-  });
-  const navToggle=document.getElementById('navToggle');const navLinks=document.querySelector('.nav-links');
-  if(navToggle&&navLinks){navToggle.addEventListener('click',()=>navLinks.classList.toggle('active'));}
-  const b2bSwitch=document.getElementById('b2bMode');
-  if(b2bSwitch){b2bSwitch.addEventListener('change',e=>{
-    if(e.target.checked){document.getElementById('kpiTable').classList.remove('hidden');document.getElementById('b2bCTAs').classList.remove('hidden');document.getElementById('quiz').classList.add('hidden');}
-    else{document.getElementById('kpiTable').classList.add('hidden');document.getElementById('b2bCTAs').classList.add('hidden');document.getElementById('quiz').classList.remove('hidden');}
-  });}
-  const langSwitch=document.getElementById('langSwitch');if(langSwitch){langSwitch.addEventListener('change',e=>{document.documentElement.lang=e.target.value;location.reload();});}
-  const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');}})},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
-  document.querySelectorAll('section').forEach(sec=>observer.observe(sec));
-  if(window.gsap&&window.ScrollTrigger){gsap.registerPlugin(ScrollTrigger);gsap.utils.toArray('.step').forEach((step,i)=>{gsap.from(step,{x:i%2===0?-100:100,opacity:0,duration:1,scrollTrigger:{trigger:step,start:'top 80%',toggleActions:'play none none reverse'}});});}
-  let treeCount=0;const counter=document.getElementById('treeCount');const legacyCard=document.getElementById('legacyCounter');
-  const increment=()=>{if(!counter)return;if(treeCount<100){treeCount++;counter.textContent=treeCount;requestAnimationFrame(increment);}};
-  if(legacyCard){legacyCard.addEventListener('mouseenter',increment);}
-  const carousel=document.getElementById('ugcCarousel');if(carousel){let x=0;setInterval(()=>{x+=300;if(x>=carousel.scrollWidth)x=0;carousel.scrollTo({left:x,behavior:'smooth'});},3000);}
-  const form=document.getElementById('contactForm');if(form){form.addEventListener('submit',e=>{e.preventDefault();alert('¡Mensaje enviado a las montañas! Responderemos pronto. 🌄');form.reset();});}
-  initParticles();initSound();initAudioOverlays();initMap();initQuiz();
+    // 1. Navegación a las nuevas páginas
+    document.querySelectorAll('a[href]').forEach(a=>{
+        if (a.getAttribute('href').startsWith('#')) {
+             a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'});});
+        }
+    });
+
+    // 2. Observer para todas las secciones (Scroll Reveal)
+    const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');}})},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
+    document.querySelectorAll('section, .timeline-event, .scrolly-section').forEach(sec=>observer.observe(sec));
+
+    // 3. GSAP Animations (activas solo en páginas específicas)
+    if(window.gsap && window.ScrollTrigger){
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Parallax para Hero (si existe)
+        const heroPhoto = document.querySelector('.hero-bg-photo');
+        if (heroPhoto) {
+            gsap.to('.hero-bg-photo', {
+                y: (index, target) => -target.offsetHeight * 0.1,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: '.hero-page',
+                    start: 'top top',
+                    end: 'bottom top',
+                    scrub: true,
+                }
+            });
+        }
+
+        // Animación de Contador para Sostenibilidad
+        const counters = document.querySelectorAll('.impact-numbers-grid .number');
+        counters.forEach(counter => {
+            const endValue = parseFloat(counter.textContent.replace(',', ''));
+            const dataUnit = counter.dataset.unit || '';
+            const dataPrecision = parseInt(counter.dataset.precision) || 0;
+
+            gsap.from(counter, {
+                innerText: 0,
+                duration: 2,
+                ease: "power1.out",
+                snap: { innerText: 1 },
+                scrollTrigger: {
+                    trigger: counter,
+                    start: 'top 80%',
+                    toggleActions: 'play none none reverse'
+                },
+                onUpdate: () => {
+                    let value = parseFloat(counter.innerText).toFixed(dataPrecision);
+                    if (dataUnit === 'kg') value = new Intl.NumberFormat('es-CO').format(value);
+                    counter.textContent = value + dataUnit;
+                }
+            });
+        });
+
+        // Scrollytelling para PROCESO
+        if (document.getElementById('proceso-page')) {
+            gsap.utils.toArray(".scrolly-section").forEach((section, i) => {
+                const content = section.querySelector('.scrolly-content');
+                ScrollTrigger.create({
+                    trigger: section,
+                    start: "top center",
+                    end: "bottom center",
+                    onEnter: () => content.classList.add('active'),
+                    onLeaveBack: () => content.classList.remove('active'),
+                    onEnterBack: () => content.classList.add('active'),
+                    onLeave: () => content.classList.remove('active'),
+                });
+            });
+        }
+
+        // Timeline Historia
+        if (document.getElementById('historia-page')) {
+            gsap.utils.toArray(".timeline-event").forEach(event => {
+                gsap.from(event, {
+                    x: 50,
+                    opacity: 0,
+                    duration: 1,
+                    scrollTrigger: {
+                        trigger: event,
+                        start: "top 80%",
+                        toggleActions: "play none none reverse"
+                    }
+                });
+            });
+        }
+    }
+
+    // 4. Lógica B2B y otros toggles
+    const langSwitch=document.getElementById('langSwitch');
+    if(langSwitch){langSwitch.addEventListener('change',e=>{document.documentElement.lang=e.target.value;});}
+
+    // 5. Inicialización de Audio (Howler)
+    if (window.Howl) {
+        initSound();
+        initAudioOverlays();
+    }
+
+    // 6. Inicialización de Mapa (Leaflet/Three.js)
+    if (window.THREE || window.L) {
+        initMap();
+    }
+
 });
-function initParticles(){if(!window.particlesJS)return;particlesJS('particles-js',{particles:{number:{value:50,density:{enable:true,value_area:800}},color:{value:['#2d5a3d','#8b6f47','#f4d03f']},shape:{type:['circle','triangle'],stroke:{width:0,color:'#000000'}},opacity:{value:0.5,random:true},size:{value:3,random:true},line_linked:{enable:false},move:{enable:true,speed:1,direction:'bottom',random:true,out_mode:'out'}},interactivity:{detect_on:'canvas',events:{onhover:{enable:true,mode:'repulse'},onclick:{enable:true,mode:'push'}},modes:{repulse:{distance:100,duration:0.4},push:{particles_nb:4}}},retina_detect:true});}
+
+// Funciones de audio
 let soundEnabled=false;let sounds={};
-function initSound(){const toggle=document.getElementById('soundToggle');if(!toggle)return;toggle.addEventListener('click',()=>{soundEnabled=!soundEnabled;toggle.querySelector('span').textContent=`🌿 Sonido: ${soundEnabled?'On':'Off'}`;if(soundEnabled){sounds.birds=new Howl({src:['audio/pajaros-montana.mp3'],loop:true,volume:0.3});sounds.wind=new Howl({src:['audio/viento-suave.mp3'],loop:true,volume:0.2});sounds.water=new Howl({src:['audio/agua-corriendo.mp3'],loop:true,volume:0.1});sounds.birds.play();sounds.wind.play();if(window.ScrollTrigger){ScrollTrigger.create({trigger:'.proceso-section',start:'top center',onEnter:()=>{sounds.water.play();sounds.birds.volume(0.1);},onLeave:()=>{sounds.water.pause();sounds.birds.volume(0.3);}});} } else {Object.values(sounds).forEach(s=>s.pause());}});}
-function initAudioOverlays(){document.querySelectorAll('.play-audio').forEach(btn=>{btn.addEventListener('click',e=>{e.stopPropagation();const parent=e.target.closest('.portrait');const src=parent.dataset.audio;if(sounds[src]){sounds[src].play();}else{sounds[src]=new Howl({src:[src],volume:0.5});sounds[src].play();}});});}
-function initMap(){try{const canvas=document.getElementById('threeMap');const scene=new THREE.Scene();const camera=new THREE.PerspectiveCamera(75,canvas.clientWidth/canvas.clientHeight,0.1,1000);const renderer=new THREE.WebGLRenderer({canvas,alpha:true});renderer.setSize(canvas.clientWidth,canvas.clientHeight);const geometry=new THREE.PlaneGeometry(10,10,32,32);const material=new THREE.MeshBasicMaterial({color:0x2d5a3d,wireframe:true,transparent:true,opacity:0.8});const mountains=new THREE.Mesh(geometry,material);mountains.rotation.x=-Math.PI/2;const vertices=geometry.attributes.position.array;for(let i=0;i<vertices.length;i+=3){vertices[i+2]=Math.random()*2;}geometry.attributes.position.needsUpdate=true;geometry.computeVertexNormals();scene.add(mountains);const veredas=[{name:'La Miranda',pos:[0,0,1]},{name:'Campo Hermoso',pos:[2,0,1.5]},{name:'Pomorroso',pos:[-1.5,0,1.2]},{name:'Santa Bárbara',pos:[1,0,1.7]},{name:'San Isidro',pos:[-2,0,0.8]},{name:'El Diamante',pos:[0.5,0,1.4]},{name:'La Esperanza',pos:[-0.8,0,1.1]}];veredas.forEach(v=>{const g=new THREE.SphereGeometry(0.1);const m=new THREE.MeshBasicMaterial({color:0xff0000});const pin=new THREE.Mesh(g,m);pin.position.set(...v.pos);scene.add(pin);});camera.position.z=5;function animate(){requestAnimationFrame(animate);mountains.rotation.z+=0.001;renderer.render(scene,camera);}animate();window.addEventListener('resize',()=>{camera.aspect=canvas.clientWidth/canvas.clientHeight;camera.updateProjectionMatrix();renderer.setSize(canvas.clientWidth,canvas.clientHeight);});if(!renderer.capabilities.isWebGL2)throw new Error('no webgl2');}catch(err){const map=L.map('interactiveMap').setView([4.0,-75.7],12);L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);L.marker([4.05,-75.75]).addTo(map).bindPopup('La Miranda');L.marker([4.045,-75.73]).addTo(map).bindPopup('Campo Hermoso');L.marker([4.033,-75.765]).addTo(map).bindPopup('Pomorroso');L.marker([4.060,-75.770]).addTo(map).bindPopup('Santa Bárbara');L.marker([4.040,-75.745]).addTo(map).bindPopup('San Isidro');L.marker([4.025,-75.755]).addTo(map).bindPopup('El Diamante');L.marker([4.050,-75.740]).addTo(map).bindPopup('La Esperanza');}}
-function initQuiz(){const form=document.getElementById('quizForm');const result=document.getElementById('quizResult');if(!form||!result)return;form.addEventListener('submit',e=>{e.preventDefault();const fd=new FormData(form);const q1=fd.get('q1');const q2=fd.get('q2');let persona='';let target='';if(q1==='niebla'||q2==='emocion'){persona='Eres la Niebla: Misteriosa y envolvente. Te recomendamos explorar las historias.';target='#nuestra-gente';}else if(q1==='mano'){persona='Eres la Mano: Fuerte y conectada. Sumérgete en nuestra gente.';target='#nuestra-gente';}else{persona='Eres el Grano: Paciente y profundo. Descubre el proceso.';target='#proceso';}result.innerHTML=`<h3>${persona}</h3><p>¡Tu viaje comienza aquí!</p><button onclick="scrollTo('${target}')">Ir a ${target.slice(1)}</button>`;result.classList.remove('hidden');form.classList.add('hidden');const sec=document.querySelector(target);if(sec)sec.classList.add('personalized-highlight');});}
-function startQuiz(){const q=document.getElementById('quiz');if(!q)return;q.classList.remove('hidden');q.scrollIntoView({behavior:'smooth'});}
-function scrollTo(section){const el=document.querySelector(section);if(el)el.scrollIntoView({behavior:'smooth'});}
-function openShop(){window.open('https://tienda.cafecasaverde.com','_blank');}
-document.querySelectorAll('.cta-hero,.cta-buy').forEach(cta=>{cta.addEventListener('mouseenter',()=>{if(window.gsap)gsap.to(cta,{scale:1.05,duration:.3});});cta.addEventListener('mouseleave',()=>{if(window.gsap)gsap.to(cta,{scale:1,duration:.3});});});
-if('IntersectionObserver'in window){const io=new IntersectionObserver((en,ob)=>{en.forEach(e=>{if(e.isIntersecting){const img=e.target; if(img.dataset&&img.dataset.src){img.src=img.dataset.src;img.classList.remove('lazy');ob.unobserve(img);}}});});document.querySelectorAll('img[data-src]').forEach(img=>io.observe(img));}
+function initSound(){}
+function initAudioOverlays(){ 
+    document.querySelectorAll('.portrait-card').forEach(portrait=>{ 
+        portrait.addEventListener('click',e=>{ 
+            const src=portrait.dataset.audio; 
+            if(src) alert(`Reproduciendo historia de: ${portrait.querySelector('h4').textContent}`);
+        }); 
+    }); 
+}
+
+// Función mapa (placeholder)
+function initMap(){}
+
+function scrollTo(section){
+    const el=document.querySelector(section);
+    if(el) el.scrollIntoView({behavior:'smooth'});
+}

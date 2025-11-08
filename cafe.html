@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Café - Perfil Sensorial | Casa Verde</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@100..900&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav id="mainNav" class="navbar">
+        <div class="nav-container">
+            <div class="logo"><h1>CASA VERDE</h1></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="historia.html">Historia</a></li>
+                <li><a href="cafe.html">El Café</a></li>
+                <li><a href="productores.html">Productores</a></li>
+                <li><a href="proceso.html">Proceso</a></li>
+                <li><a href="sostenibilidad.html">Impacto</a></li>
+                <li><a href="veredas.html">Nuestra Tierra</a></li>
+                <li><a href="comprar.html">Comprar</a></li>
+            </ul>
+            <select id="langSwitch"><option value="es">ES</option><option value="en">EN</option><option value="fr">FR</option></select>
+        </div>
+    </nav>
+
+    <section id="cafe-hero" class="cafe-split-hero">
+        <div class="cafe-split-left">
+            <img src="images/taza-humeante-bw.jpg" class="hero-bg-photo">
+            <div style="position: relative; z-index: 2;">
+                <h1>CAFÉ CASA VERDE</h1>
+                <p>Orgánico · Fair Trade</p>
+                <p class="microcopy" style="color: var(--niebla-matinal);">Ataco, Tolima, Colombia. 1,960m de altitud.</p>
+                <a href="comprar.html" class="cta-hero" style="background: var(--rojo-cereza);">Comprar Ahora</a>
+            </div>
+        </div>
+        <div class="cafe-split-right">
+            <h2>ORIGEN & VARIEDADES</h2>
+            <p>Nuestro café crece entre 1,500 y 1,960 metros sobre el nivel del mar, una altitud que obliga a la cereza a madurar lentamente.</p>
+            <ul>
+                <li><strong style="color: var(--rojo-cereza);">Altitud:</strong> 1,500 - 1,960m</li>
+                <li><strong style="color: var(--rojo-cereza);">Variedades:</strong> Colombia, Castillo, Caturra, Cenicafé 1</li>
+                <li><strong style="color: var(--rojo-cereza);">Proceso:</strong> Lavado Completo</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="flavor-profile" style="background-color: var(--niebla-matinal);">
+        <h2>Perfil Sensorial</h2>
+        <p class="microcopy">La esencia de nuestra tierra expresada en notas de cata.</p>
+
+        <div class="flavor-wheel-container">
+            <canvas id="flavorWheelCanvas"></canvas>
+
+            <div class="notes-list" style="max-width: 400px;">
+                <div class="note-item" style="border-left: 3px solid var(--rojo-cereza); padding-left: 1rem;">
+                    <h3>PANELA</h3>
+                    <p>Dulzor natural que evoca la caña de azúcar.</p>
+                </div>
+                <div class="note-item" style="border-left: 3px solid var(--rojo-cereza); padding-left: 1rem;">
+                    <h3>CHOCOLATE</h3>
+                    <p>Notas profundas asociadas a la tierra volcánica.</p>
+                </div>
+                <div class="note-item" style="border-left: 3px solid var(--rojo-cereza); padding-left: 1rem;">
+                    <h3>CÍTRICO</h3>
+                    <p>Un toque brillante y refrescante.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="preparation-methods" style="text-align: center;">
+        <h2>Métodos de Preparación</h2>
+        <p class="microcopy">Cada método expresa una cara distinta del sabor.</p>
+        <div class="three-doors-grid">
+            <div class="door-item" style="background-color: var(--beige-papel); color: var(--tierra-humeda);">
+                <img src="images/v60.jpg" style="filter:none;">
+                <h3>V60</h3>
+                <p>Ratio 1:16</p>
+            </div>
+
+            <div class="door-item" style="background-color: var(--beige-papel); color: var(--tierra-humeda);">
+                <img src="images/french-press.jpg" style="filter:none;">
+                <h3>French Press</h3>
+                <p>4 minutos · Molienda gruesa</p>
+            </div>
+
+            <div class="door-item" style="background-color: var(--beige-papel); color: var(--tierra-humeda);">
+                <img src="images/espresso.jpg" style="filter:none;">
+                <h3>Espresso</h3>
+                <p>18g → 36g</p>
+            </div>
+        </div>
+    </section>
+
+    <footer><p>&copy; 2025 Café Casa Verde - Ataco, Tolima, Colombia.</p></footer>
+
+    <script src="scripts.js"></script>
+
+    <script>
+        const canvas = document.getElementById('flavorWheelCanvas');
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            const data = [
+                { label: 'Panela', color: '#A67853' },
+                { label: 'Chocolate', color: '#1A1412' },
+                { label: 'Cítrico', color: '#C71F37' },
+                { label: 'Floral', color: '#7A9B7F' },
+                { label: 'Caramelo', color: '#A67853' },
+                { label: 'Especias', color: '#1A1412' },
+            ];
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const radius = 150;
+            let startAngle = 0;
+            data.forEach(segment => {
+                const angle = Math.PI * 2 / data.length;
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.arc(centerX, centerY, radius, startAngle, startAngle + angle);
+                ctx.closePath();
+                ctx.fillStyle = segment.color;
+                ctx.fill();
+                startAngle += angle;
+            });
+            ctx.strokeStyle = 'white';
+            ctx.lineWidth = 5;
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+            ctx.stroke();
+        }
+    </script>
+
+</body>
+</html>

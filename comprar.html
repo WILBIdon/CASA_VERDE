@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprar Café - Tienda | Casa Verde</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@100..900&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .product-layout{ max-width: 900px; margin: 3rem auto; display: flex; gap: 4rem; }
+        .product-image{ flex: 1; text-align: center; }
+        .product-image img{ width: 100%; max-width: 400px; height: auto; border-radius: 5px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .product-details{ flex: 1; }
+        .price{ font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--rojo-cereza); line-height: 1; margin-bottom: 1rem;}
+        .form-group{ margin-bottom: 1.5rem; }
+        .form-group label{ display: block; margin-bottom: 0.5rem; font-weight: 600;}
+        .radio-options label{ display: inline-block; padding: 0.5rem 1rem; border: 1px solid var(--tierra-humeda); margin-right: 0.5rem; cursor: pointer; transition: background 0.3s; }
+        .radio-options input[type="radio"]{ display: none; }
+        .radio-options input[type="radio"]:checked + label{ background: var(--tierra-humeda); color: #fff; }
+    </style>
+</head>
+<body>
+    <nav id="mainNav" class="navbar">
+        <div class="nav-container">
+            <div class="logo"><h1>CASA VERDE</h1></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="historia.html">Historia</a></li>
+                <li><a href="cafe.html">El Café</a></li>
+                <li><a href="productores.html">Productores</a></li>
+                <li><a href="proceso.html">Proceso</a></li>
+                <li><a href="sostenibilidad.html">Impacto</a></li>
+                <li><a href="veredas.html">Nuestra Tierra</a></li>
+                <li><a href="comprar.html">Comprar</a></li>
+            </ul>
+            <select id="langSwitch"><option value="es">ES</option><option value="en">EN</option><option value="fr">FR</option></select>
+        </div>
+    </nav>
+
+    <section id="shop-hero" class="hero-page" style="min-height: 40vh; background-color: var(--tierra-humeda);">
+        <div class="hero-content">
+            <h1 style="font-size: 5vw;">NO VENDEMOS CAFÉ. COMPARTIMOS MONTAÑAS.</h1>
+        </div>
+    </section>
+
+    <section id="product-main">
+        <div class="product-layout">
+            <div class="product-image">
+                <img src="images/bolsa-cafe.png" alt="Bolsa de Café Casa Verde">
+                <p class="microcopy" style="font-size: 1rem;">Cada bolsa incluye un código QR de trazabilidad.</p>
+            </div>
+            <div class="product-details">
+                <h2 style="font-family: 'Inter', sans-serif; font-weight: 800; font-size: 2.5rem; line-height: 1;">CAFÉ CASA VERDE ORGÁNICO</h2>
+                <p>Perfil Sensorial: Panela, Chocolate, Cítrico. Cuerpo Sedoso.</p>
+
+                <div class="price">$15.00 USD</div>
+
+                <form action="checkout.html" method="POST">
+                    <div class="form-group">
+                        <label for="weight">Peso</label>
+                        <div class="radio-options">
+                            <input type="radio" id="w250" name="weight" value="250g" checked>
+                            <label for="w250">250g</label>
+                            <input type="radio" id="w500" name="weight" value="500g">
+                            <label for="w500">500g</label>
+                            <input type="radio" id="w1000" name="weight" value="1000g">
+                            <label for="w1000">1kg</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="grind">Molienda</label>
+                        <div class="radio-options">
+                            <input type="radio" id="whole" name="grind" value="entero" checked>
+                            <label for="whole">Grano Entero</label>
+                            <input type="radio" id="v60" name="grind" value="v60">
+                            <label for="v60">V60/Filtro</label>
+                            <input type="radio" id="espresso" name="grind" value="espresso">
+                            <label for="espresso">Espresso</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="qty">Cantidad</label>
+                        <input type="number" id="qty" name="qty" value="1" min="1" style="padding: 0.5rem; width: 80px; text-align: center;">
+                    </div>
+
+                    <button type="submit" class="cta-hero" style="width: 100%; border-radius: 5px;">Agregar al Carrito</button>
+                </form>
+
+                <ul style="list-style: none; padding: 1rem 0; margin-top: 2rem;">
+                    <li>✓ Orgánico Certificado</li>
+                    <li>✓ Comercio Justo Garantizado</li>
+                    <li>✓ Envío desde Ataco, Colombia 🇨🇴</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer><p>&copy; 2025 Café Casa Verde - Ataco, Tolima, Colombia. Orgánico, Justo, Real.</p></footer>
+    <script src="scripts.js"></script>
+</body>
+</html>

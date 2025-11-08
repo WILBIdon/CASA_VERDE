@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proceso - Del Grano a la Taza | Casa Verde</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@100..900&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body id="proceso-page">
+    <nav id="mainNav" class="navbar">
+        <div class="nav-container">
+            <div class="logo"><h1>CASA VERDE</h1></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="historia.html">Historia</a></li>
+                <li><a href="cafe.html">El Café</a></li>
+                <li><a href="productores.html">Productores</a></li>
+                <li><a href="proceso.html">Proceso</a></li>
+                <li><a href="sostenibilidad.html">Impacto</a></li>
+                <li><a href="veredas.html">Nuestra Tierra</a></li>
+                <li><a href="comprar.html">Comprar</a></li>
+            </ul>
+            <select id="langSwitch"><option value="es">ES</option><option value="en">EN</option><option value="fr">FR</option></select>
+        </div>
+    </nav>
+
+    <section id="proceso-main" class="proceso-page">
+        <h2>DEL ÁRBOL A LA TAZA: LA PACIENCIA</h2>
+        <p class="microcopy" style="color: var(--niebla-matinal); text-align: center;">Cada fase es un compromiso con la calidad y la honestidad.</p>
+
+        <div class="scrolly-section" style="background-image: url('images/floracion-bg.jpg'); background-size: cover;">
+            <div class="scrolly-content">
+                <h3>FASE 1: FLORACIÓN</h3>
+                <p>Agosto - Septiembre. Las flores blancas explotan. El café es una promesa de aroma y dulzura.</p>
+            </div>
+        </div>
+
+        <div class="scrolly-section" style="background-image: url('images/recoleccion-bg.jpg'); background-size: cover;">
+            <div class="scrolly-content">
+                <h3>FASE 2: RECOLECCIÓN MANUAL</h3>
+                <p>Grano por grano. Mano por mano. Solo las cerezas rojas maduras son dignas de este proceso.</p>
+            </div>
+        </div>
+
+        <div class="scrolly-section" style="background-image: url('images/fermentacion-bg.jpg'); background-size: cover;">
+            <div class="scrolly-content">
+                <h3>FASE 3: FERMENTACIÓN: 18 HORAS</h3>
+                <p>Paciencia controlada. Este proceso biológico define la complejidad y la limpieza de la taza final.</p>
+            </div>
+        </div>
+
+        <div class="scrolly-section" style="background-image: url('images/secado-bg.jpg'); background-size: cover;">
+            <div class="scrolly-content">
+                <h3>FASE 4: SECADO: 7 DÍAS</h3>
+                <p>Al sol o en silo. El grano absorbe la energía de la montaña y alcanza la humedad perfecta para el tueste.</p>
+            </div>
+        </div>
+
+        <div class="scrolly-section">
+            <div class="scrolly-content" style="background: var(--rojo-cereza); color: #fff;">
+                <h3 style="color: #fff;">EL GRANO PERGAMINO</h3>
+                <p>El fin del proceso húmedo. Listo para viajar. <br>502,600 kg de historia cada año.</p>
+                <a href="comprar.html" class="cta-hero" style="background: var(--tierra-humeda); border: 2px solid #fff;">Compra esta Historia</a>
+            </div>
+        </div>
+    </section>
+
+    <footer><p>&copy; 2025 Café Casa Verde - Ataco, Tolima, Colombia. Orgánico, Justo, Real.</p></footer>
+    <script src="scripts.js"></script>
+</body>
+</html>

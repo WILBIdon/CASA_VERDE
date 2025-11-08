@@ -4,169 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Café Casa Verde - El Verdadero Sabor de las Montañas del Tolima</title>
-    <meta name="description" content="Descubre el café orgánico y justo de Ataco, Tolima. Historias de manos, montañas y tradición en cada taza.">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@100..900&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
 </head>
 <body>
-    <button id="soundToggle" class="sound-toggle" aria-label="Activar sonido ambiente"><span>🌿 Sonido: Off</span></button>
     <nav id="mainNav" class="navbar">
         <div class="nav-container">
-            <div class="logo"><h1>Café Casa Verde</h1></div>
+            <div class="logo"><h1>CASA VERDE</h1></div>
             <ul class="nav-links">
-                <li><a href="#inicio" data-section="inicio">Inicio</a></li>
-                <li><a href="#quiz" data-section="quiz">Tu Historia</a></li>
-                <li><a href="#el-cafe" data-section="el-cafe">El Café</a></li>
-                <li><a href="#nuestra-gente" data-section="nuestra-gente">Nuestra Gente</a></li>
-                <li><a href="#sostenibilidad" data-section="sostenibilidad">Sostenibilidad</a></li>
-                <li><a href="#proceso" data-section="proceso">Proceso</a></li>
-                <li><a href="#mapa" data-section="mapa">Nuestra Tierra</a></li>
-                <li><a href="#compra" data-section="compra">Comprar</a></li>
-                <li><a href="#contacto" data-section="contacto">Contacto</a></li>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="historia.html">Historia</a></li>
+                <li><a href="cafe.html">El Café</a></li>
+                <li><a href="productores.html">Productores</a></li>
+                <li><a href="proceso.html">Proceso</a></li>
+                <li><a href="sostenibilidad.html">Impacto</a></li>
+                <li><a href="veredas.html">Nuestra Tierra</a></li>
+                <li><a href="comprar.html">Comprar</a></li>
             </ul>
-            <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
             <select id="langSwitch"><option value="es">ES</option><option value="en">EN</option><option value="fr">FR</option></select>
-            <label class="b2b-switch"><input type="checkbox" id="b2bMode"><span>Modo Mayorista</span></label>
         </div>
     </nav>
 
-    <section id="inicio" class="hero">
-        <div id="particles-js" class="particles-container"></div>
-        <video id="heroVideo" autoplay muted loop playsinline poster="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-            <source src="video/amanecer-montanas.mp4" type="video/mp4">
-        </video>
-        <div class="hero-overlay"></div>
+    <section id="hero-home" class="hero-page">
+        <img src="images/manos-cerezas-full.jpg" class="hero-bg-photo">
         <div class="hero-content">
-            <h1 class="hero-title">El Verdadero Sabor de las Montañas del Tolima</h1>
-            <p class="hero-subtitle">Cada taza cuenta una historia de manos que siembran esperanza</p>
-            <button class="cta-hero" onclick="startQuiz()">Descubre Tu Conexión con la Montaña</button>
-        </div>
-        <div class="floating-leaves">
-            <img src="images/hoja-cafe.png" alt="Hoja de café flotante" class="leaf leaf1">
-            <img src="images/hoja-cafe.png" alt="Hoja de café flotante" class="leaf leaf2">
-            <img src="images/gota-rocio.png" alt="Gota de rocío" class="drop drop1">
+            <h1 style="font-size: 10vw; line-height: 1;">MANOS. MONTAÑAS. CAFÉ.</h1>
+            <p class="microcopy" style="color: #fff; font-size: 2rem;">El Verdadero Sabor de las Montañas del Tolima</p>
+            <a href="cafe.html" class="cta-hero">Descubre de Dónde Viene Tu Café</a>
         </div>
     </section>
 
-    <section id="quiz" class="quiz-section hidden">
-        <div class="quiz-container">
-            <h2>¿Qué Parte de la Montaña Eres?</h2>
-            <p>Responde y personaliza tu viaje por Café Casa Verde.</p>
-            <form id="quizForm">
-                <div class="question">
-                    <p>1. ¿Qué te atrae más del café?</p>
-                    <label><input type="radio" name="q1" value="niebla"> La niebla misteriosa que envuelve todo</label>
-                    <label><input type="radio" name="q1" value="mano"> Las manos que lo cosechan con amor</label>
-                    <label><input type="radio" name="q1" value="grano"> El grano que madura con paciencia</label>
-                </div>
-                <div class="question">
-                    <p>2. ¿Cómo prefieres tu experiencia?</p>
-                    <label><input type="radio" name="q2" value="emocion"> Emocional y profunda</label>
-                    <label><input type="radio" name="q2" value="tecnica"> Técnica y detallada</label>
-                    <label><input type="radio" name="q2" value="sostenible"> Sostenible y futura</label>
-                </div>
-                <button type="submit" class="cta-quiz">Revela Tu Historia</button>
-            </form>
-            <div id="quizResult" class="quiz-result hidden"></div>
+    <section id="manifesto" class="manifesto-section">
+        <p class="manifesto-text">
+            No vendemos café. Compartimos 20 años de manos curtidas, 100 familias que decidieron que juntas podían más, y 502,600 kg de dignidad cada año.
+        </p>
+    </section>
+
+    <section id="three-doors">
+        <h2>Un Viaje por la Esencia</h2>
+        <div class="three-doors-grid">
+            <a href="historia.html" class="door-item">
+                <img src="images/fundadores.jpg">
+                <h3>HISTORIA</h3>
+                <p>Desde 2003. Descubre nuestras raíces.</p>
+            </a>
+            <a href="cafe.html" class="door-item">
+                <img src="images/granos-selectos.jpg">
+                <h3>EL CAFÉ</h3>
+                <p>Orgánico. 1,960m. Perfil sensorial único.</p>
+            </a>
+            <a href="productores.html" class="door-item">
+                <img src="images/retrato-don-jose.jpg">
+                <h3>PRODUCTORES</h3>
+                <p>100 familias. Rostros, nombres y veredas.</p>
+            </a>
         </div>
     </section>
 
-    <section id="el-cafe" class="cafe-section">
-        <div class="cafe-hero">
-            <h2>El Sabor del Terruño</h2>
-            <p>Nuestro café no viene de una fábrica. Viene de 2 a 3 hectáreas...</p>
+    <section id="video-testimonio" style="background-color: var(--verde-cafetal); color: #fff;">
+        <h2>La Voz de la Montaña</h2>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <video controls poster="images/don-jose-video-placeholder.jpg" style="width: 100%;">
+                <source src="video/don-jose-corto.mp4" type="video/mp4">
+            </video>
+            <p class="microcopy" style="color: var(--niebla-matinal);">Don José: "Mis manos manchadas de tierra son mi orgullo."</p>
         </div>
-        <div class="sabor-block" style="--bg-color: linear-gradient(to bottom, #1a4d2e, #8b6f47);">
-            <div class="block-content">
-                <h3>Notas de Sabor</h3>
-                <ul>
-                    <li>Panela</li><li>Chocolate</li><li>Especias</li><li>Flores</li><li>Caramelo y caña</li>
-                </ul>
-                <p>Una acidez cítrica que despierta, un cuerpo sedoso que abraza...</p>
-            </div>
-            <div class="block-image ken-burns"><img src="images/granos-manos.jpg" alt="Granos en manos campesinas"></div>
-        </div>
+        <div style="text-align: center; margin-top: 2rem;"><a href="productores.html" class="cta-hero">Conoce todas las historias</a></div>
     </section>
 
-    <section id="nuestra-gente" class="gente-section">
-        <h2>Las Manos que lo Hacen Posible</h2>
-        <p>Desde 2003, 100 familias decidieron que juntos podían más.</p>
-        <div class="gallery">
-            <div class="portrait" data-audio="audio/don-jose.mp3">
-                <img src="images/don-jose.jpg" alt="Don José">
-                <div class="overlay"><p>Don José: "Mis manos manchadas de tierra..."</p><button class="play-audio">Escuchar</button></div>
-            </div>
-            <div class="portrait" data-audio="audio/dona-maria.mp3">
-                <img src="images/dona-maria.jpg" alt="Doña María">
-                <div class="overlay"><p>Doña María: "Madrugo antes del sol..."</p><button class="play-audio">Escuchar</button></div>
-            </div>
-        </div>
-        <div class="ugc-feed">
-            <h3>Historias de Nuestros Amigos</h3>
-            <div id="ugcCarousel" class="carousel">
-                <div class="ugc-item">Testimonio 1: "Este café me conectó con Colombia."</div>
-                <div class="ugc-item">Testimonio 2: "Calidad premium para mi cafetería."</div>
-            </div>
-        </div>
-    </section>
-
-    <section id="sostenibilidad" class="sostenibilidad-section">
-        <h2>Café que Cuida lo que Importa</h2>
-        <div class="impact-grid">
-            <div class="impact-card"><h3>100% Orgánico</h3><p>Sin químicos que enfermen la tierra.</p></div>
-            <div class="impact-card"><h3>Comercio Justo</h3><p>La dignidad no se negocia.</p></div>
-            <div class="impact-card"><h3>Legado 2050</h3><div id="legacyCounter" class="counter">Tu compra planta <span id="treeCount">0</span> árboles</div><p>En 2050, estos cafetales alimentarán a las nietas de Doña María.</p></div>
-        </div>
-        <div id="kpiTable" class="kpi-table hidden">
-            <table><thead><tr><th>Métrica</th><th>Valor</th></tr></thead><tbody><tr><td>Kg Exportados Anuales</td><td>502,600</td></tr><tr><td>Familias Beneficiadas</td><td>100</td></tr></tbody></table>
-        </div>
-    </section>
-
-    <section id="proceso" class="proceso-section">
-        <h2>Del Grano a tu Taza</h2>
-        <div class="timeline">
-            <div class="step" data-step="1"><div class="step-icon">🌸</div><h3>Floración (Ago-Sep)</h3><p>Flores blancas...</p></div>
-            <div class="step" data-step="2"><div class="step-icon">🍒</div><h3>Recolección Manual</h3><p>Grano por grano...</p></div>
-            <div class="step" data-step="3"><div class="step-icon">⏳</div><h3>Fermentación: 18 Horas</h3><p>Paciencia controlada.</p></div>
-            <div class="step" data-step="4"><div class="step-icon">💧</div><h3>Lavado: 6-12 Horas</h3><p>Suave, como el río.</p></div>
-            <div class="step" data-step="5"><div class="step-icon">☀️</div><h3>Secado: 7 Días al Sol</h3><p>O 24h en silo.</p></div>
-        </div>
-    </section>
-
-    <section id="mapa" class="mapa-section">
-        <h2>Nuestra Tierra: Las 7 Veredas</h2>
-        <div id="interactiveMap"></div>
-        <canvas id="threeMap"></canvas>
-    </section>
-
-    <section id="compra" class="compra-section">
-        <h2>No Vendemos Café. Compartimos Montañas.</h2>
-        <div class="cta-grid">
-            <button class="cta-buy" onclick="openShop()">Prueba Nuestra Historia</button>
-            <button class="cta-subscribe">Suscríbete y Recibe Montaña en Tu Puerta</button>
-            <div id="b2bCTAs" class="b2b-ctas hidden"><button>Request Samples</button><button>Schedule Visit</button></div>
-        </div>
-    </section>
-
-    <section id="contacto" class="contacto-section">
-        <h2>Únete a Nuestra Comunidad</h2>
-        <form id="contactForm">
-            <input type="text" placeholder="Tu Nombre" required>
-            <input type="email" placeholder="Tu Email" required>
-            <textarea placeholder="Tu Mensaje: ¿Una historia? ¿Una pregunta sobre nuestro café?"></textarea>
-            <button type="submit">Enviar desde las Montañas</button>
-        </form>
-    </section>
-
-    <footer><p>&copy; 2025 Café Casa Verde - Ataco, Tolima, Colombia. Orgánico, Justo, Real.</p></footer>
+    <footer><p>&copy; 2025 Café Casa Verde - Ataco, Tolima, Colombia.</p></footer>
     <script src="scripts.js"></script>
 </body>
 </html>
