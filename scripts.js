@@ -19,13 +19,26 @@ document.addEventListener('DOMContentLoaded',function(){
         const heroPhoto = document.querySelector('.hero-bg-photo');
         if (heroPhoto) {
             gsap.to('.hero-bg-photo', {
-                y: (index, target) => -target.offsetHeight * 0.1,
+                y: '30%',
+                scale: 1.15,
                 ease: 'none',
                 scrollTrigger: {
                     trigger: '.hero-page',
                     start: 'top top',
                     end: 'bottom top',
-                    scrub: true,
+                    scrub: 1.5,
+                }
+            });
+            
+            gsap.to('.hero-content', {
+                y: '20%',
+                opacity: 0,
+                ease: 'power1.out',
+                scrollTrigger: {
+                    trigger: '.hero-page',
+                    start: 'top top',
+                    end: '50% top',
+                    scrub: 1,
                 }
             });
         }
