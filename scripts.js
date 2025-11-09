@@ -32,7 +32,6 @@ document.addEventListener('DOMContentLoaded',function(){
             
             gsap.to('.hero-content', {
                 y: '20%',
-                opacity: 0,
                 ease: 'power1.out',
                 scrollTrigger: {
                     trigger: '.hero-page',
