@@ -44,7 +44,7 @@
             <p>Nuestro café crece entre 1,500 y 1,960 metros sobre el nivel del mar, una altitud que obliga a la cereza a madurar lentamente.</p>
             <ul>
                 <li><strong style="color: var(--rojo-cereza);">Altitud:</strong> 1,500 - 1,960m</li>
-                <li><strong style="color: var(--rojo-cereza);">Variedades:</strong> Colombia, Castillo, Caturra, Cenicafé 1</li>
+                <li><strong style="color: var(--rojo-cereza);">Variedades:</strong> Colombia, Castillo, Caturra (poca cantidad), Cenicafé 1 (empezando)</li>
                 <li><strong style="color: var(--rojo-cereza);">Proceso:</strong> Lavado Completo</li>
             </ul>
         </div>
@@ -52,23 +52,23 @@
 
     <section id="flavor-profile" style="background-color: var(--niebla-matinal);">
         <h2>Perfil Sensorial</h2>
-        <p class="microcopy">La esencia de nuestra tierra expresada en notas de cata.</p>
+        <p class="microcopy">La esencia de nuestra tierra expresada en notas de cata. Cuerpo sedoso, envolvente, con residual dulce y limpio.</p>
 
         <div class="flavor-wheel-container">
             <canvas id="flavorWheelCanvas"></canvas>
 
             <div class="notes-list" style="max-width: 400px;">
-                <div class="note-item" style="border-left: 3px solid var(--rojo-cereza); padding-left: 1rem;">
-                    <h3>PANELA</h3>
+                <div class="note-item" style="border-left: 3px solid var(--rojo-cereza);">
+                    <h3>PANELA & CAÑA</h3>
                     <p>Dulzor natural que evoca la caña de azúcar.</p>
                 </div>
-                <div class="note-item" style="border-left: 3px solid var(--rojo-cereza); padding-left: 1rem;">
-                    <h3>CHOCOLATE</h3>
+                <div class="note-item" style="border-left: 3px solid var(--rojo-cereza);">
+                    <h3>CHOCOLATE & CARAMELO</h3>
                     <p>Notas profundas asociadas a la tierra volcánica.</p>
                 </div>
-                <div class="note-item" style="border-left: 3px solid var(--rojo-cereza); padding-left: 1rem;">
-                    <h3>CÍTRICO</h3>
-                    <p>Un toque brillante y refrescante.</p>
+                <div class="note-item" style="border-left: 3px solid var(--rojo-cereza);">
+                    <h3>CÍTRICO, ESPECIES & FLORAL</h3>
+                    <p>Un toque brillante y refrescante con acidez cítrica.</p>
                 </div>
             </div>
         </div>
@@ -103,17 +103,18 @@
     <script src="scripts.js"></script>
 
     <script>
+        // Data has been simplified and consolidated to match new HTML
         const canvas = document.getElementById('flavorWheelCanvas');
         if (canvas) {
             const ctx = canvas.getContext('2d');
             const data = [
-                { label: 'Panela', color: '#A67853' },
-                { label: 'Chocolate', color: '#1A1412' },
-                { label: 'Cítrico', color: '#C71F37' },
-                { label: 'Floral', color: '#7A9B7F' },
-                { label: 'Caramelo', color: '#A67853' },
-                { label: 'Especias', color: '#1A1412' },
+                { label: 'Panela/Caña', color: '#A67853' },
+                { label: 'Chocolate/Caramelo', color: '#1A1412' },
+                { label: 'Cítrico/Floral', color: '#C71F37' },
+                { label: 'Especias', color: '#7A9B7F' },
+                
             ];
+            canvas.width = 300; canvas.height = 300; // Reset canvas size
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             const centerX = canvas.width / 2;
             const centerY = canvas.height / 2;
