@@ -34,10 +34,11 @@
         <img src="images/hero-parallax-bg.jpg" class="hero-bg-photo" alt="Café Casa Verde - Montañas del Tolima">
         <div class="hero-content">
             <img src="images/LOGO-cafe casa verde (1).png" alt="Logo Casa Verde Café" style="
-                width: 80vw; /* Tamaño grande para el Hero */
-                max-width: 600px;
+                width: 40vw; /* Aproximadamente la mitad del tamaño anterior (80vw -> 40vw) */
+                max-width: 300px; /* Tamaño máximo para evitar que sea gigante en pantallas grandes */
                 height: auto;
-                filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba(0,0,0,0.5)); /* Hace el logo blanco y le da sombra */
+                /* Eliminamos el filtro 'brightness(0) invert(1)' para que quede verde original */
+                filter: drop-shadow(0 0 10px rgba(0,0,0,0.5)); /* Mantenemos la sombra para que resalte */
                 margin-bottom: 1rem;
             ">
             <p class="microcopy" style="color: #fff; font-size: 2rem;">El Verdadero Sabor de las Montañas del Tolima</p>
