@@ -12,22 +12,39 @@ const FLAVOR_DATA = [
 let flavorSegments = [];
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Inicialización de Audio (Howler) - Se deja siempre
+    // 1. Lógica del Menú Hamburguesa
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        // Cerrar menú al hacer clic en un enlace (solo en móvil)
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+    }
+
+    // 2. Inicialización de Audio (Howler) - Se deja siempre
     if (window.Howl) {
         initAudioOverlays();
     }
 
-    // 2. Inicialización de GSAP y ScrollTrigger
+    // 3. Inicialización de GSAP y ScrollTrigger
     if (window.gsap && window.ScrollTrigger) {
         initScrollAnimations();
     }
 
-    // 3. Inicializa la rueda de sabores si estamos en la página del café
+    // 4. Inicializa la rueda de sabores si estamos en la página del café
     if (document.getElementById('flavorWheelCanvas')) {
         initFlavorWheel();
     }
 
-    // 4. Inicialización de Mapa (Leaflet/Three.js)
+    // 5. Inicialización de Mapa (Leaflet/Three.js)
     if (window.THREE || window.L) {
         initMap();
     }
