@@ -105,6 +105,56 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 .timeline-event{background:none;color:var(--tierra-humeda);padding:2rem 1rem;margin-bottom:5rem;position:relative;opacity:0;transform:translateY(50px);transition:all .8s ease-out;border-left:5px solid transparent}
 .timeline-event h4{color:var(--rojo-cereza);font-family:'Bebas Neue';font-size:3rem;margin-bottom:.5rem;letter-spacing:.1em}
 .timeline-event img{width:100%;height:300px;object-fit:cover;margin-top:1rem;filter:grayscale(1) contrast(1.2)}
+/* --- NUEVOS ESTILOS PARA HISTORIA (Estructura de Tarjetas) --- */
+.history-event-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-bottom: 5rem;
+    padding: 2rem;
+    background-color: var(--niebla-matinal); /* Color claro para la tarjeta */
+    border: 3px solid var(--tierra-humeda);
+}
+
+/* Patrón Zig-Zag (Invertir orden de columnas para tarjetas pares) */
+.history-event-card:nth-child(even) {
+    direction: rtl; 
+    text-align: right;
+}
+.history-event-card:nth-child(even) .history-media {
+    direction: ltr; /* Asegurar que la imagen no se invierta */
+}
+.history-event-card:nth-child(even) .history-content {
+    direction: ltr; /* Asegurar que el texto no se invierta */
+}
+
+.history-media img {
+    width: 100%;
+    height: 300px; /* Altura fija para consistencia visual */
+    object-fit: cover;
+    display: block;
+    filter: grayscale(0.5);
+    transition: filter 0.3s;
+}
+
+.history-event-card h4 {
+    color: var(--verde-cafetal);
+    font-size: 2.5rem;
+    border-left: 5px solid var(--rojo-cereza);
+    padding-left: 15px;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+}
+
+.history-event-card:nth-child(even) h4 {
+    border-left: none;
+    border-right: 5px solid var(--rojo-cereza);
+    padding-left: 0;
+    padding-right: 15px;
+}
+/* --- FIN NUEVOS ESTILOS PARA HISTORIA --- */
+
 .cafe-split-hero{display:flex;min-height:80vh;padding:0}
 .cafe-split-hero>div{flex:1;padding:5rem 3rem}
 .cafe-split-left{background-color:var(--tierra-humeda);color:#fff;position:relative}
@@ -117,8 +167,6 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 .portrait-card:hover img{transform:scale(1.05)}
 .portrait-card-info{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,.8),transparent);color:#fff;padding:1rem;transform:translateY(100%);transition:transform .4s}
 .portrait-card:hover .portrait-card-info{transform:translateY(0)}
-
-/* Nuevo estilo para Scrollytelling: fondo fijo y centrado */
 .proceso-page{background:var(--tierra-humeda);color:#fff;min-height:100vh;padding:0}
 .scrolly-section{
     min-height:100vh;
@@ -128,7 +176,6 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
     position:relative;
     color:#fff;
     text-align:center;
-    /* CLAVES DEL SCROLLYTELLING: */
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -244,6 +291,19 @@ footer{
     #vision-y-tierra > div {
         grid-template-columns: 1fr;
         gap: 3rem;
+    }
+
+    /* 3. Ajuste de Tarjetas de Historia a stack total */
+    .history-event-card {
+        grid-template-columns: 1fr;
+        direction: ltr; /* Asegurar que todo se apile normalmente */
+        text-align: left;
+    }
+    .history-event-card:nth-child(even) h4 {
+        border-right: none;
+        border-left: 5px solid var(--rojo-cereza);
+        padding-left: 15px;
+        padding-right: 0;
     }
 
 }
