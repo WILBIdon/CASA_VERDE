@@ -31,10 +31,9 @@
         <img src="images/hero-parallax-bg.jpg" class="hero-bg-photo" alt="Café Casa Verde - Montañas del Tolima">
         <div class="hero-content">
             <img src="images/LOGO-cafe casa verde (1).png" alt="Logo Casa Verde Café" style="
-                width: 40vw; /* Tamaño moderado para el Hero */
+                width: 40vw; 
                 max-width: 300px;
                 height: auto;
-                /* IMPORTANTE: Sin filtro para mantener el color verde del logo original */
                 margin-bottom: 1rem;
             ">
             <p class="microcopy" style="color: #fff; font-size: 2rem;">El Verdadero Sabor de las Montañas del Tolima</p>
@@ -42,37 +41,56 @@
         </div>
     </section>
 
-    <section id="manifesto" class="manifesto-section">
-        <p class="manifesto-text" style="font-size: 2.8rem; line-height: 1.2; margin: 0 auto; max-width: 900px;">
-            No vendemos café.
-            Compartimos 20 años de manos curtidas, 100 familias que decidieron que juntas podían más, y 502,600 kg de dignidad cada año.
-        </p>
-
-        <p style="
-            font-family: 'Playfair Display', serif; 
-            font-size: 2.1rem; 
-            line-height: 1.5; 
-            color: var(--rojo-cereza); 
-            max-width: 900px; 
-            margin: 2rem auto; 
-            text-align: center;
-        ">
-            Cada taza lleva historias de madrugadas entre la niebla, de abuelos que enseñaron a sus hijos el secreto de la tierra buena, de sueños que se volvieron realidad porque decidimos no estar solos.
-        </p>
-
-        <p class="manifesto-text" style="font-size: 2.8rem; line-height: 1.2; margin: 0 auto; max-width: 900px;">
-            Cuando tomas nuestro café, te sientas a nuestra mesa.
-        </p>
+    <section id="manifesto" class="manifesto-section" style="display: block;">
         
-        <p class="microcopy" style="
-            font-size: 1.5rem; 
-            margin-top: 2.5rem; 
-            color: var(--tierra-humeda);
-            text-align: center;
-        ">
-            Café Casa Verde - Cultivado por familias, compartido con el corazón
-        </p>
+        <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+             <p class="manifesto-text" style="font-size: 2.5rem; line-height: 1.2;">
+                No vendemos café. Compartimos 20 años de manos curtidas, 100 familias que decidieron que juntas podían más, y 502,600 kg de dignidad cada año.
+            </p>
+
+            <p style="
+                font-family: 'Playfair Display', serif; 
+                font-size: 1.8rem; 
+                line-height: 1.5; 
+                color: var(--tierra-humeda); /* Usando el color principal para contraste */
+                margin: 2rem auto; 
+            ">
+                Cada taza lleva historias de madrugadas entre la niebla, de abuelos que enseñaron a sus hijos el secreto de la tierra buena, de sueños que se volvieron realidad porque decidimos no estar solos. Cuando tomas nuestro café, te sientas a nuestra mesa.
+            </p>
+            
+            <p class="microcopy" style="
+                font-size: 1.2rem; 
+                margin-top: 2.5rem; 
+                color: var(--rojo-cereza);
+            ">
+                Café Casa Verde - Cultivado por familias, compartido con el corazón
+            </p>
+        </div>
+        
     </section>
+    
+    <section id="media-spot" style="background-color: var(--niebla-matinal); text-align: center;">
+        <h2>Nuestra Tierra Viva</h2>
+        <p class="microcopy">Un vistazo a la Laguna de Ataco y sus cafetales.</p>
+        
+        <div style="max-width: 800px; margin: 2rem auto;">
+            <div style="
+                background: #fff;
+                border: 2px dashed var(--verde-cafetal);
+                min-height: 450px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: 'Inter', sans-serif;
+                color: var(--tierra-humeda);
+                padding: 2rem;
+            ">
+                [Aquí se insertará el código del **Video de YouTube embebido** o la **Foto del Lago**]
+            </div>
+        </div>
+        <a href="veredas.html" class="cta-hero" style="margin-top: 2rem;">Explora el Mapa de las Veredas</a>
+    </section>
+    
     <section id="three-doors">
         <h2>Un Viaje por la Esencia</h2>
         <div class="three-doors-grid">
