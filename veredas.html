@@ -3,129 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Veredas - Nuestra Tierra | Casa Verde</title>
+    <title>Nuestra Tierra - Veredas de Ataco | Café Casa Verde</title>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@100..900&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .mapa-layout{ display: flex; min-height: 80vh; }
-        .map-sidebar{ flex: 0 0 300px; padding: 2rem; background-color: var(--niebla-matinal); overflow-y: auto;}
-        .map-container{ flex: 1; }
-        #interactiveMap{ height: 100%; }
-        .vereda-item{ padding: 0.8rem 0; cursor: pointer; border-bottom: 1px solid rgba(0,0,0,0.1); transition: background 0.3s; }
-        .vereda-item:hover{ background: rgba(0,0,0,0.05); }
-        .vereda-item h4{ color: var(--tierra-humeda); font-size: 1.5rem; }
-        .vereda-details{ padding: 2rem; background-color: var(--beige-papel); }
-        .vereda-details img{ width: 100%; height: 250px; object-fit: cover; margin-bottom: 1rem; }
-    </style>
-</head>
+    </head>
 <body>
     <nav id="mainNav" class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <img src="images/LOGO-cafe casa verde (1).png" alt="Logo Casa Verde Café" class="logo-img">
+                <a href="index.html">
+                    <img src="images/LOGO-cafe casa verde (1).png" alt="Logo Casa Verde Café" class="logo-img">
+                </a>
             </div>
+            
+            <button id="menu-toggle">MENÚ</button>
+
             <ul class="nav-links">
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="historia.html">Historia</a></li>
                 <li><a href="cafe.html">El Café</a></li>
-                <li><a href="productores.html">Productores</a></li>
-                <li><a href="proceso.html">Proceso</a></li>
                 <li><a href="sostenibilidad.html">Impacto</a></li>
-                <li><a href="veredas.html">Nuestra Tierra</a></li>
-                <li><a href="comprar.html">Comprar</a></li>
+                <li><a href="comprar.html">Tienda</a></li>
+                <li><select id="langSwitch"><option value="es">ES</option><option value="en">EN</option><option value="fr">FR</option></select></li>
             </ul>
-            <select id="langSwitch"><option value="es">ES</option><option value="en">EN</option><option value="fr">FR</option></select>
         </div>
     </nav>
 
-    <section id="veredas-mapa" style="padding: 0; max-width: none;">
-        <div class="mapa-layout">
-            <div class="map-sidebar">
-                <h2>Las Veredas de Ataco</h2>
-                <p class="microcopy">Haga clic para ver los detalles de cada zona de producción.</p>
-                <div id="veredas-list">
-                    <div class="vereda-item" data-vereda="La Miranda"><h4>1. La Miranda</h4></div>
-                    <div class="vereda-item" data-vereda="Campo Hermoso"><h4>2. Campo Hermoso</h4></div>
-                    <div class="vereda-item" data-vereda="Pomorroso"><h4>3. Pomorroso</h4></div>
-                    <div class="vereda-item" data-vereda="La Laguna"><h4>4. La Laguna</h4></div>
-                    <div class="vereda-item" data-vereda="Cascarillo"><h4>5. Cascarillo</h4></div>
-                    <div class="vereda-item" data-vereda="Casa Verde"><h4>6. Casa Verde</h4></div>
-                    <div class="vereda-item" data-vereda="La Reforma"><h4>7. La Reforma</h4></div>
-                    <div class="vereda-item" data-vereda="Santa Bárbara"><h4>8. Santa Bárbara</h4></div>
-                    <div class="vereda-item" data-vereda="San Isidro"><h4>9. San Isidro</h4></div>
-                    <div class="vereda-item" data-vereda="El Diamante"><h4>10. El Diamante</h4></div>
-                    <div class="vereda-item" data-vereda="La Esperanza"><h4>11. La Esperanza</h4></div>
-                    </div>
-                <div id="vereda-details-panel" class="vereda-details" style="margin-top: 2rem; display: none;"></div>
+    <section id="hero-veredas" class="hero-page">
+        <img src="images/hero-veredas-bg.jpg" class="hero-bg-photo" alt="Mapa topográfico de Ataco, Tolima">
+        <div class="hero-content">
+            <h1 style="font-size: 5rem;">NUESTRA TIERRA</h1>
+            <p class="microcopy" style="color: #fff; font-size: 2rem;">Las 7 veredas que dan vida a nuestro café.</p>
+        </div>
+    </section>
+
+    <section id="map-section">
+        <h2>Las Veredas de Ataco</h2>
+        <div class="contact-split">
+            <div class="map-container" style="
+                background-color: var(--niebla-matinal); 
+                border-radius: 8px; 
+                min-height: 500px; 
+                display: flex; 
+                align-items: center; 
+                justify-content: center;
+                flex: 2;
+                box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            ">
+                <p>[MARCADOR DE POSICIÓN: Aquí va el Mapa Interactivo (Leaflet.js o Google Maps)]</p>
             </div>
-            <div class="map-container">
-                <div id="interactiveMap"></div>
+            
+            <div class="veredas-list" style="flex: 1;">
+                <h3>Comunidades Asociadas:</h3>
+                <ul>
+                    <li>La Miranda</li>
+                    <li>Campo Hermoso</li>
+                    <li>Pomorroso</li>
+                    <li>La Laguna</li>
+                    <li>Cascarillo</li>
+                    <li>Casa Verde</li>
+                    <li>La Reforma</li>
+                </ul>
             </div>
         </div>
     </section>
 
-    <footer><p>&copy; 2025 Café Casa Verde - Ataco, Tolima, Colombia. Orgánico, Justo, Real.</p></footer>
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Café Casa Verde</h4>
+                <p>Asociación de Productores de Café Especial con Fines Ecológicos.</p>
+                <p>Ataco, Tolima, Colombia.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navegación Rápida</h4>
+                <a href="historia.html">Nuestra Historia</a>
+                <a href="cafe.html">El Café</a>
+                <a href="productores.html">Productores</a>
+                <a href="veredas.html">Nuestra Tierra</a>
+            </div>
+            <div class="footer-col">
+                <h4>Compra y Soporte</h4>
+                <a href="comprar.html">Tienda Online</a>
+                <a href="checkout.html">Mi Carrito</a>
+                <a href="#">Contacto B2B</a>
+                <a href="#">Política de Devolución</a>
+            </div>
+            <div class="footer-col">
+                <h4>Impacto</h4>
+                <a href="sostenibilidad.html">Certificaciones</a>
+                <a href="proceso.html">Proceso</a>
+                <p style="color: var(--niebla-matinal); margin-top: 1rem;">Orgánico y Fair Trade.</p>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <p>&copy; 2025 Café Casa Verde. Todos los derechos reservados.</p>
+        </div>
+    </footer>
     <script src="scripts.js"></script>
-    <script>
-        // Nota: Los datos de veredas en scripts.js deberían actualizarse para incluir todas las veredas del PDF.
-        const veredasData = [
-            { name: "La Miranda", lat: 4.052, lng: -75.752, alt: 1850, familias: 15, img: 'images/vereda-miranda.jpg' },
-            { name: "Campo Hermoso", lat: 4.045, lng: -75.73, alt: 1700, familias: 12, img: 'images/vereda-campo.jpg' },
-            { name: "Pomorroso", lat: 4.033, lng: -75.765, alt: 1960, familias: 10, img: 'images/vereda-pomorroso.jpg' },
-            { name: "La Laguna", lat: 4.035, lng: -75.75, alt: 1750, familias: 8, img: 'images/vereda-laguna.jpg' }, 
-            { name: "Cascarillo", lat: 4.05, lng: -75.76, alt: 1800, familias: 10, img: 'images/vereda-cascarillo.jpg' }, 
-            { name: "Casa Verde", lat: 4.06, lng: -75.74, alt: 1780, familias: 15, img: 'images/vereda-casaverde.jpg' }, 
-            { name: "La Reforma", lat: 4.065, lng: -75.76, alt: 1600, familias: 10, img: 'images/vereda-reforma.jpg' }, 
-            { name: "Santa Bárbara", lat: 4.06, lng: -75.77, alt: 1650, familias: 8, img: 'images/vereda-santa.jpg' },
-            { name: "San Isidro", lat: 4.04, lng: -75.745, alt: 1750, familias: 20, img: 'images/vereda-san-isidro.jpg' },
-            { name: "El Diamante", lat: 4.025, lng: -75.755, alt: 1500, familias: 15, img: 'images/vereda-diamante.jpg' },
-            { name: "La Esperanza", lat: 4.05, lng: -75.74, alt: 1800, familias: 20, img: 'images/vereda-esperanza.jpg' }
-            // Se han añadido las veredas del PDF. Las coordenadas son estimadas para Ataco, Tolima.
-        ];
-
-        let map;
-        function initLeafletMap() {
-            if (!document.getElementById('interactiveMap')) return;
-            map = L.map('interactiveMap').setView([4.045, -75.75], 13);
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-
-            veredasData.forEach(v => {
-                const marker = L.marker([v.lat, v.lng]).addTo(map)
-                    .bindPopup(`<b>${v.name}</b><br>Altitud: ${v.alt}m`)
-                    .on('click', () => updateDetails(v.name));
-            });
-        }
-
-        function updateDetails(name) {
-            const detailsPanel = document.getElementById('vereda-details-panel');
-            const data = veredasData.find(v => v.name === name);
-
-            if (data) {
-                detailsPanel.style.display = 'block';
-                detailsPanel.innerHTML = `
-                    <h3 style="color: var(--rojo-cereza-dark);">${data.name.toUpperCase()}</h3>
-                    <img src="${data.img}" alt="Vista de ${data.name}">
-                    <p><strong>Altitud:</strong> ${data.alt} m.s.n.m.</p>
-                    <p><strong>Familias:</strong> ${data.familias} productoras.</p>
-                    <p><strong>Productores Destacados:</strong> Don José, Doña María (Ejemplo)</p>
-                    <p>
-                        <a href="vereda/${data.name.toLowerCase().replace(/ /g,'-')}.html" style="color: var(--rojo-cereza-dark);">Ver Perfil Completo &rarr;</a>
-                        <br><em style="font-size: 0.9em;">(Nota: Página no implementada, es solo un marcador)</em>
-                    </p>
-                `;
-                if (map) map.flyTo([data.lat, data.lng], 14);
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            initLeafletMap();
-            document.querySelectorAll('.vereda-item').forEach(item => {
-                item.addEventListener('click', () => updateDetails(item.dataset.vereda));
-            });
-            updateDetails(veredasData[0].name);
-        });
-    </script>
-</body>
+    </body>
 </html>
