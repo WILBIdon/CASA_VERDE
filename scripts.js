@@ -36,12 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
 function initScrollAnimations() {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Animación Hero Parallax (si existe)
+    // Animación Hero Parallax (más impactante)
     const heroPhoto = document.querySelector('.hero-bg-photo');
     if (heroPhoto) {
         gsap.to('.hero-bg-photo', {
-            y: '30%',
-            scale: 1.15,
+            y: '45%', // Aumento del movimiento vertical (más agresivo)
+            scale: 1.25, // Aumento de la escala para un efecto de zoom más notorio
             ease: 'none',
             scrollTrigger: {
                 trigger: '.hero-page',
@@ -52,7 +52,7 @@ function initScrollAnimations() {
         });
         
         gsap.to('.hero-content', {
-            y: '20%',
+            y: '30%', // Aumento del movimiento del contenido para un efecto multicapa
             ease: 'power1.out',
             scrollTrigger: {
                 trigger: '.hero-page',
