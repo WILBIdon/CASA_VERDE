@@ -32,8 +32,28 @@ em,.microcopy{font-family:'Playfair Display',serif;font-size:1.2em;color:#C71F37
     --dorado-tostado:#A67853;
 }
 
+/* VIÑETAS PERSONALIZADAS: Fruto de café (rojo) con hoja (verde) */
+ul {
+    list-style: none;
+    padding-left: 20px;
+}
+ul li {
+    padding-left: 10px;
+    position: relative;
+    margin-bottom: 0.5rem;
+}
+ul li:before {
+    content: "•"; /* Fruto de café (rojo) */
+    color: var(--rojo-cereza);
+    font-size: 1.5em;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+
 /* SOLUCIÓN FINAL DE CORTE DE CONTENIDO: Empuja el contenido hacia abajo. */
-/* Selecciona la primera sección que NO es Hero para aplicar un margen que la barra de navegación tape. */
 section:first-of-type:not(.hero-page) {
     margin-top: 70px; /* Margen equivalente a la altura del navbar. */
 }
@@ -72,7 +92,23 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 #langSwitch{background:none;border:1px solid #fff;color:#fff;padding:.5rem;margin-left:1rem}
 .hero-page{min-height:100vh;padding:0;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
 .hero-bg-photo{position:absolute;top:-10%;left:0;width:100%;height:120%;object-fit:cover;z-index:1;filter:grayscale(.1) contrast(1.2) brightness(.85);will-change:transform;transform:translateZ(0)}
-.hero-content{position:relative;z-index:3;text-align:center;color:#fff;padding:2rem;mix-blend-mode:normal;text-shadow:3px 3px 8px rgba(0,0,0,0.8);background:rgba(26,20,18,0.3);backdrop-filter:blur(2px);border-radius:10px;max-width:90%;animation:fadeInUp 1.2s ease-out}
+
+/* CORRECCIÓN CLAVE: Eliminar fondo negro semitransparente del contenido Hero */
+.hero-content{
+    position:relative;
+    z-index:3;
+    text-align:center;
+    color:#fff;
+    padding:2rem;
+    mix-blend-mode:normal;
+    text-shadow:3px 3px 8px rgba(0,0,0,0.8);
+    background: none; /* ELIMINADO EL FONDO NEGRO */
+    backdrop-filter: none; /* ELIMINADO EL BLUR */
+    border-radius:10px;
+    max-width:90%;
+    animation:fadeInUp 1.2s ease-out
+}
+
 .cta-hero{background:var(--rojo-cereza);color:#fff;border:none;padding:1rem 2rem;font-size:1.2rem;cursor:pointer;transition:all .3s;border-radius:0;text-transform:uppercase; margin-top: 1rem;}
 .cta-hero:hover{background:var(--dorado-tostado); box-shadow: 0 5px 15px rgba(0,0,0,0.3);}
 .manifesto-section{min-height:60vh;display:flex;align-items:center;text-align:center;background-color:var(--beige-papel)}
@@ -230,7 +266,7 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 .b2b-specs-table th,.b2b-specs-table td{padding:1rem;border:1px solid var(--niebla-matinal);text-align:left}
 .contact-split{display:flex;gap:4rem;margin-top:3rem}
 
-/* ESTILOS DEL FOOTER (Nueva Maquetación) */
+/* ESTILOS DEL FOOTER (Fondo Tierra Oscuro) */
 footer{
     background:var(--tierra-humeda); /* Fondo tierra húmeda para contraste */
     color:#fff;
