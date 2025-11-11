@@ -1,11 +1,36 @@
 /* Full styles for Multi-Page Brutal Design */
 *{margin:0;padding:0;box-sizing:border-box}
 /* CAMBIO CLAVE: Nueva paleta y fuentes de carácter (Brutal) */
-body{font-family:'Inter',sans-serif;line-height:1.7;color:#1A1412;overflow-x:hidden;background-color:#E8D5C4}
+body{
+    font-family:'Inter',sans-serif;
+    line-height:1.7;
+    color:#1A1412;
+    overflow-x:hidden;
+    background-color: #FFFFFF; /* NUEVO FONDO BLANCO */
+    /* Patron sutil de hojas (implementado como textura diagonal tenue en el nuevo verde) */
+    background-image: linear-gradient(
+        45deg, 
+        rgba(17, 126, 57, 0.04) 25%, /* Nuevo verde #117E39 con 4% de opacidad */
+        transparent 25%, 
+        transparent 75%, 
+        rgba(17, 126, 57, 0.04) 75%, 
+        rgba(17, 126, 57, 0.04) 100%
+    );
+    background-size: 50px 50px;
+}
 h1,h2,h3,h4{font-family:'Bebas Neue',sans-serif;color:#1A1412; margin-bottom: 0.5rem; letter-spacing: 0.05em;}
 h1{font-size: 3rem;} h2{font-size: 2.5rem;} h3{font-size: 1.8rem;}
 em,.microcopy{font-family:'Playfair Display',serif;font-size:1.2em;color:#C71F37; display: block; margin: 1rem 0;}
-:root{--tierra-humeda:#1A1412;--verde-cafetal:#2B4A3F;--beige-papel:#E8D5C4;--rojo-cereza:#C71F37;--niebla-matinal:#D9D6D1;--dorado-tostado:#A67853;}
+
+/* PALETA DE COLORES ACTUALIZADA */
+:root{
+    --tierra-humeda:#1A1412;
+    --verde-cafetal:#117E39; /* NUEVO VERDE PRIMARIO */
+    --beige-papel:#FFFFFF; /* NUEVO FONDO BLANCO */
+    --rojo-cereza:#C71F37;
+    --niebla-matinal:#D9D6D1;
+    --dorado-tostado:#A67853;
+}
 
 /* CORRECCIÓN CRÍTICA: La sección es visible por defecto. */
 section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
@@ -15,7 +40,7 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
     position:fixed;
     top:0;
     width:100%;
-    background:var(--verde-cafetal); /* COLOR DE MARCA CONSISTENTE */
+    background:var(--verde-cafetal); /* Usa el nuevo verde */
     backdrop-filter:blur(10px);
     z-index:1000;
     transition:background .3s ease
@@ -34,7 +59,7 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 .logo .logo-img { 
     height: 35px; /* Tamaño reducido */
     width: auto;
-    filter: brightness(0) invert(1); /* FILTRO PARA LOGO BLANCO */
+    filter: brightness(0) invert(1); /* FILTRO PARA LOGO BLANCO (funciona con el nuevo fondo verde) */
 }
 
 .nav-links{display:flex;list-style:none;gap:1.5rem}
@@ -97,7 +122,7 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 .impact-card{background-color:var(--verde-cafetal);color:#fff;padding:2rem;border-radius:5px}
 .impact-card .number{font-family:'Bebas Neue';font-size:5rem;color:var(--rojo-cereza);line-height:1}
 .certification-stamps{display:flex;justify-content:space-around;gap:2rem;margin-top:4rem;flex-wrap:wrap}
-.stamp-card{background:var(--niebla-matinal);color:var(--tierra-humeda);padding:2rem;text-align:center;border:5px dashed var(--tierra-humeda);transform:rotate(calc(var(--rotation)*1deg))}
+.stamp-card{background:var(--niebla-matinal);color:var(--tierra-humeda);padding:2rem;border:5px dashed var(--tierra-humeda);transform:rotate(calc(var(--rotation)*1deg))}
 .b2b-specs-table{width:100%;border-collapse:collapse;margin:3rem 0;background:#fff;box-shadow:0 4px 15px rgba(0,0,0,.1)}
 .b2b-specs-table th,.b2b-specs-table td{padding:1rem;border:1px solid var(--niebla-matinal);text-align:left}
 .contact-split{display:flex;gap:4rem;margin-top:3rem}
