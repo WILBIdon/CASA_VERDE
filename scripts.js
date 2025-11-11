@@ -1,138 +1,144 @@
-// Full scripts for Multi-Page Structure
-document.addEventListener('DOMContentLoaded',function(){
-    // 1. Navegación a las nuevas páginas
-    document.querySelectorAll('a[href]').forEach(a=>{
-        if (a.getAttribute('href').startsWith('#')) {
-             a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'});});
-        }
-    });
+// Variable global para controlar la reproducción de audio
+let currentAudio = null;
 
-    // 2. Observer para todas las secciones (Scroll Reveal)
-    const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');}})},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
-    document.querySelectorAll('section, .timeline-event, .scrolly-section').forEach(sec=>observer.observe(sec));
-
-    // 3. GSAP Animations (activas solo en páginas específicas)
-    if(window.gsap && window.ScrollTrigger){
-        gsap.registerPlugin(ScrollTrigger);
-
-        // Parallax para Hero (si existe)
-        const heroPhoto = document.querySelector('.hero-bg-photo');
-        if (heroPhoto) {
-            gsap.to('.hero-bg-photo', {
-                y: '30%',
-                scale: 1.15,
-                ease: 'none',
-                scrollTrigger: {
-                    trigger: '.hero-page',
-                    start: 'top top',
-                    end: 'bottom top',
-                    scrub: 1.5,
-                }
-            });
-            
-            gsap.to('.hero-content', {
-                y: '20%',
-                ease: 'power1.out',
-                scrollTrigger: {
-                    trigger: '.hero-page',
-                    start: 'top top',
-                    end: '50% top',
-                    scrub: 1,
-                }
-            });
-        }
-
-        // Animación de Contador para Sostenibilidad
-        const counters = document.querySelectorAll('.impact-numbers-grid .number');
-        counters.forEach(counter => {
-            const endValue = parseFloat(counter.textContent.replace(',', ''));
-            const dataUnit = counter.dataset.unit || '';
-            const dataPrecision = parseInt(counter.dataset.precision) || 0;
-
-            gsap.from(counter, {
-                innerText: 0,
-                duration: 2,
-                ease: "power1.out",
-                snap: { innerText: 1 },
-                scrollTrigger: {
-                    trigger: counter,
-                    start: 'top 80%',
-                    toggleActions: 'play none none reverse'
-                },
-                onUpdate: () => {
-                    let value = parseFloat(counter.innerText).toFixed(dataPrecision);
-                    if (dataUnit === 'kg') value = new Intl.NumberFormat('es-CO').format(value);
-                    counter.textContent = value + dataUnit;
-                }
-            });
-        });
-
-        // Scrollytelling para PROCESO
-        if (document.getElementById('proceso-page')) {
-            gsap.utils.toArray(".scrolly-section").forEach((section, i) => {
-                const content = section.querySelector('.scrolly-content');
-                ScrollTrigger.create({
-                    trigger: section,
-                    start: "top center",
-                    end: "bottom center",
-                    onEnter: () => content.classList.add('active'),
-                    onLeaveBack: () => content.classList.remove('active'),
-                    onEnterBack: () => content.classList.add('active'),
-                    onLeave: () => content.classList.remove('active'),
-                });
-            });
-        }
-
-        // Timeline Historia
-        if (document.getElementById('historia-page')) {
-            gsap.utils.toArray(".timeline-event").forEach(event => {
-                gsap.from(event, {
-                    x: 50,
-                    opacity: 0,
-                    duration: 1,
-                    scrollTrigger: {
-                        trigger: event,
-                        start: "top 80%",
-                        toggleActions: "play none none reverse"
-                    }
-                });
-            });
-        }
-    }
-
-    // 4. Lógica B2B y otros toggles
-    const langSwitch=document.getElementById('langSwitch');
-    if(langSwitch){langSwitch.addEventListener('change',e=>{document.documentElement.lang=e.target.value;});}
-
-    // 5. Inicialización de Audio (Howler)
-    if (window.Howl) {
-        initSound();
+document.addEventListener('DOMContentLoaded', () => {
+    // Inicializa ScrollTrigger y animaciones GSAP
+    initScrollAnimations();
+    
+    // Solo inicializa los overlays de audio en la página de productores
+    if (document.body.id === 'productores-page' || document.querySelector('.portrait-card')) {
         initAudioOverlays();
     }
-
-    // 6. Inicialización de Mapa (Leaflet/Three.js)
-    if (window.THREE || window.L) {
-        initMap();
-    }
-
 });
 
-// Funciones de audio
-let soundEnabled=false;let sounds={};
-function initSound(){}
-function initAudioOverlays(){ 
-    document.querySelectorAll('.portrait-card').forEach(portrait=>{ 
-        portrait.addEventListener('click',e=>{ 
-            const src=portrait.dataset.audio; 
-            if(src) alert(`Reproduciendo historia de: ${portrait.querySelector('h4').textContent}`);
-        }); 
-    }); 
+function initScrollAnimations() {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Animación general para secciones
+    gsap.utils.toArray('section').forEach(section => {
+        gsap.from(section, {
+            y: 50,
+            opacity: 0,
+            duration: 0.8, // Velocidad ajustada para un efecto más claro
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: section,
+                start: "top 85%", // Inicia cuando la parte superior de la sección está al 85% del viewport
+                toggleActions: "play none none none"
+            }
+        });
+    });
+
+    // Animación específica para la línea de tiempo (historia.html)
+    gsap.utils.toArray('.timeline-event').forEach(event => {
+        gsap.from(event, {
+            x: -50,
+            opacity: 0,
+            duration: 1.0,
+            ease: "power1.out",
+            scrollTrigger: {
+                trigger: event,
+                start: "top 90%",
+                toggleActions: "play none none none"
+            }
+        });
+    });
+
+    // Animación Hero Parallax (index.html, historia.html)
+    gsap.to(".hero-bg-photo", {
+        y: "20%",
+        ease: "none",
+        scrollTrigger: {
+            trigger: "#mainNav",
+            start: "top top", 
+            end: "bottom top", 
+            scrub: true,
+            invalidateOnRefresh: true
+        }
+    });
 }
 
-// Función mapa (placeholder)
-function initMap(){}
+function initAudioOverlays() {
+    const portraitCards = document.querySelectorAll('.portrait-card');
+    const audioModal = document.getElementById('audioModal');
+    const modalName = document.getElementById('modalName');
+    const playPauseButton = document.getElementById('playPauseButton');
+    const progressBar = document.getElementById('progressBar');
+    
+    // Función para actualizar la barra de progreso
+    function updateProgress() {
+        if (currentAudio && currentAudio.playing()) {
+            const seek = currentAudio.seek();
+            const duration = currentAudio.duration();
+            const progress = (seek / duration) * 100;
+            progressBar.style.width = progress + '%';
+            
+            // Solicitar el siguiente frame para actualizar fluidamente
+            requestAnimationFrame(updateProgress);
+        }
+    }
 
-function scrollTo(section){
-    const el=document.querySelector(section);
-    if(el) el.scrollIntoView({behavior:'smooth'});
+    portraitCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const audioSrc = card.dataset.audio;
+            const producerName = card.dataset.name;
+
+            // 1. Detener audio anterior si existe
+            if (currentAudio) {
+                currentAudio.stop();
+            }
+
+            // 2. Mostrar el modal y actualizar el nombre
+            modalName.textContent = `Historia de ${producerName}`;
+            audioModal.style.display = 'flex';
+            progressBar.style.width = '0%';
+            playPauseButton.textContent = 'Cargando...';
+
+            // 3. Crear y cargar el nuevo audio
+            currentAudio = new Howl({
+                src: [audioSrc],
+                html5: true, // Usar HTML5 Audio para streaming de archivos grandes
+                onplay: () => {
+                    playPauseButton.textContent = 'Pausar';
+                    requestAnimationFrame(updateProgress);
+                },
+                onpause: () => {
+                    playPauseButton.textContent = 'Reproducir';
+                },
+                onend: () => {
+                    playPauseButton.textContent = 'Reproducir';
+                    progressBar.style.width = '100%';
+                },
+                onloaderror: (id, error) => {
+                    playPauseButton.textContent = 'Error al cargar';
+                    console.error('Error cargando audio:', error);
+                }
+            });
+
+            // 4. Iniciar la reproducción
+            currentAudio.play();
+        });
+    });
+
+    // 5. Controlar Play/Pause en el modal
+    playPauseButton.addEventListener('click', () => {
+        if (currentAudio) {
+            if (currentAudio.playing()) {
+                currentAudio.pause();
+            } else {
+                currentAudio.play();
+            }
+        }
+    });
+}
+
+// Función global para cerrar el modal
+function closeAudioModal() {
+    const audioModal = document.getElementById('audioModal');
+    if (currentAudio) {
+        currentAudio.stop();
+        currentAudio.unload(); // Libera la memoria
+        currentAudio = null;
+    }
+    audioModal.style.display = 'none';
 }
