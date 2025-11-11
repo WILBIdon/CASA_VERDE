@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Café Casa Verde - El Verdadero Sabor de las Montañas del Tolima</title>
+    <title>Historia - Café Casa Verde</title>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@100..900&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -17,7 +16,9 @@
                 <img src="images/LOGO-cafe casa verde (1).png" alt="Logo Casa Verde Café" class="logo-img">
             </div>
             
-            <button id="menu-toggle">MENÚ</button> <ul class="nav-links">
+            <button id="menu-toggle">MENÚ</button>
+
+            <ul class="nav-links">
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="historia.html">Historia</a></li>
                 <li><a href="cafe.html">El Café</a></li>
@@ -28,96 +29,59 @@
         </div>
     </nav>
 
-    <section id="hero-home" class="hero-page">
-        <img src="images/hero-parallax-bg.jpg" class="hero-bg-photo" alt="Café Casa Verde - Montañas del Tolima">
+    <section id="hero-historia" class="hero-page">
+        <img src="images/historia-hero-bg.jpg" class="hero-bg-photo" alt="Imagen de fondo de Historia">
         <div class="hero-content">
-            <img src="images/LOGO-cafe casa verde (1).png" alt="Logo Casa Verde Café" style="
-                width: 40vw; 
-                max-width: 300px;
-                height: auto;
-                margin-bottom: 1rem;
-            ">
-            <p class="microcopy" style="color: #fff; font-size: 2rem;">El Verdadero Sabor de las Montañas del Tolima</p>
-            <a href="comprar.html" class="cta-hero">Comprar Nuestro Café Orgánico</a>
+            <h1 style="font-size: 5rem;">Nuestra Historia</h1>
+            <p class="microcopy" style="color: #fff; font-size: 2rem;">20 años de manos curtidas forjando una comunidad.</p>
         </div>
     </section>
 
-    <section id="vision-y-tierra" style="padding: 2rem 2rem 5rem 2rem; background-color: var(--beige-papel);">
-        <div style="max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem;">
+    <section id="story-timeline">
+        <h2>La Cronología que Forjó la Dignidad</h2>
+        <em style="text-align: center;">Desde un periodo crítico hasta ser 100 familias certificadas.</em>
+        
+        <div class="timeline-story">
             
-            <div class="manifesto-content" style="padding-top: 1rem;">
-                <h2 style="font-size: 3rem;">Nuestra Visión: Más que Café</h2>
-                <p style="
-                    font-family: 'Playfair Display', serif; 
-                    font-size: 1.5rem; 
-                    line-height: 1.5; 
-                    color: var(--tierra-humeda); 
-                    margin: 1.5rem 0; 
-                ">
-                    No vendemos café. Compartimos 20 años de manos curtidas, 100 familias que decidieron que juntas podían más, y **502,600 kg de dignidad** cada año. Cuando tomas nuestro café, te sientas a nuestra mesa.
+            <div class="timeline-event">
+                <h4>2003: La Fundación</h4>
+                <p>
+                    La Asociación Café Casa Verde fue conformada el 23 de octubre de 2003. En ese momento, los precios del café pasaban por una época crítica y la región no era tenida en cuenta en proyectos del gobierno.
                 </p>
-                <p style="color: var(--tierra-humeda); margin-bottom: 2rem;">
-                    Cada taza lleva historias de abuelos que enseñaron a sus hijos el secreto de la tierra buena. Nuestro compromiso es con la calidad, la sostenibilidad y la autonomía de nuestros productores.
+                <p>
+                    El propósito inicial fue unir esfuerzos para lograr proyectos en beneficio de los asociados. El grupo fundador inició con 113 personas que buscaban hacer frente a la crisis juntos.
                 </p>
-                <a href="sostenibilidad.html" class="cta-hero">Conoce Nuestro Impacto</a>
+                <img src="images/historia-fundacion-2003.jpg" alt="Foto de los fundadores de la asociación en 2003.">
             </div>
 
-            <div id="media-spot" style="text-align: center;">
-                <h3 style="color: var(--verde-cafetal); font-size: 1.8rem;">La Tierra que nos Nutre</h3>
-                <div style="
-                    background: #fff;
-                    border: 3px solid var(--tierra-humeda);
-                    min-height: 350px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-family: 'Inter', sans-serif;
-                    color: var(--tierra-humeda);
-                    padding: 2rem;
-                    margin-top: 1rem;
-                ">
-                    [ESPACIO RESERVADO para Video de YouTube embebido o Foto del Lago/Paisaje]
-                </div>
+            <div class="timeline-event">
+                <h4>Proyectos y Consolidación</h4>
+                <p>
+                    A lo largo de los años, el trabajo como asociación se consolidó. Se ha logrado gestionar varios proyectos clave para la comunidad, como alianzas productivas (beneficiando a 45 asociados) y una ficha integral con mejoramiento de beneficiadero y pozo séptico.
+                </p>
+                <p>
+                    La organización también ha contribuido con proyectos para los socios como el arreglo de máquinas despulpadora.
+                </p>
+                <img src="images/historia-proyectos-y-campos.jpg" alt="Foto de proyectos de infraestructura o campos de café.">
             </div>
-        </div>
-    </section>
-    
-    <section id="productos-destacados">
-        <h2>Nuestro Café: Selecciona tu Origen</h2>
-        <div class="three-doors-grid">
-            <a href="cafe.html" class="door-item">
-                <img src="images/cafe-clasico.jpg" alt="Café Clásico">
-                <h3>CLÁSICO ORGÁNICO</h3>
-                <p>Molienda media. Notas a panela y chocolate.</p>
-                <p style="color: var(--rojo-cereza); font-weight: bold;">$15.00 USD</p>
-            </a>
-            <a href="cafe.html" class="door-item">
-                <img src="images/cafe-premium.jpg" alt="Café Premium">
-                <h3>PREMIUM SPECIALTY</h3>
-                <p>Cítrico, floral y cuerpo sedoso. Altitud 1960m.</p>
-                <p style="color: var(--rojo-cereza); font-weight: bold;">$20.00 USD</p>
-            </a>
-            <a href="cafe.html" class="door-item">
-                <img src="images/cafe-grano-verde.jpg" alt="Café en Grano Verde">
-                <h3>GRANO VERDE (B2B)</h3>
-                <p>Para tostadores y exportadores. Alto volumen.</p>
-                <p style="color: var(--rojo-cereza); font-weight: bold;">Contactar</p>
-            </a>
-        </div>
-        <div style="text-align: center; margin-top: 3rem;">
-            <a href="comprar.html" class="cta-hero">Ver Todos los Productos en Tienda</a>
-        </div>
-    </section>
+            
+            <div class="timeline-event">
+                <h4>Actualidad y Certificación</h4>
+                <p>
+                    A la fecha, la organización ha actualizado su base de datos y cuenta con **100 asociados hábiles y certificados**.
+                </p>
+                <p>
+                    Los socios están certificados en los sellos **Fair Trade (FT)** y **Orgánico**. Además, contamos con un silo para secado de café con capacidad de 5000 kg y un laboratorio para catación de café.
+                </p>
+                <img src="images/historia-catacion-certificacion.jpg" alt="Foto del laboratorio de catación o logos de las certificaciones FT/Orgánico.">
+            </div>
 
-    <section id="video-testimonio" style="background-color: var(--verde-cafetal); color: #fff;">
-        <h2>La Voz de la Montaña</h2>
-        <div style="max-width: 800px; margin: 0 auto;">
-            <video controls poster="images/don-jose-video-placeholder.jpg" style="width: 100%;">
-                <source src="video/don-jose-corto.mp4" type="video/mp4">
-            </video>
-            <p class="microcopy" style="color: var(--niebla-matinal);">Don José: "Mis manos manchadas de tierra son mi orgullo."</p>
         </div>
-        <div style="text-align: center; margin-top: 2rem;"><a href="productores.html" class="cta-hero">Conoce todas las historias</a></div>
+        
+        <div style="text-align: center; margin-top: 4rem;">
+            <p class="microcopy">La organización continuará gestionando proyectos en beneficio de la comunidad de Ataco.</p>
+            <a href="productores.html" class="cta-hero">Conoce a las 100 Familias</a>
+        </div>
     </section>
 
     <footer>
