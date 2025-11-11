@@ -28,7 +28,7 @@ em,.microcopy{font-family:'Playfair Display',serif;font-size:1.2em;color:#C71F37
     --verde-cafetal:#117E39; /* NUEVO VERDE PRIMARIO */
     --beige-papel:#FFFFFF; /* NUEVO FONDO BLANCO */
     --rojo-cereza:#C71F37;
-    --niebla-matinal:#D9D6D1;
+    --niebla-matinal:#F7F4E9; /* CAMBIO: Color Costal de Fique muy claro */
     --dorado-tostado:#A67853;
 }
 
@@ -76,7 +76,7 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 .cta-hero:hover{background:var(--dorado-tostado); box-shadow: 0 5px 15px rgba(0,0,0,0.3);}
 .manifesto-section{min-height:60vh;display:flex;align-items:center;text-align:center;background-color:var(--beige-papel)}
 .manifesto-text{font-family:'Inter',sans-serif;font-weight:800;font-size:3rem;line-height:1.2;max-width:900px;margin:0 auto}
-/* AJUSTE TARJETAS: Sombra y Bordes Redondeados */
+/* AJUSTE TARJETAS: Sombra y Bordes Redondeados (Productos) */
 .three-doors-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
@@ -85,20 +85,20 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
     margin-top:3rem
 }
 .door-item{
-    background-color:var(--niebla-matinal); 
+    background-color:var(--niebla-matinal); /* Costal de Fique */
     color:var(--tierra-humeda);
     padding:2rem 1rem;
     cursor:pointer;
     transition:transform .3s,box-shadow .3s;
     text-decoration:none;
     display:block;
-    border: none; /* ELIMINADO BORDE GRUESO */
+    border: none;
     border-radius: 8px; /* BORDES REDONDEADOS */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* SOMBRA SUAVE */
 }
 .door-item:hover{
     transform:translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* SOMBRA MÁS PROFUNDA AL HOVER */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); 
 }
 .door-item h3{color:var(--rojo-cereza);font-size:2rem; margin-top: 1rem;}
 .door-item p {color: var(--tierra-humeda);}
@@ -118,8 +118,8 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
     align-items: center;
     margin-bottom: 5rem;
     padding: 2rem;
-    background-color: var(--niebla-matinal);
-    border: none; /* ELIMINADO BORDE GRUESO */
+    background-color: var(--niebla-matinal); /* Costal de Fique */
+    border: none;
     border-radius: 8px; /* BORDES REDONDEADOS */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* SOMBRA SUAVE */
 }
@@ -141,7 +141,7 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
     height: 300px; 
     object-fit: cover;
     display: block;
-    border-radius: 4px; /* Bordes redondeados en la imagen */
+    border-radius: 4px;
     filter: grayscale(0.5);
     transition: filter 0.3s;
 }
@@ -149,7 +149,6 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 .history-event-card h4 {
     color: var(--verde-cafetal);
     font-size: 2.5rem;
-    /* Mantenemos el borde vertical de color para acento brutalista */
     border-left: 5px solid var(--rojo-cereza); 
     padding-left: 15px;
     margin-bottom: 1rem;
@@ -216,10 +215,10 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 /* AJUSTE TARJETAS DE CERTIFICACIONES */
 .certification-stamps{display:flex;justify-content:space-around;gap:2rem;margin-top:4rem;flex-wrap:wrap}
 .stamp-card{
-    background:var(--niebla-matinal);
+    background:var(--niebla-matinal); /* Costal de Fique */
     color:var(--tierra-humeda);
     padding:2rem;
-    border: none; /* ELIMINADO BORDE DASHED */
+    border: none;
     border-radius: 8px; /* BORDES REDONDEADOS */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* SOMBRA SUAVE */
     transform:rotate(calc(var(--rotation)*1deg));
