@@ -20,8 +20,8 @@ body::before {
     height: 100%;
     background-image: url('images/ramas.png');
     background-repeat: repeat;
-    background-size: 150px; /* Hojas más GRANDES para un efecto más irregular */
-    opacity: 0.08; /* Opacidad baja para efecto diluido/tenue */
+    background-size: 150px; /* Hojas más GRANDES */
+    opacity: 0.08; /* Opacidad baja */
     z-index: -1; 
     pointer-events: none;
 }
@@ -33,14 +33,14 @@ em,.microcopy{font-family:'Playfair Display',serif;font-size:1.2em;color:#C71F37
 /* PALETA DE COLORES ACTUALIZADA */
 :root{
     --tierra-humeda:#1A1412; /* Tierra Oscuro para Footer */
-    --verde-cafetal:#117E39; /* Verde Primario */
+    --verde-cafetal:#117E39; 
     --beige-papel:#FFFFFF; 
-    --rojo-cereza:#B31A2F; /* ROJO OSCURECIDO Y MENOS BRILLANTE */
-    --niebla-matinal:#F7F4E9; /* COLOR COSTAL DE FIQUE para tarjetas */
+    --rojo-cereza:#B31A2F; /* ROJO OSCURECIDO */
+    --niebla-matinal:#F7F4E9; /* COLOR COSTAL DE FIQUE */
     --dorado-tostado:#A67853;
 }
 
-/* VIÑETAS PERSONALIZADAS: Fruto de café (rojo) */
+/* VIÑETAS PERSONALIZADAS */
 ul {
     list-style: none;
     padding-left: 20px;
@@ -51,7 +51,7 @@ ul li {
     margin-bottom: 0.5rem;
 }
 ul li:before {
-    content: "•"; /* Fruto de café (rojo) */
+    content: "•";
     color: var(--rojo-cereza);
     font-size: 1.5em;
     font-weight: bold;
@@ -63,13 +63,13 @@ ul li:before {
 
 /* SOLUCIÓN FINAL DE CORTE DE CONTENIDO */
 section:first-of-type:not(.hero-page) {
-    margin-top: 70px; /* Asegura que el contenido pase por debajo del navbar fijo. */
+    margin-top: 70px;
 }
 section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 
-/* HERO PAGE: Full width y sin padding horizontal */
+/* HERO PAGE: Full width */
 .hero-page {
-    max-width: none; /* Cumbre el 100% del ancho */
+    max-width: none;
     padding: 0;
 }
 
@@ -95,6 +95,9 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 /* MENÚ DESKTOP: Ocultar botón de menú */
 #menu-toggle {
     display: none; 
+    border: none; /* SIN BORDES */
+    border-radius: 8px; /* PUNTAS REDONDEADAS */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* SOMBRA */
 }
 
 /* CORRECCIÓN LOGO FINAL: Blanco y MÁS GRANDE en el Navbar */
@@ -105,13 +108,22 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
     filter: brightness(0) invert(1);
 }
 .logo a {
-    display: block; /* Asegura que el logo linkeado se comporte correctamente */
+    display: block; 
 }
 
 .nav-links{display:flex;list-style:none;gap:1.5rem}
 .nav-links a{color:#fff;text-decoration:none;transition:color .3s; text-transform: uppercase; font-family: 'Inter', sans-serif; font-weight: 500;}
 .nav-links a:hover{color:var(--rojo-cereza)}
-#langSwitch{background:none;border:1px solid #fff;color:#fff;padding:.5rem;margin-left:1rem}
+
+/* Selector de Idioma (Sin Borde, con Puntas Redondeadas) */
+#langSwitch{
+    background:rgba(255, 255, 255, 0.1);
+    border: none;
+    color:#fff;
+    padding:.5rem;
+    margin-left:1rem;
+    border-radius: 8px;
+}
 .hero-page{min-height:100vh;padding:0;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
 .hero-bg-photo{position:absolute;top:-10%;left:0;width:100%;height:120%;object-fit:cover;z-index:1;filter:grayscale(.1) contrast(1.2) brightness(.85);will-change:transform;transform:translateZ(0)}
 
@@ -131,8 +143,24 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
     animation:fadeInUp 1.2s ease-out
 }
 
-.cta-hero{background:var(--rojo-cereza);color:#fff;border:none;padding:1rem 2rem;font-size:1.2rem;cursor:pointer;transition:all .3s;border-radius:0;text-transform:uppercase; margin-top: 1rem;}
-.cta-hero:hover{background:var(--dorado-tostado); box-shadow: 0 5px 15px rgba(0,0,0,0.3);}
+/* Botón Principal (Sin Borde, con Puntas Redondeadas y Sombra) */
+.cta-hero{
+    background:var(--rojo-cereza);
+    color:#fff;
+    border:none;
+    padding:1rem 2rem;
+    font-size:1.2rem;
+    cursor:pointer;
+    transition:all .3s;
+    border-radius: 8px; /* PUNTAS REDONDEADAS */
+    text-transform:uppercase; 
+    margin-top: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* SOMBRA */
+}
+.cta-hero:hover{
+    background:var(--dorado-tostado); 
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
 .manifesto-section{min-height:60vh;display:flex;align-items:center;text-align:center;background-color:var(--beige-papel)}
 .manifesto-text{font-family:'Inter',sans-serif;font-weight:800;font-size:3rem;line-height:1.2;max-width:900px;margin:0 auto}
 
@@ -156,261 +184,4 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
     border-radius: 8px;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Sombra más fuerte */
 }
-.door-item:hover{
-    transform:translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25); /* Sombra más fuerte al hover */
-}
-.door-item h3{color:var(--rojo-cereza);font-size:2rem; margin-top: 1rem;}
-.door-item p {color: var(--tierra-humeda);}
-.door-item img{width:100%;height:200px;object-fit:cover;margin-bottom:1rem;filter:grayscale(.2)}
-
-
-.timeline-story{max-width:800px;margin:2rem auto;position:relative;padding-left:50px}
-.timeline-story::before{content:'';position:absolute;left:20px;top:0;bottom:0;width:4px;background:linear-gradient(to bottom,var(--rojo-cereza),var(--dorado-tostado));z-index:1}
-.timeline-event{background:none;color:var(--tierra-humeda);padding:2rem 1rem;margin-bottom:5rem;position:relative;opacity:0;transform:translateY(50px);transition:all .8s ease-out;border-left:5px solid transparent}
-.timeline-event h4{color:var(--rojo-cereza);font-family:'Bebas Neue';font-size:3rem;margin-bottom:.5rem;letter-spacing:.1em}
-.timeline-event img{width:100%;height:300px;object-fit:cover;margin-top:1rem;filter:grayscale(1) contrast(1.2)}
-
-/* --- ESTILOS PARA HISTORIA (Estructura de Tarjetas) --- */
-.history-event-card {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
-    margin-bottom: 5rem;
-    padding: 2rem;
-    background-color:var(--niebla-matinal); /* Costal de Fique */
-    border: none;
-    border-radius: 8px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-}
-
-/* Patrón Zig-Zag (Invertir orden de columnas para tarjetas pares) */
-.history-event-card:nth-child(even) {
-    direction: rtl; 
-    text-align: right;
-}
-.history-event-card:nth-child(even) .history-media {
-    direction: ltr; 
-}
-.history-event-card:nth-child(even) .history-content {
-    direction: ltr; 
-}
-
-.history-media img {
-    width: 100%;
-    height: 300px; 
-    object-fit: cover;
-    display: block;
-    border-radius: 4px;
-    filter: grayscale(0.5);
-    transition: filter 0.3s;
-}
-
-.history-event-card h4 {
-    color: var(--verde-cafetal);
-    font-size: 2.5rem;
-    border-left: 5px solid var(--rojo-cereza); 
-    padding-left: 15px;
-    margin-bottom: 1rem;
-    line-height: 1.1;
-}
-
-.history-event-card:nth-child(even) h4 {
-    border-left: none;
-    border-right: 5px solid var(--rojo-cereza);
-    padding-left: 0;
-    padding-right: 15px;
-}
-/* --- FIN NUEVOS ESTILOS PARA HISTORIA --- */
-
-.cafe-split-hero{display:flex;min-height:80vh;padding:0}
-.cafe-split-hero>div{flex:1;padding:5rem 3rem}
-.cafe-split-left{background-color:var(--tierra-humeda);color:#fff;position:relative}
-.cafe-split-left img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:1;opacity:.2}
-.cafe-split-right{background-color:var(--beige-papel);color:var(--tierra-humeda);display:flex;flex-direction:column;justify-content:center}
-.flavor-wheel-container{display:flex;justify-content:space-around;align-items:center;margin-top:3rem}
-.masonry-grid{columns:3;column-gap:1rem;margin-top:3rem}
-.portrait-card{
-    margin-bottom:1rem;
-    break-inside:avoid;
-    cursor:pointer;
-    position:relative;
-    overflow:hidden;
-    transition:opacity .3s;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-}
-.portrait-card img{width:100%;filter:grayscale(1) contrast(1.2);transition:transform .6s}
-.portrait-card:hover img{transform:scale(1.05)}
-.portrait-card-info{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,.8),transparent);color:#fff;padding:1rem;transform:translateY(100%);transition:transform .4s}
-.portrait-card:hover .portrait-card-info{transform:translateY(0)}
-.proceso-page{background:var(--tierra-humeda);color:#fff;min-height:100vh;padding:0}
-.scrolly-section{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    position:relative;
-    color:#fff;
-    text-align:center;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-.scrolly-content{max-width:800px;padding:2rem;background:rgba(26,77,46,.7);backdrop-filter:blur(5px);border-radius:10px;transform:scale(.8);opacity:0;transition:all 1s}
-.scrolly-content.active{transform:scale(1);opacity:1}
-
-/* AJUSTE TARJETAS DE IMPACTO */
-.impact-numbers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;text-align:center;margin-top:3rem}
-.impact-card{
-    background-color:var(--verde-cafetal);
-    color:#fff;
-    padding:2rem;
-    border-radius:8px; 
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-}
-.impact-card .number{font-family:'Bebas Neue';font-size:5rem;color:var(--rojo-cereza);line-height:1}
-
-/* AJUSTE TARJETAS DE CERTIFICACIONES */
-.certification-stamps{display:flex;justify-content:space-around;gap:2rem;margin-top:4rem;flex-wrap:wrap}
-.stamp-card{
-    background:var(--niebla-matinal); /* Costal de Fique */
-    color:var(--tierra-humeda);
-    padding:2rem;
-    border: none;
-    border-radius: 8px; 
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-    transform:rotate(calc(var(--rotation)*1deg));
-}
-.b2b-specs-table{width:100%;border-collapse:collapse;margin:3rem 0;background:#fff;box-shadow:0 6px 15px rgba(0,0,0,.15); border-radius: 8px;}
-.b2b-specs-table th,.b2b-specs-table td{padding:1rem;border:1px solid var(--niebla-matinal);text-align:left}
-.contact-split{display:flex;gap:4rem;margin-top:3rem}
-
-/* ESTILOS DEL FOOTER (Fondo Tierra Oscuro) */
-footer{
-    background:var(--tierra-humeda); /* Fondo tierra húmeda para contraste */
-    color:#fff;
-    padding:3rem 2rem;
-    font-size: 0.95rem;
-}
-.footer-grid {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    text-align: left;
-}
-.footer-col h4 {
-    color: var(--verde-cafetal); /* Títulos en verde de marca */
-    font-family: 'Inter', sans-serif;
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-    font-weight: 700;
-}
-.footer-col a {
-    color: #fff;
-    text-decoration: none;
-    display: block;
-    margin-bottom: 0.5rem;
-    transition: color 0.2s;
-}
-.footer-col a:hover {
-    color: var(--rojo-cereza);
-}
-.footer-copyright {
-    text-align: center;
-    margin-top: 3rem;
-    padding-top: 1rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-@keyframes fadeInUp{0%{opacity:0;transform:translateY(30px)}100%{opacity:1;transform:translateY(0)}}
-
-
-/* MEDIA QUERIES PARA RESPONSIVE MÓVIL (768px y menos) */
-@media (max-width: 768px) {
-    /* 1. LAYOUT GENERAL: APILAR */
-    .nav-links {
-        display: none; 
-        flex-direction: column;
-        width: 100%;
-        position: absolute;
-        top: 50px; 
-        left: 0;
-        background: rgba(26, 20, 18, 0.95);
-        padding: 1rem 0;
-    }
-    .nav-links.active {
-        display: flex;
-    }
-    .nav-links li {
-        width: 100%;
-        text-align: center;
-        padding: 0.5rem 0;
-    }
-    #langSwitch {
-        margin-left: 0;
-        margin-top: 10px;
-        width: 80%;
-    }
-    #menu-toggle {
-        display: block; /* Mostrar el botón en móvil */
-    }
-    .nav-container {
-        padding: .5rem 1rem;
-    }
-
-    /* 2. REESTRUCTURACIÓN DE GRIDS A STACK */
-    .footer-grid {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-    .hero-content {
-        max-width: 95%;
-        padding: 1.5rem;
-    }
-    .cafe-split-hero {
-        flex-direction: column;
-    }
-    .cafe-split-hero > div {
-        padding: 2rem 1rem;
-    }
-    .flavor-wheel-container {
-        flex-direction: column;
-    }
-    
-    /* Maquetación del index (vision-y-tierra) */
-    #vision-y-tierra > div {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-    }
-
-    /* 3. Ajuste de Tarjetas a stack (Texto arriba, Imagen abajo) */
-    .history-event-card {
-        grid-template-columns: 1fr;
-        direction: ltr; /* Asegura el orden del flujo normal */
-        text-align: left;
-    }
-    .history-event-card:nth-child(even) {
-        direction: ltr; /* Invalida el rtl de desktop */
-        text-align: left;
-    }
-    .history-event-card .history-media {
-        order: 2; /* Imagen abajo */
-    }
-    .history-event-card .history-content {
-        order: 1; /* Texto arriba */
-    }
-
-    /* 4. Ajuste de encabezados en cards invertidas para mobile */
-    .history-event-card:nth-child(even) h4 {
-        border-right: none;
-        border-left: 5px solid var(--rojo-cereza);
-        padding-left: 15px;
-        padding-right: 0;
-    }
-
-}
+.door-item:hover
