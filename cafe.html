@@ -8,6 +8,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .notes-list .note-item {
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            border-left: 3px solid var(--rojo-cereza);
+            transition: all 0.3s;
+        }
+        .notes-list .note-item:hover {
+            background-color: var(--niebla-matinal);
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transform: translateX(5px);
+        }
+    </style>
 </head>
 <body>
     <nav id="mainNav" class="navbar">
@@ -19,11 +33,8 @@
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="historia.html">Historia</a></li>
                 <li><a href="cafe.html">El Café</a></li>
-                <li><a href="productores.html">Productores</a></li>
-                <li><a href="proceso.html">Proceso</a></li>
                 <li><a href="sostenibilidad.html">Impacto</a></li>
-                <li><a href="veredas.html">Nuestra Tierra</a></li>
-                <li><a href="comprar.html">Comprar</a></li>
+                <li><a href="comprar.html">Tienda</a></li>
             </ul>
             <select id="langSwitch"><option value="es">ES</option><option value="en">EN</option><option value="fr">FR</option></select>
         </div>
@@ -58,15 +69,15 @@
             <canvas id="flavorWheelCanvas"></canvas>
 
             <div class="notes-list" style="max-width: 400px;">
-                <div class="note-item" style="border-left: 3px solid var(--rojo-cereza);">
+                <div class="note-item">
                     <h3>PANELA & CAÑA</h3>
                     <p>Dulzor natural que evoca la caña de azúcar.</p>
                 </div>
-                <div class="note-item" style="border-left: 3px solid var(--rojo-cereza);">
+                <div class="note-item">
                     <h3>CHOCOLATE & CARAMELO</h3>
                     <p>Notas profundas asociadas a la tierra volcánica.</p>
                 </div>
-                <div class="note-item" style="border-left: 3px solid var(--rojo-cereza);">
+                <div class="note-item">
                     <h3>CÍTRICO, ESPECIES & FLORAL</h3>
                     <p>Un toque brillante y refrescante con acidez cítrica.</p>
                 </div>
@@ -103,7 +114,6 @@
     <script src="scripts.js"></script>
 
     <script>
-        // Data has been simplified and consolidated to match new HTML
         const canvas = document.getElementById('flavorWheelCanvas');
         if (canvas) {
             const ctx = canvas.getContext('2d');
