@@ -7,10 +7,10 @@ body{
     color:#1A1412;
     overflow-x:hidden;
     background-color: #FFFFFF; /* FONDO PRINCIPAL BLANCO */
-    position: relative; /* Necesario para posicionar el fondo con ::before */
+    position: relative;
 }
 
-/* IMPLEMENTACIÓN DE SENEFFA DE FONDO (ramas.png tenue, pequeño, repetido) */
+/* IMPLEMENTACIÓN DE SENEFFA DE FONDO (ramas.png grande y tenue) */
 body::before {
     content: "";
     position: fixed; 
@@ -18,11 +18,11 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('images/ramas.png'); /* La imagen de senefa */
+    background-image: url('images/ramas.png');
     background-repeat: repeat;
-    background-size: 50px; /* Hojas más pequeñas */
+    background-size: 150px; /* Hojas más GRANDES para un efecto más irregular */
     opacity: 0.08; /* Opacidad baja para efecto diluido/tenue */
-    z-index: -1; /* Colocarlo detrás de todo el contenido */
+    z-index: -1; 
     pointer-events: none;
 }
 
@@ -32,10 +32,10 @@ em,.microcopy{font-family:'Playfair Display',serif;font-size:1.2em;color:#C71F37
 
 /* PALETA DE COLORES ACTUALIZADA */
 :root{
-    --tierra-humeda:#1A1412;
-    --verde-cafetal:#117E39; /* NUEVO VERDE PRIMARIO */
-    --beige-papel:#FFFFFF; /* NUEVO FONDO BLANCO */
-    --rojo-cereza:#C71F37;
+    --tierra-humeda:#1A1412; /* Tierra Oscuro para Footer */
+    --verde-cafetal:#117E39; /* Verde Primario */
+    --beige-papel:#FFFFFF; 
+    --rojo-cereza:#B31A2F; /* ROJO OSCURECIDO Y MENOS BRILLANTE */
     --niebla-matinal:#F7F4E9; /* COLOR COSTAL DE FIQUE para tarjetas */
     --dorado-tostado:#A67853;
 }
@@ -61,19 +61,19 @@ ul li:before {
 }
 
 
-/* SOLUCIÓN FINAL DE CORTE DE CONTENIDO: Empuja el contenido hacia abajo. */
+/* SOLUCIÓN FINAL DE CORTE DE CONTENIDO */
 section:first-of-type:not(.hero-page) {
-    margin-top: 70px; /* Margen equivalente a la altura del navbar. */
+    margin-top: 70px; /* Asegura que el contenido pase por debajo del navbar fijo. */
 }
 section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 
 /* HERO PAGE: Full width y sin padding horizontal */
 .hero-page {
-    max-width: none; /* Anula max-width para que cubra el 100% */
-    padding: 0; /* Anula padding horizontal de la sección */
+    max-width: none; /* Cumbre el 100% del ancho */
+    padding: 0;
 }
 
-/* CORRECCIÓN DE NAVBAR: Fondo sólido, altura reducida y color consistente */
+/* CORRECCIÓN DE NAVBAR */
 .navbar{
     position:fixed;
     top:0;
@@ -97,12 +97,15 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
     display: none; 
 }
 
-/* CORRECCIÓN LOGO FINAL: Blanco y pequeño en el Navbar */
+/* CORRECCIÓN LOGO FINAL: Blanco y MÁS GRANDE en el Navbar */
 .logo h1{display: none;}
 .logo .logo-img { 
-    height: 35px;
+    height: 45px; /* TAMAÑO AUMENTADO */
     width: auto;
     filter: brightness(0) invert(1);
+}
+.logo a {
+    display: block; /* Asegura que el logo linkeado se comporte correctamente */
 }
 
 .nav-links{display:flex;list-style:none;gap:1.5rem}
@@ -112,7 +115,7 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 .hero-page{min-height:100vh;padding:0;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
 .hero-bg-photo{position:absolute;top:-10%;left:0;width:100%;height:120%;object-fit:cover;z-index:1;filter:grayscale(.1) contrast(1.2) brightness(.85);will-change:transform;transform:translateZ(0)}
 
-/* CORRECCIÓN CLAVE: Eliminar fondo negro semitransparente del contenido Hero */
+/* HERO CONTENT (sin fondo negro) */
 .hero-content{
     position:relative;
     z-index:3;
@@ -168,7 +171,7 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 .timeline-event h4{color:var(--rojo-cereza);font-family:'Bebas Neue';font-size:3rem;margin-bottom:.5rem;letter-spacing:.1em}
 .timeline-event img{width:100%;height:300px;object-fit:cover;margin-top:1rem;filter:grayscale(1) contrast(1.2)}
 
-/* --- NUEVOS ESTILOS PARA HISTORIA (Estructura de Tarjetas) --- */
+/* --- ESTILOS PARA HISTORIA (Estructura de Tarjetas) --- */
 .history-event-card {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -179,7 +182,7 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
     background-color:var(--niebla-matinal); /* Costal de Fique */
     border: none;
     border-radius: 8px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Sombra más fuerte */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
 /* Patrón Zig-Zag (Invertir orden de columnas para tarjetas pares) */
@@ -236,7 +239,7 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
     overflow:hidden;
     transition:opacity .3s;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Sombra más fuerte */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 .portrait-card img{width:100%;filter:grayscale(1) contrast(1.2);transition:transform .6s}
 .portrait-card:hover img{transform:scale(1.05)}
@@ -266,7 +269,7 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
     color:#fff;
     padding:2rem;
     border-radius:8px; 
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Sombra más fuerte */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 .impact-card .number{font-family:'Bebas Neue';font-size:5rem;color:var(--rojo-cereza);line-height:1}
 
@@ -278,7 +281,7 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
     padding:2rem;
     border: none;
     border-radius: 8px; 
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Sombra más fuerte */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
     transform:rotate(calc(var(--rotation)*1deg));
 }
 .b2b-specs-table{width:100%;border-collapse:collapse;margin:3rem 0;background:#fff;box-shadow:0 6px 15px rgba(0,0,0,.15); border-radius: 8px;}
@@ -385,7 +388,7 @@ footer{
         gap: 3rem;
     }
 
-    /* 3. Ajuste de Tarjetas de Historia a stack total (Texto arriba, Imagen abajo) */
+    /* 3. Ajuste de Tarjetas a stack (Texto arriba, Imagen abajo) */
     .history-event-card {
         grid-template-columns: 1fr;
         direction: ltr; /* Asegura el orden del flujo normal */
@@ -395,10 +398,10 @@ footer{
         direction: ltr; /* Invalida el rtl de desktop */
         text-align: left;
     }
-    .history-event-card:nth-child(even) .history-media {
+    .history-event-card .history-media {
         order: 2; /* Imagen abajo */
     }
-    .history-event-card:nth-child(even) .history-content {
+    .history-event-card .history-content {
         order: 1; /* Texto arriba */
     }
 
