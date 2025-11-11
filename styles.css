@@ -10,7 +10,7 @@ body{
     position: relative; /* Necesario para posicionar el fondo con ::before */
 }
 
-/* IMPLEMENTACIÓN DE SENEFFA DE FONDO (ramas.png tenue) */
+/* IMPLEMENTACIÓN DE SENEFFA DE FONDO (ramas.png tenue, pequeño, repetido) */
 body::before {
     content: "";
     position: fixed; 
@@ -20,9 +20,10 @@ body::before {
     height: 100%;
     background-image: url('images/ramas.png'); /* La imagen de senefa */
     background-repeat: repeat;
+    background-size: 50px; /* Hojas más pequeñas */
     opacity: 0.08; /* Opacidad baja para efecto diluido/tenue */
     z-index: -1; /* Colocarlo detrás de todo el contenido */
-    pointer-events: none; /* Asegurar que no interfiera con interacciones */
+    pointer-events: none;
 }
 
 h1,h2,h3,h4{font-family:'Bebas Neue',sans-serif;color:#1A1412; margin-bottom: 0.5rem; letter-spacing: 0.05em;}
@@ -66,6 +67,12 @@ section:first-of-type:not(.hero-page) {
 }
 section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 
+/* HERO PAGE: Full width y sin padding horizontal */
+.hero-page {
+    max-width: none; /* Anula max-width para que cubra el 100% */
+    padding: 0; /* Anula padding horizontal de la sección */
+}
+
 /* CORRECCIÓN DE NAVBAR: Fondo sólido, altura reducida y color consistente */
 .navbar{
     position:fixed;
@@ -83,6 +90,11 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
     display:flex;
     justify-content:space-between;
     align-items:center
+}
+
+/* MENÚ DESKTOP: Ocultar botón de menú */
+#menu-toggle {
+    display: none; 
 }
 
 /* CORRECCIÓN LOGO FINAL: Blanco y pequeño en el Navbar */
@@ -139,11 +151,11 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
     display:block;
     border: none;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Sombra más fuerte */
 }
 .door-item:hover{
     transform:translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); 
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25); /* Sombra más fuerte al hover */
 }
 .door-item h3{color:var(--rojo-cereza);font-size:2rem; margin-top: 1rem;}
 .door-item p {color: var(--tierra-humeda);}
@@ -167,7 +179,7 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
     background-color:var(--niebla-matinal); /* Costal de Fique */
     border: none;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Sombra más fuerte */
 }
 
 /* Patrón Zig-Zag (Invertir orden de columnas para tarjetas pares) */
@@ -224,7 +236,7 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
     overflow:hidden;
     transition:opacity .3s;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Sombra más fuerte */
 }
 .portrait-card img{width:100%;filter:grayscale(1) contrast(1.2);transition:transform .6s}
 .portrait-card:hover img{transform:scale(1.05)}
@@ -254,7 +266,7 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
     color:#fff;
     padding:2rem;
     border-radius:8px; 
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Sombra más fuerte */
 }
 .impact-card .number{font-family:'Bebas Neue';font-size:5rem;color:var(--rojo-cereza);line-height:1}
 
@@ -266,10 +278,10 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
     padding:2rem;
     border: none;
     border-radius: 8px; 
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Sombra más fuerte */
     transform:rotate(calc(var(--rotation)*1deg));
 }
-.b2b-specs-table{width:100%;border-collapse:collapse;margin:3rem 0;background:#fff;box-shadow:0 4px 15px rgba(0,0,0,.1); border-radius: 8px;}
+.b2b-specs-table{width:100%;border-collapse:collapse;margin:3rem 0;background:#fff;box-shadow:0 6px 15px rgba(0,0,0,.15); border-radius: 8px;}
 .b2b-specs-table th,.b2b-specs-table td{padding:1rem;border:1px solid var(--niebla-matinal);text-align:left}
 .contact-split{display:flex;gap:4rem;margin-top:3rem}
 
@@ -342,7 +354,7 @@ footer{
         width: 80%;
     }
     #menu-toggle {
-        display: block;
+        display: block; /* Mostrar el botón en móvil */
     }
     .nav-container {
         padding: .5rem 1rem;
@@ -373,12 +385,24 @@ footer{
         gap: 3rem;
     }
 
-    /* 3. Ajuste de Tarjetas de Historia a stack total */
+    /* 3. Ajuste de Tarjetas de Historia a stack total (Texto arriba, Imagen abajo) */
     .history-event-card {
         grid-template-columns: 1fr;
-        direction: ltr; 
+        direction: ltr; /* Asegura el orden del flujo normal */
         text-align: left;
     }
+    .history-event-card:nth-child(even) {
+        direction: ltr; /* Invalida el rtl de desktop */
+        text-align: left;
+    }
+    .history-event-card:nth-child(even) .history-media {
+        order: 2; /* Imagen abajo */
+    }
+    .history-event-card:nth-child(even) .history-content {
+        order: 1; /* Texto arriba */
+    }
+
+    /* 4. Ajuste de encabezados en cards invertidas para mobile */
     .history-event-card:nth-child(even) h4 {
         border-right: none;
         border-left: 5px solid var(--rojo-cereza);
