@@ -28,13 +28,14 @@ em,.microcopy{font-family:'Playfair Display',serif;font-size:1.2em;color:#C71F37
     --verde-cafetal:#117E39; /* NUEVO VERDE PRIMARIO */
     --beige-papel:#FFFFFF; /* NUEVO FONDO BLANCO */
     --rojo-cereza:#C71F37;
-    --niebla-matinal:#F7F4E9; /* CAMBIO: Color Costal de Fique muy claro */
+    --niebla-matinal:#F7F4E9; /* COLOR COSTAL DE FIQUE */
     --dorado-tostado:#A67853;
 }
 
-/* SOLUCIÓN: padding-top para evitar que el navbar corte el contenido */
+/* SOLUCIÓN FINAL DE CORTE DE CONTENIDO: Empuja el contenido hacia abajo. */
+/* Selecciona la primera sección que NO es Hero para aplicar un margen que la barra de navegación tape. */
 section:first-of-type:not(.hero-page) {
-    padding-top: calc(5rem + 70px); /* 70px es un estimado de la altura del navbar */
+    margin-top: 70px; /* Margen equivalente a la altura del navbar. */
 }
 section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 
@@ -43,7 +44,7 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
     position:fixed;
     top:0;
     width:100%;
-    background:var(--verde-cafetal); /* Usa el nuevo verde */
+    background:var(--verde-cafetal); 
     backdrop-filter:blur(10px);
     z-index:1000;
     transition:background .3s ease
@@ -51,7 +52,7 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 .nav-container{
     max-width:1200px;
     margin:0 auto;
-    padding:.8rem 1rem; /* Padding reducido para menor altura */
+    padding:.8rem 1rem; 
     display:flex;
     justify-content:space-between;
     align-items:center
@@ -60,9 +61,9 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 /* CORRECCIÓN LOGO FINAL: Blanco y pequeño en el Navbar */
 .logo h1{display: none;}
 .logo .logo-img { 
-    height: 35px; /* Tamaño reducido */
+    height: 35px;
     width: auto;
-    filter: brightness(0) invert(1); /* FILTRO PARA LOGO BLANCO */
+    filter: brightness(0) invert(1);
 }
 
 .nav-links{display:flex;list-style:none;gap:1.5rem}
@@ -76,6 +77,7 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 .cta-hero:hover{background:var(--dorado-tostado); box-shadow: 0 5px 15px rgba(0,0,0,0.3);}
 .manifesto-section{min-height:60vh;display:flex;align-items:center;text-align:center;background-color:var(--beige-papel)}
 .manifesto-text{font-family:'Inter',sans-serif;font-weight:800;font-size:3rem;line-height:1.2;max-width:900px;margin:0 auto}
+
 /* AJUSTE TARJETAS: Sombra y Bordes Redondeados (Productos) */
 .three-doors-grid{
     display:grid;
@@ -93,8 +95,8 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
     text-decoration:none;
     display:block;
     border: none;
-    border-radius: 8px; /* BORDES REDONDEADOS */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* SOMBRA SUAVE */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 .door-item:hover{
     transform:translateY(-5px);
@@ -110,6 +112,7 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 .timeline-event{background:none;color:var(--tierra-humeda);padding:2rem 1rem;margin-bottom:5rem;position:relative;opacity:0;transform:translateY(50px);transition:all .8s ease-out;border-left:5px solid transparent}
 .timeline-event h4{color:var(--rojo-cereza);font-family:'Bebas Neue';font-size:3rem;margin-bottom:.5rem;letter-spacing:.1em}
 .timeline-event img{width:100%;height:300px;object-fit:cover;margin-top:1rem;filter:grayscale(1) contrast(1.2)}
+
 /* --- NUEVOS ESTILOS PARA HISTORIA (Estructura de Tarjetas) --- */
 .history-event-card {
     display: grid;
@@ -118,10 +121,10 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
     align-items: center;
     margin-bottom: 5rem;
     padding: 2rem;
-    background-color: var(--niebla-matinal); /* Costal de Fique */
+    background-color:var(--niebla-matinal); /* Costal de Fique */
     border: none;
-    border-radius: 8px; /* BORDES REDONDEADOS */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* SOMBRA SUAVE */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Patrón Zig-Zag (Invertir orden de columnas para tarjetas pares) */
@@ -207,8 +210,8 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
     background-color:var(--verde-cafetal);
     color:#fff;
     padding:2rem;
-    border-radius:8px; /* BORDES REDONDEADOS */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* SOMBRA SUAVE */
+    border-radius:8px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
 }
 .impact-card .number{font-family:'Bebas Neue';font-size:5rem;color:var(--rojo-cereza);line-height:1}
 
@@ -219,8 +222,8 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
     color:var(--tierra-humeda);
     padding:2rem;
     border: none;
-    border-radius: 8px; /* BORDES REDONDEADOS */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* SOMBRA SUAVE */
+    border-radius: 8px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
     transform:rotate(calc(var(--rotation)*1deg));
 }
 .b2b-specs-table{width:100%;border-collapse:collapse;margin:3rem 0;background:#fff;box-shadow:0 4px 15px rgba(0,0,0,.1); border-radius: 8px;}
