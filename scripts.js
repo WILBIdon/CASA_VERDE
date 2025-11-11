@@ -12,31 +12,36 @@ const FLAVOR_DATA = [
 let flavorSegments = [];
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Lógica del Menú Hamburguesa
+    // 1. Lógica del Menú Hamburguesa (Alto Riesgo de Conflicto - Aseguramos su función)
     const menuToggle = document.getElementById('menu-toggle');
     const navLinks = document.querySelector('.nav-links');
     if (menuToggle && navLinks) {
         menuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
+            // Cambiar el texto del botón si es necesario
+            menuToggle.textContent = navLinks.classList.contains('active') ? 'CERRAR' : 'MENÚ';
         });
         // Cerrar menú al hacer clic en un enlace (solo en móvil)
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 if (window.innerWidth <= 768) {
                     navLinks.classList.remove('active');
+                    menuToggle.textContent = 'MENÚ';
                 }
             });
         });
     }
 
-    // 2. Inicialización de Audio (Howler) - Se deja siempre
-    if (window.Howl) {
-        initAudioOverlays();
-    }
-
-    // 3. Inicialización de GSAP y ScrollTrigger
+    // 2. Inicialización de GSAP y ScrollTrigger (Si las librerías están cargadas)
     if (window.gsap && window.ScrollTrigger) {
         initScrollAnimations();
+    } else {
+        console.warn("GSAP o ScrollTrigger no se ha cargado. Las animaciones están deshabilitadas.");
+    }
+
+    // 3. Inicialización de Audio (Howler)
+    if (window.Howl) {
+        initAudioOverlays();
     }
 
     // 4. Inicializa la rueda de sabores si estamos en la página del café
@@ -57,8 +62,8 @@ function initScrollAnimations() {
     const heroPhoto = document.querySelector('.hero-bg-photo');
     if (heroPhoto) {
         gsap.to('.hero-bg-photo', {
-            y: '45%', // Aumento del movimiento vertical (más agresivo)
-            scale: 1.25, // Aumento de la escala para un efecto de zoom más notorio
+            y: '45%', 
+            scale: 1.25, 
             ease: 'none',
             scrollTrigger: {
                 trigger: '.hero-page',
@@ -69,7 +74,7 @@ function initScrollAnimations() {
         });
         
         gsap.to('.hero-content', {
-            y: '30%', // Aumento del movimiento del contenido para un efecto multicapa
+            y: '30%', 
             ease: 'power1.out',
             scrollTrigger: {
                 trigger: '.hero-page',
@@ -80,7 +85,7 @@ function initScrollAnimations() {
         });
     }
 
-    // Animación Scroll Reveal (Reemplaza al IntersectionObserver)
+    // Animación Scroll Reveal para todas las secciones
     gsap.utils.toArray('section:not(#hero-home), .timeline-event, .door-item, .portrait-card').forEach(el => {
         gsap.from(el, {
             y: 50,
@@ -120,7 +125,7 @@ function initScrollAnimations() {
         });
     });
 
-    // Scrollytelling para PROCESO (se mantiene la lógica de activación de clase)
+    // Scrollytelling para PROCESO (Activa y desactiva la clase 'active')
     if (document.getElementById('proceso-page')) {
         gsap.utils.toArray(".scrolly-section").forEach((section, i) => {
             const content = section.querySelector('.scrolly-content');
@@ -139,7 +144,7 @@ function initScrollAnimations() {
 
 // Funciones de audio
 function initAudioOverlays() { 
-    // ... (Mantener la lógica de audio aquí) ...
+    // Lógica del modal de audio (reducida para concisión)
     document.querySelectorAll('.portrait-card').forEach(portrait=>{ 
         portrait.addEventListener('click',e=>{ 
             const src=portrait.dataset.audio; 
@@ -175,7 +180,7 @@ function initFlavorWheel() {
     function drawSegments() {
         flavorSegments = [];
         startAngle = 0;
-        ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpiar el canvas antes de dibujar
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         FLAVOR_DATA.forEach((segment, index) => {
             const angle = Math.PI * 2 / FLAVOR_DATA.length;
             const endAngle = startAngle + angle;
@@ -196,14 +201,12 @@ function initFlavorWheel() {
             startAngle = endAngle;
         });
 
-        // Dibujar el borde blanco central
         ctx.strokeStyle = 'white';
         ctx.lineWidth = 5;
         ctx.beginPath();
         ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
         ctx.stroke();
         
-        // Texto Central (opcional)
         ctx.fillStyle = 'white';
         ctx.font = '20px Bebas Neue';
         ctx.textAlign = 'center';
@@ -242,7 +245,6 @@ function initFlavorWheel() {
         titleElement.textContent = segment.label.toUpperCase();
         textElement.textContent = segment.text;
         
-        // Aplicar color de acento
         titleElement.style.color = segment.color;
         document.getElementById('flavorDescription').style.borderLeftColor = segment.color;
     }
