@@ -6,18 +6,25 @@ body{
     line-height:1.7;
     color:#1A1412;
     overflow-x:hidden;
-    background-color: #FFFFFF; /* NUEVO FONDO BLANCO */
-    /* Patron sutil de hojas (implementado como textura diagonal tenue en el nuevo verde) */
-    background-image: linear-gradient(
-        45deg, 
-        rgba(17, 126, 57, 0.04) 25%, /* Nuevo verde #117E39 con 4% de opacidad */
-        transparent 25%, 
-        transparent 75%, 
-        rgba(17, 126, 57, 0.04) 75%, 
-        rgba(17, 126, 57, 0.04) 100%
-    );
-    background-size: 50px 50px;
+    background-color: #FFFFFF; /* FONDO PRINCIPAL BLANCO */
+    position: relative; /* Necesario para posicionar el fondo con ::before */
 }
+
+/* IMPLEMENTACIÓN DE SENEFFA DE FONDO (ramas.png tenue) */
+body::before {
+    content: "";
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/ramas.png'); /* La imagen de senefa */
+    background-repeat: repeat;
+    opacity: 0.08; /* Opacidad baja para efecto diluido/tenue */
+    z-index: -1; /* Colocarlo detrás de todo el contenido */
+    pointer-events: none; /* Asegurar que no interfiera con interacciones */
+}
+
 h1,h2,h3,h4{font-family:'Bebas Neue',sans-serif;color:#1A1412; margin-bottom: 0.5rem; letter-spacing: 0.05em;}
 h1{font-size: 3rem;} h2{font-size: 2.5rem;} h3{font-size: 1.8rem;}
 em,.microcopy{font-family:'Playfair Display',serif;font-size:1.2em;color:#C71F37; display: block; margin: 1rem 0;}
@@ -28,11 +35,11 @@ em,.microcopy{font-family:'Playfair Display',serif;font-size:1.2em;color:#C71F37
     --verde-cafetal:#117E39; /* NUEVO VERDE PRIMARIO */
     --beige-papel:#FFFFFF; /* NUEVO FONDO BLANCO */
     --rojo-cereza:#C71F37;
-    --niebla-matinal:#F7F4E9; /* COLOR COSTAL DE FIQUE */
+    --niebla-matinal:#F7F4E9; /* COLOR COSTAL DE FIQUE para tarjetas */
     --dorado-tostado:#A67853;
 }
 
-/* VIÑETAS PERSONALIZADAS: Fruto de café (rojo) con hoja (verde) */
+/* VIÑETAS PERSONALIZADAS: Fruto de café (rojo) */
 ul {
     list-style: none;
     padding-left: 20px;
@@ -102,8 +109,8 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
     padding:2rem;
     mix-blend-mode:normal;
     text-shadow:3px 3px 8px rgba(0,0,0,0.8);
-    background: none; /* ELIMINADO EL FONDO NEGRO */
-    backdrop-filter: none; /* ELIMINADO EL BLUR */
+    background: none; 
+    backdrop-filter: none;
     border-radius:10px;
     max-width:90%;
     animation:fadeInUp 1.2s ease-out
