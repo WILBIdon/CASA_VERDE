@@ -32,7 +32,10 @@ em,.microcopy{font-family:'Playfair Display',serif;font-size:1.2em;color:#C71F37
     --dorado-tostado:#A67853;
 }
 
-/* CORRECCIÓN CRÍTICA: La sección es visible por defecto. */
+/* SOLUCIÓN: padding-top para evitar que el navbar corte el contenido */
+section:first-of-type:not(.hero-page) {
+    padding-top: calc(5rem + 70px); /* 70px es un estimado de la altura del navbar */
+}
 section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 
 /* CORRECCIÓN DE NAVBAR: Fondo sólido, altura reducida y color consistente */
@@ -40,7 +43,7 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
     position:fixed;
     top:0;
     width:100%;
-    background:var(--verde-cafetal); /* Usa el nuevo verde */
+    background:var(--verde-cafetal); 
     backdrop-filter:blur(10px);
     z-index:1000;
     transition:background .3s ease
@@ -48,18 +51,30 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 .nav-container{
     max-width:1200px;
     margin:0 auto;
-    padding:.8rem 1rem; /* Padding reducido para menor altura */
+    padding:.8rem 1rem; 
     display:flex;
     justify-content:space-between;
     align-items:center
 }
 
 /* CORRECCIÓN LOGO FINAL: Blanco y pequeño en el Navbar */
-.logo h1{display: none;} /* OCULTA EL H1 ANTERIOR */
+.logo h1{display: none;}
 .logo .logo-img { 
-    height: 35px; /* Tamaño reducido */
+    height: 35px;
     width: auto;
-    filter: brightness(0) invert(1); /* FILTRO PARA LOGO BLANCO (funciona con el nuevo fondo verde) */
+    filter: brightness(0) invert(1); 
+}
+
+/* ESTILOS DEL MENÚ HAMBURGUESA */
+#menu-toggle {
+    display: none; /* Oculto en desktop */
+    background: var(--rojo-cereza);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
 .nav-links{display:flex;list-style:none;gap:1.5rem}
@@ -73,25 +88,26 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 .cta-hero:hover{background:var(--dorado-tostado); box-shadow: 0 5px 15px rgba(0,0,0,0.3);}
 .manifesto-section{min-height:60vh;display:flex;align-items:center;text-align:center;background-color:var(--beige-papel)}
 .manifesto-text{font-family:'Inter',sans-serif;font-weight:800;font-size:3rem;line-height:1.2;max-width:900px;margin:0 auto}
+
 /* AJUSTE PARA MAQUETACIÓN MODERNA: Cards de producto */
 .three-doors-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
-    gap:2rem; /* Aumentar el gap para mejor separación visual */
+    gap:2rem; 
     text-align:center;
     margin-top:3rem
 }
 .door-item{
-    background-color:var(--niebla-matinal); /* Color de fondo más claro */
+    background-color:var(--niebla-matinal); 
     color:var(--tierra-humeda);
     padding:2rem 1rem;
     cursor:pointer;
     transition:transform .3s,box-shadow .3s;
     text-decoration:none;
     display:block;
-    border: 3px solid var(--tierra-humeda); /* Añadir borde brutalista */
+    border: 3px solid var(--tierra-humeda);
 }
-.door-item:hover{transform:translateY(-5px);box-shadow:8px 8px 0 rgba(26, 20, 18, 0.5)} /* Sombra desplazada y brutalista */
+.door-item:hover{transform:translateY(-5px);box-shadow:8px 8px 0 rgba(26, 20, 18, 0.5)}
 .door-item h3{color:var(--rojo-cereza);font-size:2rem; margin-top: 1rem;}
 .door-item p {color: var(--tierra-humeda);}
 .door-item img{width:100%;height:200px;object-fit:cover;margin-bottom:1rem;filter:grayscale(.2)}
@@ -126,5 +142,105 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 .b2b-specs-table{width:100%;border-collapse:collapse;margin:3rem 0;background:#fff;box-shadow:0 4px 15px rgba(0,0,0,.1)}
 .b2b-specs-table th,.b2b-specs-table td{padding:1rem;border:1px solid var(--niebla-matinal);text-align:left}
 .contact-split{display:flex;gap:4rem;margin-top:3rem}
-footer{background:var(--verde-cafetal);color:#fff;text-align:center;padding:2rem}
+
+/* ESTILOS DEL FOOTER (Nueva Maquetación) */
+footer{
+    background:var(--tierra-humeda); /* Fondo tierra húmeda para contraste */
+    color:#fff;
+    padding:3rem 2rem;
+    font-size: 0.95rem;
+}
+.footer-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    text-align: left;
+}
+.footer-col h4 {
+    color: var(--verde-cafetal); /* Títulos en verde de marca */
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+.footer-col a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 0.5rem;
+    transition: color 0.2s;
+}
+.footer-col a:hover {
+    color: var(--rojo-cereza);
+}
+.footer-copyright {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 @keyframes fadeInUp{0%{opacity:0;transform:translateY(30px)}100%{opacity:1;transform:translateY(0)}}
+
+
+/* MEDIA QUERIES PARA RESPONSIVE MÓVIL (768px y menos) */
+@media (max-width: 768px) {
+    /* 1. LAYOUT GENERAL: APILAR */
+    .nav-links {
+        display: none; /* Ocultar el menú de desktop */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 50px; /* Debajo del navbar fijo */
+        left: 0;
+        background: rgba(26, 20, 18, 0.95); /* Fondo oscuro para el menú móvil */
+        padding: 1rem 0;
+    }
+    .nav-links.active {
+        display: flex;
+    }
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+        padding: 0.5rem 0;
+    }
+    #langSwitch {
+        margin-left: 0;
+        margin-top: 10px;
+        width: 80%;
+    }
+    #menu-toggle {
+        display: block; /* Mostrar el botón de hamburguesa */
+    }
+    .nav-container {
+        padding: .5rem 1rem; /* Navbar más pequeño en móvil */
+    }
+
+    /* 2. REESTRUCTURACIÓN DE GRIDS A STACK */
+    .footer-grid {
+        grid-template-columns: 1fr; /* Una columna */
+        text-align: center;
+    }
+    .hero-content {
+        max-width: 95%;
+        padding: 1.5rem;
+    }
+    .cafe-split-hero {
+        flex-direction: column;
+    }
+    .cafe-split-hero > div {
+        padding: 2rem 1rem;
+    }
+    .flavor-wheel-container {
+        flex-direction: column;
+    }
+    
+    /* Maquetación del index (vision-y-tierra) */
+    #vision-y-tierra > div {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+}
