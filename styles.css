@@ -43,7 +43,7 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
     position:fixed;
     top:0;
     width:100%;
-    background:var(--verde-cafetal); 
+    background:var(--verde-cafetal); /* Usa el nuevo verde */
     backdrop-filter:blur(10px);
     z-index:1000;
     transition:background .3s ease
@@ -51,7 +51,7 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 .nav-container{
     max-width:1200px;
     margin:0 auto;
-    padding:.8rem 1rem; 
+    padding:.8rem 1rem; /* Padding reducido para menor altura */
     display:flex;
     justify-content:space-between;
     align-items:center
@@ -60,21 +60,9 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 /* CORRECCIÓN LOGO FINAL: Blanco y pequeño en el Navbar */
 .logo h1{display: none;}
 .logo .logo-img { 
-    height: 35px;
+    height: 35px; /* Tamaño reducido */
     width: auto;
-    filter: brightness(0) invert(1); 
-}
-
-/* ESTILOS DEL MENÚ HAMBURGUESA */
-#menu-toggle {
-    display: none; /* Oculto en desktop */
-    background: var(--rojo-cereza);
-    color: #fff;
-    border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    font-weight: 700;
-    text-transform: uppercase;
+    filter: brightness(0) invert(1); /* FILTRO PARA LOGO BLANCO */
 }
 
 .nav-links{display:flex;list-style:none;gap:1.5rem}
@@ -88,7 +76,6 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 .cta-hero:hover{background:var(--dorado-tostado); box-shadow: 0 5px 15px rgba(0,0,0,0.3);}
 .manifesto-section{min-height:60vh;display:flex;align-items:center;text-align:center;background-color:var(--beige-papel)}
 .manifesto-text{font-family:'Inter',sans-serif;font-weight:800;font-size:3rem;line-height:1.2;max-width:900px;margin:0 auto}
-
 /* AJUSTE PARA MAQUETACIÓN MODERNA: Cards de producto */
 .three-doors-grid{
     display:grid;
@@ -130,10 +117,26 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 .portrait-card:hover img{transform:scale(1.05)}
 .portrait-card-info{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,.8),transparent);color:#fff;padding:1rem;transform:translateY(100%);transition:transform .4s}
 .portrait-card:hover .portrait-card-info{transform:translateY(0)}
+
+/* Nuevo estilo para Scrollytelling: fondo fijo y centrado */
 .proceso-page{background:var(--tierra-humeda);color:#fff;min-height:100vh;padding:0}
-.scrolly-section{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;color:#fff;text-align:center}
+.scrolly-section{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    color:#fff;
+    text-align:center;
+    /* CLAVES DEL SCROLLYTELLING: */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 .scrolly-content{max-width:800px;padding:2rem;background:rgba(26,77,46,.7);backdrop-filter:blur(5px);border-radius:10px;transform:scale(.8);opacity:0;transition:all 1s}
 .scrolly-content.active{transform:scale(1);opacity:1}
+
 .impact-numbers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;text-align:center;margin-top:3rem}
 .impact-card{background-color:var(--verde-cafetal);color:#fff;padding:2rem;border-radius:5px}
 .impact-card .number{font-family:'Bebas Neue';font-size:5rem;color:var(--rojo-cereza);line-height:1}
