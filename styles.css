@@ -76,7 +76,7 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 .cta-hero:hover{background:var(--dorado-tostado); box-shadow: 0 5px 15px rgba(0,0,0,0.3);}
 .manifesto-section{min-height:60vh;display:flex;align-items:center;text-align:center;background-color:var(--beige-papel)}
 .manifesto-text{font-family:'Inter',sans-serif;font-weight:800;font-size:3rem;line-height:1.2;max-width:900px;margin:0 auto}
-/* AJUSTE PARA MAQUETACIÓN MODERNA: Cards de producto */
+/* AJUSTE TARJETAS: Sombra y Bordes Redondeados */
 .three-doors-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
@@ -92,9 +92,14 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
     transition:transform .3s,box-shadow .3s;
     text-decoration:none;
     display:block;
-    border: 3px solid var(--tierra-humeda);
+    border: none; /* ELIMINADO BORDE GRUESO */
+    border-radius: 8px; /* BORDES REDONDEADOS */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* SOMBRA SUAVE */
 }
-.door-item:hover{transform:translateY(-5px);box-shadow:8px 8px 0 rgba(26, 20, 18, 0.5)}
+.door-item:hover{
+    transform:translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* SOMBRA MÁS PROFUNDA AL HOVER */
+}
 .door-item h3{color:var(--rojo-cereza);font-size:2rem; margin-top: 1rem;}
 .door-item p {color: var(--tierra-humeda);}
 .door-item img{width:100%;height:200px;object-fit:cover;margin-bottom:1rem;filter:grayscale(.2)}
@@ -113,8 +118,10 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
     align-items: center;
     margin-bottom: 5rem;
     padding: 2rem;
-    background-color: var(--niebla-matinal); /* Color claro para la tarjeta */
-    border: 3px solid var(--tierra-humeda);
+    background-color: var(--niebla-matinal);
+    border: none; /* ELIMINADO BORDE GRUESO */
+    border-radius: 8px; /* BORDES REDONDEADOS */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* SOMBRA SUAVE */
 }
 
 /* Patrón Zig-Zag (Invertir orden de columnas para tarjetas pares) */
@@ -123,17 +130,18 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
     text-align: right;
 }
 .history-event-card:nth-child(even) .history-media {
-    direction: ltr; /* Asegurar que la imagen no se invierta */
+    direction: ltr; 
 }
 .history-event-card:nth-child(even) .history-content {
-    direction: ltr; /* Asegurar que el texto no se invierta */
+    direction: ltr; 
 }
 
 .history-media img {
     width: 100%;
-    height: 300px; /* Altura fija para consistencia visual */
+    height: 300px; 
     object-fit: cover;
     display: block;
+    border-radius: 4px; /* Bordes redondeados en la imagen */
     filter: grayscale(0.5);
     transition: filter 0.3s;
 }
@@ -141,7 +149,8 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 .history-event-card h4 {
     color: var(--verde-cafetal);
     font-size: 2.5rem;
-    border-left: 5px solid var(--rojo-cereza);
+    /* Mantenemos el borde vertical de color para acento brutalista */
+    border-left: 5px solid var(--rojo-cereza); 
     padding-left: 15px;
     margin-bottom: 1rem;
     line-height: 1.1;
@@ -162,7 +171,16 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 .cafe-split-right{background-color:var(--beige-papel);color:var(--tierra-humeda);display:flex;flex-direction:column;justify-content:center}
 .flavor-wheel-container{display:flex;justify-content:space-around;align-items:center;margin-top:3rem}
 .masonry-grid{columns:3;column-gap:1rem;margin-top:3rem}
-.portrait-card{margin-bottom:1rem;break-inside:avoid;cursor:pointer;position:relative;overflow:hidden;transition:opacity .3s}
+.portrait-card{
+    margin-bottom:1rem;
+    break-inside:avoid;
+    cursor:pointer;
+    position:relative;
+    overflow:hidden;
+    transition:opacity .3s;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
 .portrait-card img{width:100%;filter:grayscale(1) contrast(1.2);transition:transform .6s}
 .portrait-card:hover img{transform:scale(1.05)}
 .portrait-card-info{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,.8),transparent);color:#fff;padding:1rem;transform:translateY(100%);transition:transform .4s}
@@ -184,12 +202,29 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 .scrolly-content{max-width:800px;padding:2rem;background:rgba(26,77,46,.7);backdrop-filter:blur(5px);border-radius:10px;transform:scale(.8);opacity:0;transition:all 1s}
 .scrolly-content.active{transform:scale(1);opacity:1}
 
+/* AJUSTE TARJETAS DE IMPACTO */
 .impact-numbers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;text-align:center;margin-top:3rem}
-.impact-card{background-color:var(--verde-cafetal);color:#fff;padding:2rem;border-radius:5px}
+.impact-card{
+    background-color:var(--verde-cafetal);
+    color:#fff;
+    padding:2rem;
+    border-radius:8px; /* BORDES REDONDEADOS */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* SOMBRA SUAVE */
+}
 .impact-card .number{font-family:'Bebas Neue';font-size:5rem;color:var(--rojo-cereza);line-height:1}
+
+/* AJUSTE TARJETAS DE CERTIFICACIONES */
 .certification-stamps{display:flex;justify-content:space-around;gap:2rem;margin-top:4rem;flex-wrap:wrap}
-.stamp-card{background:var(--niebla-matinal);color:var(--tierra-humeda);padding:2rem;border:5px dashed var(--tierra-humeda);transform:rotate(calc(var(--rotation)*1deg))}
-.b2b-specs-table{width:100%;border-collapse:collapse;margin:3rem 0;background:#fff;box-shadow:0 4px 15px rgba(0,0,0,.1)}
+.stamp-card{
+    background:var(--niebla-matinal);
+    color:var(--tierra-humeda);
+    padding:2rem;
+    border: none; /* ELIMINADO BORDE DASHED */
+    border-radius: 8px; /* BORDES REDONDEADOS */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* SOMBRA SUAVE */
+    transform:rotate(calc(var(--rotation)*1deg));
+}
+.b2b-specs-table{width:100%;border-collapse:collapse;margin:3rem 0;background:#fff;box-shadow:0 4px 15px rgba(0,0,0,.1); border-radius: 8px;}
 .b2b-specs-table th,.b2b-specs-table td{padding:1rem;border:1px solid var(--niebla-matinal);text-align:left}
 .contact-split{display:flex;gap:4rem;margin-top:3rem}
 
@@ -239,13 +274,13 @@ footer{
 @media (max-width: 768px) {
     /* 1. LAYOUT GENERAL: APILAR */
     .nav-links {
-        display: none; /* Ocultar el menú de desktop */
+        display: none; 
         flex-direction: column;
         width: 100%;
         position: absolute;
-        top: 50px; /* Debajo del navbar fijo */
+        top: 50px; 
         left: 0;
-        background: rgba(26, 20, 18, 0.95); /* Fondo oscuro para el menú móvil */
+        background: rgba(26, 20, 18, 0.95);
         padding: 1rem 0;
     }
     .nav-links.active {
@@ -262,15 +297,15 @@ footer{
         width: 80%;
     }
     #menu-toggle {
-        display: block; /* Mostrar el botón de hamburguesa */
+        display: block;
     }
     .nav-container {
-        padding: .5rem 1rem; /* Navbar más pequeño en móvil */
+        padding: .5rem 1rem;
     }
 
     /* 2. REESTRUCTURACIÓN DE GRIDS A STACK */
     .footer-grid {
-        grid-template-columns: 1fr; /* Una columna */
+        grid-template-columns: 1fr;
         text-align: center;
     }
     .hero-content {
@@ -296,7 +331,7 @@ footer{
     /* 3. Ajuste de Tarjetas de Historia a stack total */
     .history-event-card {
         grid-template-columns: 1fr;
-        direction: ltr; /* Asegurar que todo se apile normalmente */
+        direction: ltr; 
         text-align: left;
     }
     .history-event-card:nth-child(even) h4 {
