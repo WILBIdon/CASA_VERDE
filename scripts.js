@@ -1,12 +1,10 @@
-/* SCRIPTS.JS FINAL Y RESPONSIVE
-    (Centralizado y Condicional)
+/* SCRIPTS.JS V2.1 (Parallax activado en MÓVIL y Escritorio)
 */
 document.addEventListener('DOMContentLoaded', () => {
 
     gsap.registerPlugin(ScrollTrigger);
 
     // --- 1. LÓGICA DEL MENÚ HAMBURGUESA (GLOBAL) ---
-    // (Se ejecuta siempre, en móvil y escritorio)
     const menuToggle = document.getElementById('menu-toggle');
     const navLinks = document.querySelector('.nav-links');
 
@@ -23,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- 2. LÓGICA DE NAVBAR SCROLL (GLOBAL) ---
-    // (Se ejecuta siempre)
     const mainNav = document.getElementById('mainNav');
     if (mainNav) {
         ScrollTrigger.create({
@@ -43,103 +40,76 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 3. LÓGICA DE ANIMACIÓN RESPONSIVA (LA CLAVE) ---
-    ScrollTrigger.matchMedia({
+    // --- 3. LÓGICA DE ANIMACIÓN (GLOBAL - MÓVIL Y ESCRITORIO) ---
 
-        /* A. SOLO EN DESKTOP (Pantallas > 768px) 
-           Aquí es donde vive el PARALLAX.
-        */
-        "(min-width: 769px)": function() {
-            console.log("Activando Parallax de Escritorio");
+    // 3.1. Efecto Parallax en TODOS los Hero (Re-activado para móvil)
+    gsap.utils.toArray('.hero-bg-photo').forEach(bg => {
+        gsap.to(bg, {
+            scrollTrigger: {
+                trigger: bg.parentElement, // El .hero-page que lo contiene
+                start: "top top",
+                end: "bottom top",
+                scrub: true // Efecto "pegajoso" al scrollear
+            },
+            yPercent: 30 // Mueve la imagen (el % es la intensidad del parallax)
+        });
+    });
 
-            // 1. Efecto Parallax en TODOS los Hero
-            gsap.utils.toArray('.hero-bg-photo').forEach(bg => {
-                gsap.to(bg, {
-                    scrollTrigger: {
-                        trigger: bg.parentElement, // El .hero-page que lo contiene
-                        start: "top top",
-                        end: "bottom top",
-                        scrub: true // Efecto "pegajoso" al scrollear
-                    },
-                    yPercent: 30 // Mueve la imagen (el % es la intensidad del parallax)
-                });
-            });
-        },
+    // 3.2. Animación de aparición (Scrollytelling en proceso.html)
+    gsap.utils.toArray('.scrolly-content').forEach(content => {
+        gsap.fromTo(content, 
+            { opacity: 0, y: 40 }, // Estado inicial (invisible)
+            {
+                scrollTrigger: {
+                    trigger: content,
+                    start: "top 85%", // Aparece cuando llega al 85% de la pantalla
+                    toggleActions: "play none none reverse" // Se revierte si subes
+                },
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: "power1.out"
+            }
+        );
+    });
+    
+    // 3.3. Animador de Números (Impacto)
+    // Usamos un 'Set' para evitar que se dispare varias veces si el usuario scrollea rápido
+    const animatedNumbers = new Set();
+    gsap.utils.toArray('.number').forEach(numEl => {
+        
+        ScrollTrigger.create({
+            trigger: numEl,
+            start: "top 90%",
+            onEnter: () => {
+                if (!animatedNumbers.has(numEl)) {
+                    animatedNumbers.add(numEl);
+                    
+                    const endValue = parseFloat(numEl.textContent.replace(/,/g, ''));
+                    const unit = numEl.dataset.unit || '';
+                    const precision = parseInt(numEl.dataset.precision, 10) || 0;
 
-        /* B. SOLO EN MÓVIL (Pantallas <= 768px) 
-           Aquí NO hay parallax.
-        */
-        "(max-width: 768px)": function() {
-            console.log("Parallax de Escritorio DESACTIVADO para móvil.");
-            // No se ejecuta ninguna animación de parallax.
-            // La imagen de fondo se queda estática y centrada 
-            // gracias al CSS (.hero-bg-photo), lo cual
-            // da un rendimiento perfecto en móvil.
-        },
-
-        /* C. GLOBAL (Se ejecuta en todas las pantallas) 
-           Animaciones ligeras que sí queremos en móvil.
-        */
-        "all": function() {
-            console.log("Activando animaciones globales (Scrolly y Números)");
-
-            // 1. Animación de aparición (Scrollytelling en proceso.html)
-            gsap.utils.toArray('.scrolly-content').forEach(content => {
-                gsap.fromTo(content, 
-                    { opacity: 0, y: 40 }, // Estado inicial (invisible)
-                    {
-                        scrollTrigger: {
-                            trigger: content,
-                            start: "top 85%", // Aparece cuando llega al 85% de la pantalla
-                            toggleActions: "play none none reverse" // Se revierte si subes
-                        },
-                        opacity: 1,
-                        y: 0,
-                        duration: 0.8,
-                        ease: "power1.out"
-                    }
-                );
-            });
-            
-            // 2. Animador de Números (Impacto)
-            // Usamos un 'Set' para evitar que se dispare varias veces si el usuario scrollea rápido
-            const animatedNumbers = new Set();
-            gsap.utils.toArray('.number').forEach(numEl => {
-                
-                ScrollTrigger.create({
-                    trigger: numEl,
-                    start: "top 90%",
-                    onEnter: () => {
-                        if (!animatedNumbers.has(numEl)) {
-                            animatedNumbers.add(numEl);
-                            
-                            const endValue = parseFloat(numEl.textContent.replace(/,/g, ''));
-                            const unit = numEl.dataset.unit || '';
-                            const precision = parseInt(numEl.dataset.precision, 10) || 0;
-
-                            gsap.fromTo(numEl, 
-                                { textContent: 0 }, 
-                                {
-                                    textContent: endValue,
-                                    duration: 3,
-                                    ease: "power1.out",
-                                    snap: { textContent: 1 }, // Solo números enteros si no hay precisión
-                                    // Formatear el número mientras anima
-                                    onUpdate: function() {
-                                        let currentVal = parseFloat(this.targets()[0].textContent);
-                                        numEl.textContent = currentVal.toFixed(precision) + unit;
-                                    },
-                                    onComplete: () => {
-                                        // Asegurar valor final exacto con formato
-                                        numEl.textContent = endValue.toFixed(precision) + unit;
-                                    }
-                                }
-                            );
+                    gsap.fromTo(numEl, 
+                        { textContent: 0 }, 
+                        {
+                            textContent: endValue,
+                            duration: 3,
+                            ease: "power1.out",
+                            snap: { textContent: 1 }, // Solo números enteros si no hay precisión
+                            // Formatear el número mientras anima
+                            onUpdate: function() {
+                                let currentVal = parseFloat(this.targets()[0].textContent);
+                                numEl.textContent = currentVal.toFixed(precision) + unit;
+                            },
+                            onComplete: () => {
+                                // Asegurar valor final exacto con formato
+                                numEl.textContent = endValue.toFixed(precision) + unit;
+                            }
                         }
-                    }
-                });
-            });
-        }
-    }); // --- Fin de matchMedia ---
+                    );
+                }
+            }
+        });
+    });
 
 }); // --- Fin del DOMContentLoaded ---
