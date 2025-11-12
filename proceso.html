@@ -13,7 +13,9 @@
     <nav id="mainNav" class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <img src="images/LOGO-cafe casa verde (1).png" alt="Logo Casa Verde Café" class="logo-img">
+                <a href="index.html">
+                    <img src="images/LOGO-cafe casa verde (1).png" alt="Logo Casa Verde Café" class="logo-img">
+                </a>
             </div>
             
             <button id="menu-toggle">MENÚ</button>
@@ -22,69 +24,61 @@
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="historia.html">Historia</a></li>
                 <li><a href="cafe.html">El Café</a></li>
+                <li><a href="productores.html">Productores</a></li>
+                <li><a href="proceso.html">Proceso</a></li>
                 <li><a href="sostenibilidad.html">Impacto</a></li>
-                <li><a href="comprar.html">Tienda</a></li>
+                <li><a href="veredas.html">Nuestra Tierra</a></li>
+                <li><a href="comprar.html">Comprar</a></li>
                 <li><select id="langSwitch"><option value="es">ES</option><option value="en">EN</option><option value="fr">FR</option></select></li>
             </ul>
         </div>
     </nav>
 
-    <section id="proceso-hero" class="hero-page" style="min-height: 50vh;">
+    <section id="proceso-hero" class="hero-page">
+        <img src="images/proceso.png" class="hero-bg-photo" alt="Manos de caficultores secando granos">
         <div class="hero-content">
             <h1 style="font-size: 5rem;">DEL ÁRBOL A LA TAZA</h1>
-            <p class="microcopy" style="color: #fff; font-size: 1.5rem;">Un proceso lento y meticuloso. La esencia de la calidad.</p>
+            <p class="microcopy" style="color: var(--niebla-matinal); font-size: 1.5rem;">Un proceso lento y meticuloso. La esencia de la calidad.</p>
         </div>
     </section>
 
-    <section id="proceso-main" class="proceso-page">
+    <section id="proceso-main" class="proceso-page" style="padding: 0; max-width: none;">
+        <h2>DEL ÁRBOL A LA TAZA: LA PACIENCIA</h2>
+        <p class="microcopy" style="color: var(--niebla-matinal); text-align: center;">Cada fase es un compromiso con la calidad y la honestidad.</p>
 
-        <div class="scrolly-section" style="background-image: url('images/floracion-bg.jpg');">
+        <div class="scrolly-section" style="background-image: url('images/floracion-bg.jpg'); background-size: cover;">
             <div class="scrolly-content">
                 <h3>FASE 1: FLORACIÓN</h3>
-                <p>
-                    **Agosto - Septiembre.** La etapa más bella, donde el cafeto explota en flores blancas. El café es una promesa de aroma y dulzura.
-                </p>
-                <p class="microcopy" style="color: var(--niebla-matinal);">La paciencia de la tierra.</p>
+                <p>Agosto - Septiembre. Las flores blancas explotan. El café es una promesa de aroma y dulzura.</p>
             </div>
         </div>
 
-        <div class="scrolly-section" style="background-image: url('images/recoleccion-bg.jpg');">
+        <div class="scrolly-section" style="background-image: url('images/recoleccion-bg.jpg'); background-size: cover;">
             <div class="scrolly-content">
                 <h3>FASE 2: RECOLECCIÓN MANUAL</h3>
-                <p>
-                    Grano por grano. Mano por mano. Solo las cerezas rojas maduras son dignas de este proceso. Es la clave para garantizar un perfil de taza sin defectos.
-                </p>
-                <p class="microcopy" style="color: var(--niebla-matinal);">La mano del productor lo es todo.</p>
+                <p>Grano por grano. Mano por mano. Solo las cerezas rojas maduras son dignas de este proceso.</p>
             </div>
         </div>
 
-        <div class="scrolly-section" style="background-image: url('images/fermentacion-bg.jpg');">
+        <div class="scrolly-section" style="background-image: url('images/fermentacion-bg.jpg'); background-size: cover;">
             <div class="scrolly-content">
                 <h3>FASE 3: FERMENTACIÓN: 18 HORAS</h3>
-                <p>
-                    El grano se descereza de un día para otro, posterior a ello se lava entre 6 a 12 horas. Este proceso biológico define la complejidad y la limpieza final del sabor.
-                </p>
-                <p class="microcopy" style="color: var(--niebla-matinal);">La química de la acidez.</p>
+                <p>Paciencia controlada. Este proceso biológico define la complejidad y la limpieza de la taza final.</p>
             </div>
         </div>
 
-        <div class="scrolly-section" style="background-image: url('images/secado-bg.jpg');">
+        <div class="scrolly-section" style="background-image: url('images/secado-bg.jpg'); background-size: cover;">
             <div class="scrolly-content">
                 <h3>FASE 4: SECADO: 7 DÍAS</h3>
-                <p>
-                    El café se seca en silo (24 horas) o al sol (1 semana), usando patio o marquesina. El grano alcanza la humedad perfecta para el tueste y el viaje.
-                </p>
-                <p class="microcopy" style="color: var(--niebla-matinal);">Menos de 12% de humedad.</p>
+                <p>Al sol o en silo. El grano absorbe la energía de la montaña y alcanza la humedad perfecta para el tueste.</p>
             </div>
         </div>
 
         <div class="scrolly-section">
             <div class="scrolly-content" style="background: var(--rojo-cereza); color: #fff;">
                 <h3 style="color: #fff;">EL GRANO PERGAMINO</h3>
-                <p>
-                    El fin del proceso húmedo. El café está listo para ser trillado, empacado y exportado. <br>Producimos **502,600 kg** de historia cada año.
-                </p>
-                <a href="comprar.html" class="cta-hero" style="background: var(--tierra-humeda); border: 2px solid #fff;">Compra esta Historia</a>
+                <p>El fin del proceso húmedo. Listo para viajar. <br>502,600 kg de historia cada año.</p>
+                <a href="comprar.html" class="cta-hero" style="background: var(--tierra-humeda); border: none;">Compra esta Historia</a>
             </div>
         </div>
     </section>
