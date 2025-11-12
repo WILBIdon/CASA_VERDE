@@ -40,6 +40,46 @@ em,.microcopy{font-family:'Playfair Display',serif;font-size:1.2em;color:#B31A2F
     --dorado-tostado:#A67853;
 }
 
+/* ESTILOS PARA EL TEXTO HERO (Centralizado) */
+.hero-content {
+    /* ... (Otros estilos de .hero-content) */
+    position:relative;
+    z-index:3;
+    text-align:center;
+    color:var(--niebla-matinal); /* Color Fique para todo el texto Hero */
+    padding:2rem;
+    mix-blend-mode:normal;
+    /* Sombra Fuerte y oscura para mejorar el contraste */
+    text-shadow: 0 0 10px rgba(0, 0, 0, 1), 0 0 5px rgba(0, 0, 0, 0.9);
+    background: none; 
+    backdrop-filter: none;
+    border-radius:10px;
+    max-width:90%;
+    animation:fadeInUp 1.2s ease-out;
+}
+
+.hero-content h1 {
+    color: inherit; /* Hereda el color Fique de .hero-content */
+}
+
+/* ESTILOS ESPECÍFICOS PARA TITULOS Y TEXTOS EN HERO */
+.hero-content .microcopy {
+    color: inherit; /* Mantiene el color Fique */
+    font-size: 2rem; /* Tamaño consistente en el Hero */
+    margin: 0.5rem 0;
+}
+.hero-content .h1-index {
+    font-size: 8vw;
+    line-height: 1;
+}
+.hero-content .h1-page {
+    font-size: 5rem;
+}
+.hero-content .microcopy-small {
+    font-size: 1.5rem;
+}
+
+
 /* VIÑETAS PERSONALIZADAS */
 ul {
     list-style: none;
@@ -71,7 +111,12 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 .hero-page {
     max-width: none;
     padding: 0;
+    min-height: 100vh; /* Base para Full Parallax */
 }
+/* AJUSTE PARA HERO CORTOS (Checkout, Historia) */
+#hero-historia { min-height: 70vh; }
+#hero-checkout { min-height: 50vh; }
+
 
 /* CORRECCIÓN DE NAVBAR */
 .navbar{
@@ -128,32 +173,7 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
     margin-left:1rem;
     border-radius: 8px;
 }
-.hero-page{min-height:100vh;padding:0;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
 .hero-bg-photo{position:absolute;top:-10%;left:0;width:100%;height:120%;object-fit:cover;z-index:1;filter:grayscale(.1) contrast(1.2) brightness(.85);will-change:transform;transform:translateZ(0)}
-
-/* HERO CONTENT (APLICACIÓN DE COLOR FIQUE Y SOMBRA FUERTE) */
-.hero-content{
-    position:relative;
-    z-index:3;
-    text-align:center;
-    color:var(--niebla-matinal); /* Color Fique para todo el texto Hero */
-    padding:2rem;
-    mix-blend-mode:normal;
-    /* Sombra Fuerte y oscura para mejorar el contraste */
-    text-shadow: 0 0 10px rgba(0, 0, 0, 1), 0 0 5px rgba(0, 0, 0, 0.9);
-    background: none; 
-    backdrop-filter: none;
-    border-radius:10px;
-    max-width:90%;
-    animation:fadeInUp 1.2s ease-out
-}
-.hero-content h1 {
-    color: inherit; /* Hereda el color Fique */
-}
-/* Aseguramos que el logo img mantenga el color y no herede el Fique */
-.hero-content img {
-    filter: drop-shadow(0 0 10px rgba(0,0,0,0.5)); 
-}
 
 
 /* Botón Principal (Sin Borde, con Puntas Redondeadas y Sombra) */
@@ -174,8 +194,28 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
     background:var(--dorado-tostado);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
+
+/* ESTILOS SECCIONES PRINCIPALES (Index) */
 .manifesto-section{min-height:60vh;display:flex;align-items:center;text-align:center;background-color:var(--beige-papel)}
-.manifesto-text{font-family:'Inter',sans-serif;font-weight:800;font-size:3rem;line-height:1.2;max-width:900px;margin:0 auto}
+.manifesto-text{font-family:'Inter',sans-serif;font-weight:800;font-size:2.8rem;line-height:1.2;max-width:900px;margin:0 auto}
+
+/* Contenido de manifiesto */
+#vision-y-tierra h2 {
+    font-size: 3rem;
+}
+.vision-manifiesto-texto {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.1rem; 
+    line-height: 1.5; 
+    color: var(--rojo-cereza);
+    max-width: 900px; 
+    margin: 2rem auto; 
+    text-align: center;
+}
+.tierra-microcopy {
+    color: var(--verde-cafetal);
+    font-size: 1.8rem;
+}
 
 /* Tarjetas de Tres Puertas (Productos) */
 .three-doors-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:2rem;text-align:center;margin-top:3rem}
@@ -197,6 +237,7 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 }
 .door-item h3{color:var(--rojo-cereza);font-size:2rem; margin-top: 1rem;}
 .door-item p {color: var(--tierra-humeda);}
+.door-item .price-bold {color: var(--rojo-cereza); font-weight: bold;}
 .door-item img{width:100%;height:200px;object-fit:cover;margin-bottom:1rem;filter:grayscale(.2); border-radius: 4px;} 
 
 /* --- ESTILOS PARA HISTORIA (Estructura de Tarjetas) --- */
