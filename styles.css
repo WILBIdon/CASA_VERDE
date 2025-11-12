@@ -131,22 +131,30 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 .hero-page{min-height:100vh;padding:0;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
 .hero-bg-photo{position:absolute;top:-10%;left:0;width:100%;height:120%;object-fit:cover;z-index:1;filter:grayscale(.1) contrast(1.2) brightness(.85);will-change:transform;transform:translateZ(0)}
 
-/* HERO CONTENT (MEJORA DE VISIBILIDAD DE TEXTO) */
+/* HERO CONTENT (APLICACIÓN DE COLOR FIQUE Y SOMBRA FUERTE) */
 .hero-content{
     position:relative;
     z-index:3;
     text-align:center;
-    color:#fff;
+    color:var(--niebla-matinal); /* Color Fique para todo el texto Hero */
     padding:2rem;
     mix-blend-mode:normal;
-    /* Sombras más grandes y claras para el texto blanco */
-    text-shadow: 0 0 15px rgba(0, 0, 0, 0.9), 0 0 5px rgba(0, 0, 0, 0.8);
+    /* Sombra Fuerte y oscura para mejorar el contraste */
+    text-shadow: 0 0 10px rgba(0, 0, 0, 1), 0 0 5px rgba(0, 0, 0, 0.9);
     background: none; 
     backdrop-filter: none;
     border-radius:10px;
     max-width:90%;
     animation:fadeInUp 1.2s ease-out
 }
+.hero-content h1 {
+    color: inherit; /* Hereda el color Fique */
+}
+/* Aseguramos que el logo img mantenga el color y no herede el Fique */
+.hero-content img {
+    filter: drop-shadow(0 0 10px rgba(0,0,0,0.5)); 
+}
+
 
 /* Botón Principal (Sin Borde, con Puntas Redondeadas y Sombra) */
 .cta-hero{
