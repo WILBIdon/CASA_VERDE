@@ -8,23 +8,6 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .mapa-layout{ display: flex; min-height: 80vh; }
-        .map-sidebar{ flex: 0 0 300px; padding: 2rem; background-color: var(--niebla-matinal); overflow-y: auto; border-radius: 8px 0 0 8px; box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); }
-        .map-container{ flex: 1; }
-        #interactiveMap{ height: 100%; border-radius: 0 8px 8px 0; }
-        .vereda-item{ padding: 0.8rem 0; cursor: pointer; border-bottom: 1px solid rgba(0,0,0,0.1); transition: background 0.3s; }
-        .vereda-item:hover{ background: rgba(0,0,0,0.05); }
-        .vereda-item h4{ color: var(--tierra-humeda); font-size: 1.5rem; }
-        .vereda-details{ padding: 2rem; background-color: var(--beige-papel); border-radius: 8px; margin-top: 2rem; box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); }
-        .vereda-details img{ width: 100%; height: 250px; object-fit: cover; margin-bottom: 1rem; border-radius: 4px;}
-        /* Responsive para Mapa */
-        @media (max-width: 768px) {
-            .mapa-layout { flex-direction: column; }
-            .map-sidebar { border-radius: 8px; margin: 0 auto 2rem auto; }
-            #interactiveMap { border-radius: 8px; min-height: 400px; }
-        }
-    </style>
 </head>
 <body>
     <nav id="mainNav" class="navbar">
@@ -59,7 +42,7 @@
         </div>
     </section>
 
-    <section id="veredas-mapa" style="padding: 0; max-width: none;">
+    <section id="veredas-mapa" class="section-full-width-padding-0">
         <div class="mapa-layout">
             <div class="map-sidebar">
                 <h2>Las 7 Veredas</h2>
@@ -106,7 +89,7 @@
                 <h4>Impacto</h4>
                 <a href="sostenibilidad.html">Certificaciones</a>
                 <a href="proceso.html">Proceso</a>
-                <p style="color: var(--niebla-matinal); margin-top: 1rem;">Orgánico y Fair Trade.</p>
+                <p class="text-fique" style="margin-top: 1rem;">Orgánico y Fair Trade.</p>
             </div>
         </div>
         <div class="footer-copyright">
@@ -115,6 +98,7 @@
     </footer>
     <script src="scripts.js"></script>
     <script>
+        // Lógica específica de esta página (Mapa de Veredas)
         const veredasData = [
             { name: "La Miranda", lat: 4.052, lng: -75.752, alt: 1850, familias: 15, img: 'images/vereda-miranda.jpg' },
             { name: "Campo Hermoso", lat: 4.045, lng: -75.73, alt: 1700, familias: 12, img: 'images/vereda-campo.jpg' },
@@ -145,12 +129,12 @@
             if (data) {
                 detailsPanel.style.display = 'block';
                 detailsPanel.innerHTML = `
-                    <h3 style="color: var(--rojo-cereza);">${data.name.toUpperCase()}</h3>
+                    <h3 class="text-red">${data.name.toUpperCase()}</h3>
                     <img src="${data.img}" alt="Vista de ${data.name}">
                     <p><strong>Altitud:</strong> ${data.alt} m.s.n.m.</p>
                     <p><strong>Familias:</strong> ${data.familias} productoras.</p>
                     <p><strong>Productores Destacados:</strong> Don José, Doña María (Ejemplo)</p>
-                    <p><a href="vereda/${data.name.toLowerCase().replace(/ /g,'-')}.html" style="color: var(--rojo-cereza);">Ver Perfil Completo &rarr;</a></p>
+                    <p><a href="vereda/${data.name.toLowerCase().replace(/ /g,'-')}.html" class="text-red">Ver Perfil Completo &rarr;</a></p>
                 `;
                 if (map) map.flyTo([data.lat, data.lng], 14);
             }
@@ -161,7 +145,10 @@
             document.querySelectorAll('.vereda-item').forEach(item => {
                 item.addEventListener('click', () => updateDetails(item.dataset.vereda));
             });
-            updateDetails(veredasData[0].name);
+            // Mostrar la primera vereda por defecto
+            if (veredasData.length > 0) {
+                updateDetails(veredasData[0].name);
+            }
         });
     </script>
 </body>
