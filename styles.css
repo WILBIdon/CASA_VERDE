@@ -8,6 +8,7 @@ body{
     overflow-x:hidden;
     background-color: #FFFFFF; /* FONDO PRINCIPAL BLANCO */
     position: relative;
+    padding-top: 65px; /* SOLUCIÓN: Compensar la altura del navbar (aprox 65px) */
 }
 
 /* IMPLEMENTACIÓN DE SENEFFA DE FONDO (ramas.png grande y tenue) */
@@ -40,46 +41,6 @@ em,.microcopy{font-family:'Playfair Display',serif;font-size:1.2em;color:#B31A2F
     --dorado-tostado:#A67853;
 }
 
-/* ESTILOS PARA EL TEXTO HERO (Centralizado) */
-.hero-content {
-    /* ... (Otros estilos de .hero-content) */
-    position:relative;
-    z-index:3;
-    text-align:center;
-    color:var(--niebla-matinal); /* Color Fique para todo el texto Hero */
-    padding:2rem;
-    mix-blend-mode:normal;
-    /* Sombra Fuerte y oscura para mejorar el contraste */
-    text-shadow: 0 0 10px rgba(0, 0, 0, 1), 0 0 5px rgba(0, 0, 0, 0.9);
-    background: none; 
-    backdrop-filter: none;
-    border-radius:10px;
-    max-width:90%;
-    animation:fadeInUp 1.2s ease-out;
-}
-
-.hero-content h1 {
-    color: inherit; /* Hereda el color Fique de .hero-content */
-}
-
-/* ESTILOS ESPECÍFICOS PARA TITULOS Y TEXTOS EN HERO */
-.hero-content .microcopy {
-    color: inherit; /* Mantiene el color Fique */
-    font-size: 2rem; /* Tamaño consistente en el Hero */
-    margin: 0.5rem 0;
-}
-.hero-content .h1-index {
-    font-size: 8vw;
-    line-height: 1;
-}
-.hero-content .h1-page {
-    font-size: 5rem;
-}
-.hero-content .microcopy-small {
-    font-size: 1.5rem;
-}
-
-
 /* VIÑETAS PERSONALIZADAS */
 ul {
     list-style: none;
@@ -101,9 +62,9 @@ ul li:before {
 }
 
 
-/* SOLUCIÓN FINAL DE CORTE DE CONTENIDO */
+/* SOLUCIÓN FINAL DE CORTE DE CONTENIDO (Removido, ahora se usa padding-top en body) */
 section:first-of-type:not(.hero-page) {
-    margin-top: 70px; /* Margen equivalente a la altura del navbar. */
+    margin-top: 0; 
 }
 section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 
@@ -173,7 +134,61 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
     margin-left:1rem;
     border-radius: 8px;
 }
-.hero-bg-photo{position:absolute;top:-10%;left:0;width:100%;height:120%;object-fit:cover;z-index:1;filter:grayscale(.1) contrast(1.2) brightness(.85);will-change:transform;transform:translateZ(0)}
+/* AJUSTE DE LA IMAGEN DE FONDO PARALLAX (CENTRADA) */
+.hero-bg-photo{
+    position:absolute;
+    top: 50%; /* CENTRADO VERTICAL */
+    left: 50%; /* CENTRADO HORIZONTAL */
+    width:100%;
+    height:120%; /* Mantiene un poco de margen para el efecto */
+    object-fit:cover;
+    z-index:1;
+    filter:grayscale(.1) contrast(1.2) brightness(.85);
+    will-change:transform;
+    transform: translate(-50%, -50%); /* CENTRADO CON PRECISIÓN */
+}
+
+/* HERO CONTENT (APLICACIÓN DE COLOR FIQUE Y SOMBRA FUERTE) */
+.hero-content{
+    position:relative;
+    z-index:3;
+    text-align:center;
+    color:var(--niebla-matinal); /* Color Fique para todo el texto Hero */
+    padding:2rem;
+    mix-blend-mode:normal;
+    /* Sombra Fuerte y oscura para mejorar el contraste */
+    text-shadow: 0 0 10px rgba(0, 0, 0, 1), 0 0 5px rgba(0, 0, 0, 0.9);
+    background: none; 
+    backdrop-filter: none;
+    border-radius:10px;
+    max-width:90%;
+    animation:fadeInUp 1.2s ease-out;
+}
+.hero-content h1 {
+    color: inherit; /* Hereda el color Fique de .hero-content */
+}
+/* Aseguramos que el logo img mantenga el color y no herede el Fique */
+.hero-content img {
+    filter: drop-shadow(0 0 10px rgba(0,0,0,0.5)); 
+}
+
+
+/* ESTILOS ESPECÍFICOS PARA TITULOS Y TEXTOS EN HERO */
+.hero-content .microcopy {
+    color: inherit; /* Mantiene el color Fique */
+    font-size: 2rem; /* Tamaño consistente en el Hero */
+    margin: 0.5rem 0;
+}
+.hero-content .h1-index {
+    font-size: 8vw;
+    line-height: 1;
+}
+.hero-content .h1-page {
+    font-size: 5rem;
+}
+.hero-content .microcopy-small {
+    font-size: 1.5rem;
+}
 
 
 /* Botón Principal (Sin Borde, con Puntas Redondeadas y Sombra) */
@@ -427,6 +442,11 @@ footer{
 
 /* MEDIA QUERIES PARA RESPONSIVE MÓVIL (768px y menos) */
 @media (max-width: 768px) {
+    body { padding-top: 60px; } /* Ajuste de padding en móvil */
+    .hero-content .microcopy { font-size: 1.5rem; }
+    .hero-content .h1-index { font-size: 10vw; }
+    .hero-content .h1-page { font-size: 3rem; }
+    
     /* Menú: Mostrar botón y ocultar links */
     .nav-links {
         display: none; 
