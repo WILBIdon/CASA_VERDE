@@ -131,7 +131,7 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 .hero-page{min-height:100vh;padding:0;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
 .hero-bg-photo{position:absolute;top:-10%;left:0;width:100%;height:120%;object-fit:cover;z-index:1;filter:grayscale(.1) contrast(1.2) brightness(.85);will-change:transform;transform:translateZ(0)}
 
-/* HERO CONTENT (sin fondo negro) */
+/* HERO CONTENT (MEJORA DE VISIBILIDAD DE TEXTO) */
 .hero-content{
     position:relative;
     z-index:3;
@@ -139,7 +139,8 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
     color:#fff;
     padding:2rem;
     mix-blend-mode:normal;
-    text-shadow:3px 3px 8px rgba(0,0,0,0.8);
+    /* Sombras más grandes y claras para el texto blanco */
+    text-shadow: 0 0 15px rgba(0, 0, 0, 0.9), 0 0 5px rgba(0, 0, 0, 0.8);
     background: none; 
     backdrop-filter: none;
     border-radius:10px;
@@ -163,7 +164,7 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 }
 .cta-hero:hover{
     background:var(--dorado-tostado);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 .manifesto-section{min-height:60vh;display:flex;align-items:center;text-align:center;background-color:var(--beige-papel)}
 .manifesto-text{font-family:'Inter',sans-serif;font-weight:800;font-size:3rem;line-height:1.2;max-width:900px;margin:0 auto}
