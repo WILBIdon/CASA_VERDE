@@ -43,16 +43,16 @@
         </div>
     </section>
 
-    <section id="flavor-profile" style="background-color: var(--niebla-matinal);">
+    <section id="flavor-profile" class="section-fique-bg">
         <h2>Perfil Sensorial</h2>
         <p class="microcopy">La esencia de nuestra tierra expresada en notas de cata.</p>
 
         <div class="flavor-wheel-container">
-            <div class="placeholder-box" style="width: 300px; height: 300px; border-radius: 50%; box-shadow: none;">
+            <div class="placeholder-box flavor-wheel-placeholder">
                 [MARCADOR: Rueda de Sabor (Canvas)]
             </div>
 
-            <div class="notes-list" style="max-width: 400px;">
+            <div class="notes-list notes-list-wrap">
                 <div class="note-item">
                     <h3>PANELA</h3>
                     <p>Dulzor natural que evoca la caña de azúcar.</p>
@@ -68,7 +68,7 @@
             </div>
         </div>
         
-        <h2 style="margin-top: 4rem;">Especificaciones Técnicas</h2>
+        <h2 class="section-h2-mt">Especificaciones Técnicas</h2>
         <table class="b2b-specs-table">
             <tr>
                 <th>Atributo</th>
@@ -93,24 +93,24 @@
         </table>
     </section>
 
-    <section id="preparation-methods" style="text-align: center;">
+    <section id="preparation-methods" class="section-center-text">
         <h2>Métodos de Preparación</h2>
         <p class="microcopy">Cada método expresa una cara distinta del sabor.</p>
         <div class="three-doors-grid">
             <div class="door-item">
-                <img src="images/v60.jpg" alt="V60" style="filter:none;">
+                <img src="images/v60.jpg" alt="V60" class="filter-none">
                 <h3>V60</h3>
                 <p>Ratio 1:16</p>
             </div>
 
             <div class="door-item">
-                <img src="images/french-press.jpg" alt="French Press" style="filter:none;">
+                <img src="images/french-press.jpg" alt="French Press" class="filter-none">
                 <h3>French Press</h3>
                 <p>4 minutos · Molienda gruesa</p>
             </div>
 
             <div class="door-item">
-                <img src="images/espresso.jpg" alt="Espresso" style="filter:none;">
+                <img src="images/espresso.jpg" alt="Espresso" class="filter-none">
                 <h3>Espresso</h3>
                 <p>18g → 36g</p>
             </div>
@@ -142,7 +142,7 @@
                 <h4>Impacto</h4>
                 <a href="sostenibilidad.html">Certificaciones</a>
                 <a href="proceso.html">Proceso</a>
-                <p style="color: var(--niebla-matinal); margin-top: 1rem;">Orgánico y Fair Trade.</p>
+                <p class="text-fique" style="margin-top: 1rem;">Orgánico y Fair Trade.</p>
             </div>
         </div>
         <div class="footer-copyright">
@@ -151,41 +151,5 @@
     </footer>
 
     <script src="scripts.js"></script>
-
-    <script>
-        // Placeholder para la rueda de sabor
-        const canvas = document.getElementById('flavorWheelCanvas');
-        if (canvas) {
-            const ctx = canvas.getContext('2d');
-            const data = [
-                { label: 'Panela', color: '#A67853' },
-                { label: 'Chocolate', color: '#1A1412' },
-                { label: 'Cítrico', color: '#C71F37' },
-                { label: 'Floral', color: '#7A9B7F' },
-                { label: 'Caramelo', color: '#A67853' },
-                { label: 'Especias', color: '#1A1412' },
-            ];
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            const centerX = canvas.width / 2;
-            const centerY = canvas.height / 2;
-            const radius = 150;
-            let startAngle = 0;
-            data.forEach(segment => {
-                const angle = Math.PI * 2 / data.length;
-                ctx.beginPath();
-                ctx.moveTo(centerX, centerY);
-                ctx.arc(centerX, centerY, radius, startAngle, startAngle + angle);
-                ctx.closePath();
-                ctx.fillStyle = segment.color;
-                ctx.fill();
-                startAngle += angle;
-            });
-            ctx.strokeStyle = 'white';
-            ctx.lineWidth = 5;
-            ctx.beginPath();
-            ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
-            ctx.stroke();
-        }
-    </script>
 </body>
 </html>
