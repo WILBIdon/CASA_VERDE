@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Impacto y Sostenibilidad | Café Casa Verde</title>
+    <title>Sostenibilidad - Impacto Real | Casa Verde</title>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@100..900&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -25,83 +24,107 @@
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="historia.html">Historia</a></li>
                 <li><a href="cafe.html">El Café</a></li>
+                <li><a href="productores.html">Productores</a></li>
+                <li><a href="proceso.html">Proceso</a></li>
                 <li><a href="sostenibilidad.html">Impacto</a></li>
-                <li><a href="comprar.html">Tienda</a></li>
+                <li><a href="veredas.html">Nuestra Tierra</a></li>
+                <li><a href="comprar.html">Comprar</a></li>
                 <li><select id="langSwitch"><option value="es">ES</option><option value="en">EN</option><option value="fr">FR</option></select></li>
             </ul>
         </div>
     </nav>
 
-    <section id="hero-impacto" class="hero-page">
-        <img src="images/hero-impacto-bg.jpg" class="hero-bg-photo" alt="Comunidad de caficultores">
+    <section id="hero-sostenibilidad" class="hero-page">
+        <img src="images/impacto.png" class="hero-bg-photo" alt="Comunidad de caficultores">
         <div class="hero-content">
             <h1 style="font-size: 5rem;">IMPACTO REAL</h1>
-            <p class="microcopy" style="color: #fff; font-size: 2rem;">Más que café, cultivamos dignidad y futuro.</p>
+            <p class="microcopy" style="color: var(--niebla-matinal); font-size: 2rem;">Más que café, cultivamos dignidad y futuro.</p>
         </div>
     </section>
 
-    <section id="impact-numbers">
-        <h2>Nuestra Huella en Números</h2>
+    <section id="numbers-speak">
+        <h2>Números que Hablan</h2>
+        <p class="microcopy">Medimos el éxito en kg de café orgánico y número de familias apoyadas.</p>
         <div class="impact-numbers-grid">
             <div class="impact-card">
+                <div class="number" data-unit=" kg" data-precision="0">502,600</div>
+                <h3>Anuales</h3>
+                <p>Kg de café exportados bajo estándares orgánicos.</p>
+            </div>
+            <div class="impact-card">
                 <div class="number" data-unit="" data-precision="0">100</div>
-                <h4>Familias Asociadas</h4>
-                <p>Miembros hábiles y certificados que forman el núcleo de Casa Verde.</p>
+                <h3>Familias</h3>
+                <p>Productores directos certificados bajo Comercio Justo.</p>
             </div>
             <div class="impact-card">
-                <div class="number" data-unit="kg" data-precision="0">502,600</div>
-                <h4>Café Pergamino</h4>
-                <p>Producidos anualmente, garantizando comercio justo y precios estables.</p>
-            </div>
-            <div class="impact-card">
-                <div class="number" data-unit="" data-precision="0">45</div>
-                <h4>Alianzas Productivas</h4>
-                <p>Proyectos de infraestructura y mejora que benefician directamente a los socios.</p>
+                <div class="number" data-unit="+" data-precision="0">20</div>
+                <h3>Años</h3>
+                <p>De compromiso ininterrumpido con la producción sostenible.</p>
             </div>
         </div>
     </section>
 
     <section id="certifications" style="background-color: var(--niebla-matinal);">
-        <h2>Sellos de Confianza</h2>
-        <em style="text-align: center;">Nuestro compromiso con la calidad y la justicia es verificado.</em>
+        <h2>Certificaciones y Sellos</h2>
         <div class="certification-stamps">
-            <div class="stamp-card" style="--rotation: -3;">
-                <img src="images/logo-fair-trade.png" alt="Sello Fair Trade" style="height: 100px; margin-bottom: 1rem;">
-                <h4>FAIR TRADE (FT)</h4>
-                <p>Garantiza que nuestros productores reciban un precio justo y primas sociales para el desarrollo comunitario.</p>
-            </div>
-            <div class="stamp-card" style="--rotation: 2;">
-                <img src="images/logo-organico.png" alt="Sello Orgánico" style="height: 100px; margin-bottom: 1rem;">
-                <h4>ORGÁNICO</h4>
-                <p>Prohibición de pesticidas y químicos, protegiendo la biodiversidad de Ataco y la salud de nuestros caficultores.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="alianzas-clientes">
-        <h2>Nuestras Alianzas Estratégicas</h2>
-        <em style="text-align: center;">Trabajamos con los principales exportadores y tostadores del mundo.</em>
-        
-        <div class="certification-stamps">
-            <div class="stamp-card" style="--rotation: 1;">
-                <img src="images/logo-olam.png" alt="Logo Olam Agro" style="height: 80px; margin-bottom: 1rem;">
-                <h4>Olam Agro Colombia</h4>
-            </div>
-            <div class="stamp-card" style="--rotation: -2;">
-                <img src="images/logo-sucden.png" alt="Logo Sucden" style="height: 80px; margin-bottom: 1rem;">
-                <h4>Sucden</h4>
+            <div class="stamp-card" style="--rotation: -5;">
+                <div class="placeholder-box" style="min-height: 100px; box-shadow: none;">[MARCADOR: Sello Orgánico USDA/EU]</div>
+                <h4>ORGÁNICO USDA/EU</h4>
+                <p>Libre de químicos. Tierra sana y viva.</p>
             </div>
             <div class="stamp-card" style="--rotation: 3;">
-                <img src="images/logo-condor.png" alt="Logo Condor Speciality" style="height: 80px; margin-bottom: 1rem;">
+                 <div class="placeholder-box" style="min-height: 100px; box-shadow: none;">[MARCADOR: Sello Comercio Justo]</div>
+                <h4>COMERCIO JUSTO</h4>
+                <p>El precio que se paga es digno para el trabajo realizado.</p>
+            </div>
+            <div class="stamp-card" style="--rotation: -2;">
+                 <div class="placeholder-box" style="min-height: 100px; box-shadow: none;">[MARCADOR: Sello Proveedor N.]</div>
+                <h4>PROVEEDOR N.</h4>
+                <p>Cumplimos con los más altos estándares de calidad global.</p>
+            </div>
+        </div>
+        
+        <h2 style="margin-top: 4rem;">Alianzas Estratégicas</h2>
+        <div class="certification-stamps">
+            <div class="stamp-card" style="--rotation: 1;">
+                <div class="placeholder-box" style="min-height: 100px; box-shadow: none;">[MARCADOR: Logo Olam]</div>
+                <h4>Olam Agro Colombia</h4>
+            </div>
+            <div class="stamp-card" style="--rotation: -4;">
+                <div class="placeholder-box" style="min-height: 100px; box-shadow: none;">[MARCADOR: Logo Sucden]</div>
+                <h4>Sucden</h4>
+            </div>
+            <div class="stamp-card" style="--rotation: 2;">
+                <div class="placeholder-box" style="min-height: 100px; box-shadow: none;">[MARCADOR: Logo Condor Speciality]</div>
                 <h4>Condor Speciality</h4>
             </div>
-            <div class="stamp-card" style="--rotation: -1;">
-                <img src="images/logo-sucafina.png" alt="Logo Sucafina" style="height: 80px; margin-bottom: 1rem;">
+             <div class="stamp-card" style="--rotation: -3;">
+                <div class="placeholder-box" style="min-height: 100px; box-shadow: none;">[MARCADOR: Logo Sucafina]</div>
                 <h4>Sucafina</h4>
             </div>
         </div>
     </section>
 
+    <section id="impact-calculator" style="background-color: var(--tierra-humeda); color: #fff; text-align: center;">
+        <h2>Legado 2050</h2>
+        <p class="microcopy" style="color: var(--niebla-matinal);">Tu compra es una inversión en el futuro de Tolima.</p>
+
+        <p style="margin-top: 2rem;">Si compras <span id="kg-slider-value">1 kg</span> al mes:</p>
+        <input type="range" min="1" max="10" value="1" id="kg-slider" style="width: 80%; margin: 1rem auto; display: block;">
+
+        <div class="impact-numbers-grid" style="color: var(--tierra-humeda);">
+            <div class="impact-card">
+                <div class="number" id="trees-planted" style="color: #fff;">12</div>
+                <h3 style="color: var(--rojo-cereza);">ÁRBOLES PLANTADOS</h3>
+                <p style="color: #fff;">Compensación de huella de carbono.</p>
+            </div>
+            <div class="impact-card">
+                <div class="number" id="families-supported" style="color: #fff;">$5.00</div>
+                <h3 style="color: var(--rojo-cereza);">APOYO DIRECTO</h3>
+                <p style="color: #fff;">Dólares adicionales destinados a programas sociales.</p>
+            </div>
+        </div>
+    </section>
 
     <footer>
         <div class="footer-grid">
@@ -136,5 +159,18 @@
         </div>
     </footer>
     <script src="scripts.js"></script>
+    <script>
+        const slider = document.getElementById('kg-slider');
+        const valueSpan = document.getElementById('kg-slider-value');
+        const treesSpan = document.getElementById('trees-planted');
+        const familiesSpan = document.getElementById('families-supported');
+
+        slider.oninput = function() {
+            const kg = this.value;
+            valueSpan.textContent = kg + ' kg';
+            treesSpan.textContent = kg * 12;
+            familiesSpan.textContent = '$' + (kg * 5).toFixed(2);
+        }
+    </script>
 </body>
 </html>
