@@ -68,11 +68,18 @@ section:first-of-type:not(.hero-page) {
 }
 section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 
-/* HERO PAGE: Full width */
+/* HERO PAGE: Full width y CENTRADO VERTICAL DE CONTENIDO */
 .hero-page {
     max-width: none;
     padding: 0;
     min-height: 100vh; /* Base para Full Parallax */
+    
+    /* CAMBIO CLAVE: Flexbox para centrar .hero-content */
+    display: flex;
+    align-items: center; /* Centrado vertical */
+    justify-content: center; /* Centrado horizontal */
+    position: relative; 
+    overflow: hidden;
 }
 /* AJUSTE PARA HERO CORTOS (Checkout, Historia) */
 #hero-historia { min-height: 70vh; }
@@ -137,10 +144,10 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 /* AJUSTE DE LA IMAGEN DE FONDO PARALLAX (CENTRADA) */
 .hero-bg-photo{
     position:absolute;
-    top: 50%; /* CENTRADO VERTICAL */
-    left: 50%; /* CENTRADO HORIZONTAL */
+    top: 50%; 
+    left: 50%; 
     width:100%;
-    height:120%; /* Mantiene un poco de margen para el efecto */
+    height:120%; 
     object-fit:cover;
     z-index:1;
     filter:grayscale(.1) contrast(1.2) brightness(.85);
@@ -210,7 +217,90 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* ESTILOS SECCIONES PRINCIPALES (Index) */
+/* --- CLASES DE UTILIDAD CENTRALIZADAS --- */
+/* Estilos de utilidades generales/secciones */
+.section-light-bg { background-color: var(--beige-papel); }
+.section-fique-bg { background-color: var(--niebla-matinal); }
+.section-dark-green { background-color: var(--verde-cafetal); color: #fff; }
+.section-dark-brown-center { background-color: var(--tierra-humeda); color: #fff; text-align: center; }
+.section-center-text { text-align: center; }
+.section-full-width-padding-0 { padding: 0; max-width: none; }
+.section-h2-mt { margin-top: 4rem; }
+
+/* Estilos de texto */
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-fique { color: var(--niebla-matinal) !important; }
+.text-fique-center { color: var(--niebla-matinal); text-align: center; }
+.text-dark-small { color: var(--tierra-humeda); font-size: 1rem; }
+.text-white { color: #fff !important; }
+.text-red { color: var(--rojo-cereza) !important; }
+.price-bold { color: var(--rojo-cereza); font-weight: bold; }
+.cta-wrap { text-align: center; margin-top: 3rem; }
+
+/* Estilos de componentes específicos */
+.content-max-width-800 { max-width: 800px; margin: 0 auto; }
+.content-mt-2 { margin-top: 2rem; }
+
+/* Index Page */
+.vision-grid-wrapper { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; }
+.manifesto-content-padding { padding-top: 1rem; }
+.placeholder-video-lg { min-height: 400px; background-color: var(--niebla-matinal); margin-bottom: 2rem; }
+.tierra-microcopy { color: var(--verde-cafetal); font-size: 1.8rem; }
+
+/* Cafe Page */
+.flavor-wheel-placeholder { width: 300px; height: 300px; border-radius: 50%; box-shadow: none; }
+.notes-list-wrap { max-width: 400px; }
+.door-item img.filter-none { filter: none !important; } /* Sobrescribe el filtro gris */
+
+/* Proceso Page */
+.scrolly-final-content { background: var(--rojo-cereza); color: #fff; }
+.cta-hero-dark-bg { background: var(--tierra-humeda); border: none; }
+
+/* Sostenibilidad Page */
+.slider-full-width { width: 80%; margin: 1rem auto; display: block; }
+.impact-grid-dark-text { color: var(--tierra-humeda); }
+
+/* Comprar Page */
+.product-layout{ max-width: 900px; margin: 3rem auto; display: flex; gap: 4rem; }
+.product-image{ flex: 1; text-align: center; }
+.product-image img{ width: 100%; max-width: 400px; height: auto; border-radius: 5px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+.product-details{ flex: 1; }
+.price{ font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--rojo-cereza); line-height: 1; margin-bottom: 1rem;}
+.product-title { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 2.5rem; line-height: 1; }
+.form-group{ margin-bottom: 1.5rem; }
+.form-group label{ display: block; margin-bottom: 0.5rem; font-weight: 600;}
+.radio-options label{ display: inline-block; padding: 0.5rem 1rem; border: none; margin-right: 0.5rem; cursor: pointer; transition: all 0.3s; background-color: var(--niebla-matinal); border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+.radio-options input[type="radio"]{ display: none; }
+.radio-options input[type="radio"]:checked + label{ background: var(--tierra-humeda); color: #fff; box-shadow: 0 0 0 2px var(--tierra-humeda); }
+.placeholder-product-img { max-width: 400px; height: 400px; margin: 0 auto; }
+.input-qty { padding: 0.5rem; width: 80px; text-align: center; border: 1px solid var(--tierra-humeda); border-radius: 4px; }
+.cta-full-width { width: 100%; }
+.list-unstyled-mt-2 { list-style: none; padding: 1rem 0; margin-top: 2rem; }
+
+/* Checkout Page */
+.checkout-container { max-width: 1000px; margin: 3rem auto; display: flex; gap: 4rem; }
+.checkout-main { flex: 2; margin-top: 0; }
+.checkout-sidebar { flex: 1; background-color: var(--niebla-matinal); padding: 2rem; border-radius: 8px; box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); margin-top: 0; }
+.step-progress { margin-bottom: 2rem; }
+.checkout-form input { width: 100%; padding: 0.8rem; margin-bottom: 1rem; border: 1px solid var(--tierra-humeda); border-radius: 4px; }
+.placeholder-payment-widget { height: 100px; margin-bottom: 2rem; background: #fff; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); }
+.cta-full-width-dark { width: 100%; background: var(--tierra-humeda); }
+.summary-item-divider { border-bottom: 1px solid rgba(0,0,0,0.2); padding-bottom: 0.5rem; margin-bottom: 1rem; }
+
+/* Veredas Page - Moved from inline <style> block */
+.mapa-layout{ display: flex; min-height: 80vh; }
+.map-sidebar{ flex: 0 0 300px; padding: 2rem; background-color: var(--niebla-matinal); overflow-y: auto; border-radius: 8px 0 0 8px; box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); }
+.map-container{ flex: 1; }
+#interactiveMap{ height: 100%; border-radius: 0 8px 8px 0; }
+.vereda-item{ padding: 0.8rem 0; cursor: pointer; border-bottom: 1px solid rgba(0,0,0,0.1); transition: background 0.3s; }
+.vereda-item:hover{ background: rgba(0,0,0,0.05); }
+.vereda-item h4{ color: var(--tierra-humeda); font-size: 1.5rem; }
+.vereda-details{ padding: 2rem; background-color: var(--beige-papel); border-radius: 8px; margin-top: 2rem; box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); }
+.vereda-details img{ width: 100%; height: 250px; object-fit: cover; margin-bottom: 1rem; border-radius: 4px;}
+
+/* --- FIN CLASES DE UTILIDAD CENTRALIZADAS --- */
+
 .manifesto-section{min-height:60vh;display:flex;align-items:center;text-align:center;background-color:var(--beige-papel)}
 .manifesto-text{font-family:'Inter',sans-serif;font-weight:800;font-size:2.8rem;line-height:1.2;max-width:900px;margin:0 auto}
 
@@ -226,10 +316,6 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
     max-width: 900px; 
     margin: 2rem auto; 
     text-align: center;
-}
-.tierra-microcopy {
-    color: var(--verde-cafetal);
-    font-size: 1.8rem;
 }
 
 /* Tarjetas de Tres Puertas (Productos) */
@@ -252,7 +338,6 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 }
 .door-item h3{color:var(--rojo-cereza);font-size:2rem; margin-top: 1rem;}
 .door-item p {color: var(--tierra-humeda);}
-.door-item .price-bold {color: var(--rojo-cereza); font-weight: bold;}
 .door-item img{width:100%;height:200px;object-fit:cover;margin-bottom:1rem;filter:grayscale(.2); border-radius: 4px;} 
 
 /* --- ESTILOS PARA HISTORIA (Estructura de Tarjetas) --- */
@@ -315,7 +400,7 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
-.portrait-card img{width:100%;filter:grayscale(1) contrast(1.2);transition:transform .6s; border-radius: 8px;}
+.portrait-card img{width:100%;height:auto;filter:grayscale(1) contrast(1.2);transition:transform .6s; border-radius: 8px;}
 .portrait-card:hover img{transform:scale(1.05)}
 .portrait-card-info{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,.8),transparent);color:#fff;padding:1rem;transform:translateY(100%);transition:transform .4s; border-radius: 0 0 8px 8px;}
 .portrait-card:hover .portrait-card-info{transform:translateY(0)}
@@ -453,7 +538,7 @@ footer{
         flex-direction: column;
         width: 100%;
         position: absolute;
-        top: 50px; 
+        top: 60px; /* Asegurarse que coincida con el padding-top del body */
         left: 0;
         background: rgba(26, 20, 18, 0.95);
         padding: 1rem 0;
@@ -488,6 +573,9 @@ footer{
         padding: 1.5rem;
     }
     
+    /* Index Page (Vision) */
+    .vision-grid-wrapper { grid-template-columns: 1fr; }
+    
     /* Ajuste de Tarjetas a stack (Texto arriba, Imagen abajo) - USANDO LAS NUEVAS CLASES */
     .history-event-card {
         grid-template-columns: 1fr;
@@ -513,6 +601,10 @@ footer{
     .history-event-card:nth-child(even) h4 {
         border-right: none;
     }
+    
+    /* Cafe Page */
+    .flavor-wheel-container { flex-direction: column; gap: 2rem; }
+    
     /* Comprar Page */
     .product-layout{ flex-direction: column; }
     
@@ -521,8 +613,12 @@ footer{
     
     /* Veredas Page */
     .mapa-layout{ flex-direction: column; }
-    .map-sidebar{ flex: none; width: 100%; }
+    .map-sidebar{ flex: none; width: 100%; border-radius: 8px; margin-bottom: 1rem;}
+    #interactiveMap { border-radius: 8px; min-height: 400px; }
     
     /* Productores Page (Masonry grid a 1 columna) */
     .masonry-grid {columns: 1;}
+    
+    /* Impacto Page */
+    .impact-numbers-grid { grid-template-columns: 1fr; }
 }
