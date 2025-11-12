@@ -527,6 +527,12 @@ footer{
 
 /* MEDIA QUERIES PARA RESPONSIVE MÓVIL (768px y menos) */
 @media (max-width: 768px) {
+    
+    /* CORRECCIÓN DE PADDING: Reduce el padding lateral para que los botones no se "corten" */
+    section {
+        padding: 3rem 1rem; /* Reducido de 5rem 2rem a 3rem 1rem */
+    }
+    
     body { padding-top: 60px; } /* Ajuste de padding en móvil */
     .hero-content .microcopy { font-size: 1.5rem; }
     .hero-content .h1-index { font-size: 10vw; }
