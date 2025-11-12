@@ -20,7 +20,7 @@ body::before {
     height: 100%;
     background-image: url('images/ramas.png');
     background-repeat: repeat;
-    background-size: 150px; /* Hojas más GRANDES */
+    background-size: 150px; /* Hojas más GRANDES e irregulares */
     opacity: 0.08; /* Opacidad baja */
     z-index: -1; 
     pointer-events: none;
@@ -188,7 +188,7 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 }
 .door-item h3{color:var(--rojo-cereza);font-size:2rem; margin-top: 1rem;}
 .door-item p {color: var(--tierra-humeda);}
-.door-item img{width:100%;height:200px;object-fit:cover;margin-bottom:1rem;filter:grayscale(.2); border-radius: 4px;} /* Puntas redondeadas en imagen de tarjeta */
+.door-item img{width:100%;height:200px;object-fit:cover;margin-bottom:1rem;filter:grayscale(.2); border-radius: 4px;} 
 
 /* --- ESTILOS PARA HISTORIA (Estructura de Tarjetas) --- */
 .history-event-card {
@@ -232,10 +232,10 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 }
 /* --- FIN ESTILOS PARA HISTORIA --- */
 
-/* Split Hero (Página Café) - Lo adaptamos para ser Hero de Parallax */
-.cafe-split-hero{min-height:100vh;padding:0;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;} /* Usamos estilos del hero-page */
+/* Hero Cafe Page - Adaptado a Parallax */
+.cafe-split-hero{min-height:100vh;padding:0;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;} 
 .cafe-split-hero > div {flex: 1;}
-.cafe-split-left {display: none;} /* Ocultamos el div de la izquierda para usar solo la imagen parallax de fondo */
+.cafe-split-left {display: none;} /* Ocultamos el div de la izquierda */
 .cafe-split-right {flex: none; max-width: 90%; background: none; color: #fff; text-shadow: 3px 3px 8px rgba(0,0,0,0.8); z-index: 3;}
 .flavor-wheel-container{display:flex;justify-content:space-around;align-items:center;margin-top:3rem}
 
@@ -255,7 +255,7 @@ section{padding:5rem 2rem;max-width:1200px;margin:0 auto;position:relative}
 .portrait-card-info{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,.8),transparent);color:#fff;padding:1rem;transform:translateY(100%);transition:transform .4s; border-radius: 0 0 8px 8px;}
 .portrait-card:hover .portrait-card-info{transform:translateY(0)}
 
-/* Proceso Scrollytelling - Se mantiene, pero las secciones deben ser visibles */
+/* Proceso Scrollytelling */
 .proceso-page{background:var(--tierra-humeda);color:#fff;min-height:100vh;padding:0}
 .scrolly-section{
     min-height:100vh;
@@ -368,6 +368,7 @@ footer{
     font-family: 'Inter', sans-serif;
     color: var(--tierra-humeda);
     margin-top: 1rem;
+    text-align: center;
 }
 
 
