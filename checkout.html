@@ -3,12 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrito de Compras | Café Casa Verde</title>
+    <title>Checkout - Pago Seguro | Casa Verde</title>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@100..900&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .checkout-container { max-width: 1000px; margin: 3rem auto; display: flex; gap: 4rem; }
+        .checkout-main { flex: 2; }
+        .checkout-sidebar { flex: 1; background-color: var(--niebla-matinal); padding: 2rem; border-radius: 8px; box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); }
+        .step-progress { margin-bottom: 2rem; }
+        .checkout-form input { width: 100%; padding: 0.8rem; margin-bottom: 1rem; border: 1px solid var(--tierra-humeda); border-radius: 4px; }
+        .checkout-main, .checkout-sidebar { margin-top: 0; } 
+         @media (max-width: 768px) {
+            .checkout-container { flex-direction: column; }
+        }
+    </style>
 </head>
 <body>
     <nav id="mainNav" class="navbar">
@@ -25,29 +33,66 @@
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="historia.html">Historia</a></li>
                 <li><a href="cafe.html">El Café</a></li>
+                <li><a href="productores.html">Productores</a></li>
+                <li><a href="proceso.html">Proceso</a></li>
                 <li><a href="sostenibilidad.html">Impacto</a></li>
-                <li><a href="comprar.html">Tienda</a></li>
+                <li><a href="veredas.html">Nuestra Tierra</a></li>
+                <li><a href="comprar.html">Comprar</a></li>
                 <li><select id="langSwitch"><option value="es">ES</option><option value="en">EN</option><option value="fr">FR</option></select></li>
             </ul>
         </div>
     </nav>
 
     <section id="hero-checkout" class="hero-page" style="min-height: 50vh;">
-        <img src="images/hero-checkout-bg.jpg" class="hero-bg-photo" alt="Textura de costal de fique">
+        <img src="images/checkout.png" class="hero-bg-photo" alt="Textura de costal de fique">
         <div class="hero-content">
             <h1 style="font-size: 5rem;">CARRITO DE COMPRAS</h1>
         </div>
     </section>
 
-    <section id="checkout-form">
-        <h2>Finalizar Compra</h2>
-        <div style="
-            background-color: var(--niebla-matinal);
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-        ">
-            <p>[MARCADOR DE POSICIÓN: Aquí va el sumario del carrito, formulario de dirección y pasarela de pago (ej. Stripe o MercadoPago)]</p>
+    <section id="checkout-section">
+        <h2>PAGO SEGURO</h2>
+        <div class="checkout-container">
+            <div class="checkout-main">
+                <div class="step-progress">Paso 1 > Paso 2 > Paso 3</div>
+
+                <h3>1. Información de Contacto</h3>
+                <form class="checkout-form">
+                    <input type="email" placeholder="Email" required>
+                    <input type="text" placeholder="Nombre Completo" required>
+                    <input type="tel" placeholder="Teléfono" required>
+
+                    <h3 style="margin-top: 2rem;">2. Dirección de Envío</h3>
+                    <input type="text" placeholder="País" required>
+                    <input type="text" placeholder="Ciudad" required>
+                    <input type="text" placeholder="Dirección" required>
+                    <input type="text" placeholder="Código Postal" required>
+
+                    <h3 style="margin-top: 2rem;">3. Pago (Stripe Embed Placeholder)</h3>
+                    <div class="placeholder-box" style="
+                        height: 100px; 
+                        margin-bottom: 2rem; 
+                        background: #fff;
+                        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+                        [Placeholder para Widget de Pago Seguro - Stripe/Pasarela]
+                    </div>
+
+                    <button class="cta-hero" style="width: 100%; background: var(--tierra-humeda);">
+                        Completar Compra
+                    </button>
+                </form>
+            </div>
+
+            <div class="checkout-sidebar">
+                <h3>Resumen de Pedido</h3>
+                <div style="border-bottom: 1px solid rgba(0,0,0,0.2); padding-bottom: 0.5rem; margin-bottom: 1rem;">
+                    <p>1x Café Casa Verde (250g, Molido)</p>
+                    <p style="text-align: right;">$15.00 USD</p>
+                </div>
+                <p>Subtotal: $15.00 USD</p>
+                <p>Envío: $5.00 USD</p>
+                <h3 style="color: var(--rojo-cereza);">TOTAL: $20.00 USD</h3>
+            </div>
         </div>
     </section>
 
