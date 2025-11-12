@@ -64,7 +64,7 @@
         </div>
     </section>
 
-    <section id="certifications" style="background-color: var(--niebla-matinal);">
+    <section id="certifications" class="section-fique-bg">
         <h2>Certificaciones y Sellos</h2>
         <div class="certification-stamps">
             <div class="stamp-card" style="--rotation: -5;">
@@ -84,7 +84,7 @@
             </div>
         </div>
         
-        <h2 style="margin-top: 4rem;">Alianzas Estratégicas</h2>
+        <h2 class="section-h2-mt">Alianzas Estratégicas</h2>
         <div class="certification-stamps">
             <div class="stamp-card" style="--rotation: 1;">
                 <div class="placeholder-box" style="min-height: 100px; box-shadow: none;">[MARCADOR: Logo Olam]</div>
@@ -105,23 +105,23 @@
         </div>
     </section>
 
-    <section id="impact-calculator" style="background-color: var(--tierra-humeda); color: #fff; text-align: center;">
+    <section id="impact-calculator" class="section-dark-brown-center">
         <h2>Legado 2050</h2>
-        <p class="microcopy" style="color: var(--niebla-matinal);">Tu compra es una inversión en el futuro de Tolima.</p>
+        <p class="microcopy text-fique">Tu compra es una inversión en el futuro de Tolima.</p>
 
-        <p style="margin-top: 2rem;">Si compras <span id="kg-slider-value">1 kg</span> al mes:</p>
-        <input type="range" min="1" max="10" value="1" id="kg-slider" style="width: 80%; margin: 1rem auto; display: block;">
+        <p class="content-mt-2">Si compras <span id="kg-slider-value">1 kg</span> al mes:</p>
+        <input type="range" min="1" max="10" value="1" id="kg-slider" class="slider-full-width">
 
-        <div class="impact-numbers-grid" style="color: var(--tierra-humeda);">
+        <div class="impact-numbers-grid impact-grid-dark-text">
             <div class="impact-card">
-                <div class="number" id="trees-planted" style="color: #fff;">12</div>
-                <h3 style="color: var(--rojo-cereza);">ÁRBOLES PLANTADOS</h3>
-                <p style="color: #fff;">Compensación de huella de carbono.</p>
+                <div class="number text-white" id="trees-planted">12</div>
+                <h3 class="text-red">ÁRBOLES PLANTADOS</h3>
+                <p class="text-white">Compensación de huella de carbono.</p>
             </div>
             <div class="impact-card">
-                <div class="number" id="families-supported" style="color: #fff;">$5.00</div>
-                <h3 style="color: var(--rojo-cereza);">APOYO DIRECTO</h3>
-                <p style="color: #fff;">Dólares adicionales destinados a programas sociales.</p>
+                <div class="number text-white" id="families-supported">$5.00</div>
+                <h3 class="text-red">APOYO DIRECTO</h3>
+                <p class="text-white">Dólares adicionales destinados a programas sociales.</p>
             </div>
         </div>
     </section>
@@ -151,7 +151,7 @@
                 <h4>Impacto</h4>
                 <a href="sostenibilidad.html">Certificaciones</a>
                 <a href="proceso.html">Proceso</a>
-                <p style="color: var(--niebla-matinal); margin-top: 1rem;">Orgánico y Fair Trade.</p>
+                <p class="text-fique" style="margin-top: 1rem;">Orgánico y Fair Trade.</p>
             </div>
         </div>
         <div class="footer-copyright">
@@ -160,16 +160,19 @@
     </footer>
     <script src="scripts.js"></script>
     <script>
+        // Lógica específica de esta página (Slider de Impacto)
         const slider = document.getElementById('kg-slider');
         const valueSpan = document.getElementById('kg-slider-value');
         const treesSpan = document.getElementById('trees-planted');
         const familiesSpan = document.getElementById('families-supported');
 
-        slider.oninput = function() {
-            const kg = this.value;
-            valueSpan.textContent = kg + ' kg';
-            treesSpan.textContent = kg * 12;
-            familiesSpan.textContent = '$' + (kg * 5).toFixed(2);
+        if(slider) {
+            slider.oninput = function() {
+                const kg = this.value;
+                valueSpan.textContent = kg + ' kg';
+                treesSpan.textContent = kg * 12;
+                familiesSpan.textContent = '$' + (kg * 5).toFixed(2);
+            }
         }
     </script>
 </body>
