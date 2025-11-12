@@ -25,82 +25,89 @@
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="historia.html">Historia</a></li>
                 <li><a href="cafe.html">El Café</a></li>
+                <li><a href="productores.html">Productores</a></li>
+                <li><a href="proceso.html">Proceso</a></li>
                 <li><a href="sostenibilidad.html">Impacto</a></li>
-                <li><a href="comprar.html">Tienda</a></li>
+                <li><a href="veredas.html">Nuestra Tierra</a></li>
+                <li><a href="comprar.html">Comprar</a></li>
                 <li><select id="langSwitch"><option value="es">ES</option><option value="en">EN</option><option value="fr">FR</option></select></li>
             </ul>
         </div>
     </nav>
 
     <section id="hero-home" class="hero-page">
-        <img src="images/hero-parallax-bg.jpg" class="hero-bg-photo" alt="IMAGEN DE FONDO DE CAFÉ">
+        <img src="images/hero-parallax-bg.png" class="hero-bg-photo" alt="IMAGEN DE FONDO DE CAFÉ">
         <div class="hero-content">
             <img src="images/LOGO-cafe casa verde (1).png" alt="Logo Casa Verde Café" style="
                 width: 40vw; 
                 max-width: 300px;
                 height: auto;
+                filter: drop-shadow(0 0 10px rgba(0,0,0,0.5)); 
                 margin-bottom: 1rem;
             ">
             <p class="microcopy" style="color: #fff; font-size: 2rem;">El Verdadero Sabor de las Montañas del Tolima</p>
-            <a href="comprar.html" class="cta-hero">Comprar Nuestro Café Orgánico</a>
+            <a href="cafe.html" class="cta-hero">Descubre de Dónde Viene Tu Café</a>
         </div>
     </section>
 
-    <section id="vision-y-tierra" style="padding: 2rem 2rem 5rem 2rem; background-color: var(--beige-papel);">
-        <div style="max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem;">
-            
-            <div class="manifesto-content" style="padding-top: 1rem;">
-                <h2 style="font-size: 3rem;">Nuestra Visión: Más que Café</h2>
-                <ul>
-                    <li>No vendemos café. Compartimos 20 años de manos curtidas, 100 familias que decidieron que juntas podían más.</li>
-                    <li>Cada taza lleva historias de abuelos que enseñaron a sus hijos el secreto de la tierra buena.</li>
-                    <li>Nuestro compromiso es con la calidad, la sostenibilidad y la autonomía de nuestros productores.</li>
-                </ul>
-                <a href="sostenibilidad.html" class="cta-hero">Conoce Nuestro Impacto</a>
-            </div>
+    <section id="manifesto" class="manifesto-section" style="display: block;">
+        <p class="manifesto-text" style="font-size: 2.8rem; line-height: 1.2; margin: 0 auto; max-width: 900px;">
+            No vendemos café.
+            Compartimos 20 años de manos curtidas, 100 familias que decidieron que juntas podían más, y 502,600 kg de dignidad cada año.
+        </p>
 
-            <div id="media-spot" style="text-align: center;">
-                <h3 style="color: var(--verde-cafetal); font-size: 1.8rem;">La Tierra que nos Nutre</h3>
-                <div class="placeholder-box">
-                    MARCADOR DE POSICIÓN: Aquí se insertará el código del **Video de YouTube embebido** o la **Foto del Lago/Paisaje** (ej. `<iframe width="100%" height="350" src="..."></iframe>`)
-                </div>
-            </div>
-        </div>
+        <p style="
+            font-family: 'Playfair Display', serif; 
+            font-size: 2.1rem; 
+            line-height: 1.5; 
+            color: var(--rojo-cereza); 
+            max-width: 900px; 
+            margin: 2rem auto; 
+            text-align: center;
+        ">
+            Cada taza lleva historias de madrugadas entre la niebla, de abuelos que enseñaron a sus hijos el secreto de la tierra buena, de sueños que se volvieron realidad porque decidimos no estar solos.
+        </p>
+
+        <p class="manifesto-text" style="font-size: 2.8rem; line-height: 1.2; margin: 0 auto; max-width: 900px;">
+            Cuando tomas nuestro café, te sientas a nuestra mesa.
+        </p>
+        
+        <p class="microcopy" style="
+            font-size: 1.5rem; 
+            margin-top: 2.5rem; 
+            color: var(--tierra-humeda);
+            text-align: center;
+        ">
+            Café Casa Verde - Cultivado por familias, compartido con el corazón
+        </p>
     </section>
-    
-    <section id="productos-destacados">
-        <h2>Nuestro Café: Selecciona tu Origen</h2>
+    <section id="three-doors">
+        <h2>Un Viaje por la Esencia</h2>
         <div class="three-doors-grid">
-            <a href="cafe.html" class="door-item">
-                <img src="images/cafe-clasico.jpg" alt="Café Clásico">
-                <h3>CLÁSICO ORGÁNICO</h3>
-                <p>Molienda media. Notas a panela y chocolate.</p>
-                <p style="color: var(--rojo-cereza); font-weight: bold;">$15.00 USD</p>
+            <a href="historia.html" class="door-item">
+                <img src="images/fundadores.jpg" alt="Foto fundadores">
+                <h3>HISTORIA</h3>
+                <p>Desde 2003. Descubre nuestras raíces.</p>
             </a>
             <a href="cafe.html" class="door-item">
-                <img src="images/cafe-premium.jpg" alt="Café Premium">
-                <h3>PREMIUM SPECIALTY</h3>
-                <p>Cítrico, floral y cuerpo sedoso. Altitud 1960m.</p>
-                <p style="color: var(--rojo-cereza); font-weight: bold;">$20.00 USD</p>
+                <img src="images/granos-selectos.jpg" alt="Granos de café">
+                <h3>EL CAFÉ</h3>
+                <p>Orgánico. 1,960m. Perfil sensorial único.</p>
             </a>
-            <a href="cafe.html" class="door-item">
-                <img src="images/cafe-grano-verde.jpg" alt="Café en Grano Verde">
-                <h3>GRANO VERDE (B2B)</h3>
-                <p>Para tostadores y exportadores. Alto volumen.</p>
-                <p style="color: var(--rojo-cereza); font-weight: bold;">Contactar</p>
+            <a href="productores.html" class="door-item">
+                <img src="images/retrato-don-jose.jpg" alt="Retrato Don Jose">
+                <h3>PRODUCTORES</h3>
+                <p>100 familias. Rostros, nombres y veredas.</p>
             </a>
-        </div>
-        <div style="text-align: center; margin-top: 3rem;">
-            <a href="comprar.html" class="cta-hero">Ver Todos los Productos en Tienda</a>
         </div>
     </section>
 
     <section id="video-testimonio" style="background-color: var(--verde-cafetal); color: #fff;">
         <h2>La Voz de la Montaña</h2>
         <div style="max-width: 800px; margin: 0 auto;">
-            <video controls poster="images/don-jose-video-placeholder.jpg" style="width: 100%;">
-                <source src="video/don-jose-corto.mp4" type="video/mp4">
-            </video>
+            <div class="placeholder-box" style="min-height: 400px; background-color: var(--niebla-matinal); margin-bottom: 2rem;">
+                [MARCADOR DE POSICIÓN: Aquí va el Video Testimonial, usar el src="video/don-jose-corto.mp4"]
+            </div>
             <p class="microcopy" style="color: var(--niebla-matinal);">Don José: "Mis manos manchadas de tierra son mi orgullo."</p>
         </div>
         <div style="text-align: center; margin-top: 2rem;"><a href="productores.html" class="cta-hero">Conoce todas las historias</a></div>
