@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El Café - Perfil de Sabor | Café Casa Verde</title>
+    <title>El Café - Perfil Sensorial | Casa Verde</title>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@100..900&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -25,38 +24,51 @@
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="historia.html">Historia</a></li>
                 <li><a href="cafe.html">El Café</a></li>
+                <li><a href="productores.html">Productores</a></li>
+                <li><a href="proceso.html">Proceso</a></li>
                 <li><a href="sostenibilidad.html">Impacto</a></li>
-                <li><a href="comprar.html">Tienda</a></li>
+                <li><a href="veredas.html">Nuestra Tierra</a></li>
+                <li><a href="comprar.html">Comprar</a></li>
                 <li><select id="langSwitch"><option value="es">ES</option><option value="en">EN</option><option value="fr">FR</option></select></li>
             </ul>
         </div>
     </nav>
 
-    <section id="hero-cafe" class="hero-page">
-        <img src="images/hero-cafe-bg.jpg" class="hero-bg-photo" alt="Granos de café de especialidad">
+    <section id="cafe-hero" class="hero-page">
+        <img src="images/cafe.png" class="hero-bg-photo" alt="Granos de café de especialidad">
         <div class="hero-content">
             <h1 style="font-size: 5rem;">EL ALMA DEL CAFÉ</h1>
-            <p class="microcopy" style="color: #fff; font-size: 2rem;">Perfil de Sabor Único a 1,960m de altura.</p>
+            <p class="microcopy" style="color: var(--niebla-matinal); font-size: 2rem;">Orgánico · Fair Trade · 1,960m</p>
+            <a href="comprar.html" class="cta-hero">Comprar Ahora</a>
         </div>
     </section>
 
-    <section id="cafe-main-content">
-        <h2>Nuestro Perfil de Taza</h2>
-        <em style="text-align: center;">Notas a panela, chocolate, cítricos y flores.</em>
+    <section id="flavor-profile" style="background-color: var(--niebla-matinal);">
+        <h2>Perfil Sensorial</h2>
+        <p class="microcopy">La esencia de nuestra tierra expresada en notas de cata.</p>
 
         <div class="flavor-wheel-container">
-            <div id="flavor-description" style="border-left-color: var(--rojo-cereza);">
-                <h3 id="flavorTitle">TOCA LA RUEDA</h3>
-                <p id="flavorText">
-                    Interactúa con la rueda de sabor para descubrir las notas sensoriales de nuestro café. Cada color representa un pilar de nuestro perfil único, desarrollado por la tierra volcánica de Ataco.
-                </p>
+            <div class="placeholder-box" style="width: 300px; height: 300px; border-radius: 50%; box-shadow: none;">
+                [MARCADOR: Rueda de Sabor (Canvas)]
             </div>
-            <canvas id="flavorWheelCanvas" width="300" height="300"></canvas>
-        </div>
-    </section>
 
-    <section id="cafe-specs" style="background-color: var(--niebla-matinal);">
-        <h2>Especificaciones (B2B)</h2>
+            <div class="notes-list" style="max-width: 400px;">
+                <div class="note-item" style="border-left: 3px solid var(--rojo-cereza); padding-left: 1rem;">
+                    <h3>PANELA</h3>
+                    <p>Dulzor natural que evoca la caña de azúcar.</p>
+                </div>
+                <div class="note-item" style="border-left: 3px solid var(--rojo-cereza); padding-left: 1rem;">
+                    <h3>CHOCOLATE</h3>
+                    <p>Notas profundas asociadas a la tierra volcánica.</p>
+                </div>
+                <div class="note-item" style="border-left: 3px solid var(--rojo-cereza); padding-left: 1rem;">
+                    <h3>CÍTRICO</h3>
+                    <p>Un toque brillante y refrescante.</p>
+                </div>
+            </div>
+        </div>
+        
+        <h2 style="margin-top: 4rem;">Especificaciones Técnicas</h2>
         <table class="b2b-specs-table">
             <tr>
                 <th>Atributo</th>
@@ -64,25 +76,45 @@
             </tr>
             <tr>
                 <td>Altura</td>
-                <td>1,960 msnm</td>
+                <td>1,500 - 1,960 msnm</td>
             </tr>
             <tr>
                 <td>Proceso</td>
-                <td>Lavado (Fermentación de 18h)</td>
+                <td>Lavado Completo (Fermentación de 18h)</td>
             </tr>
             <tr>
-                <td>Secado</td>
-                <td>Sol (marquesina) y Silo (mecánico)</td>
+                <td>Variedades</td>
+                <td>Colombia, Castillo, Caturra, Cenicafé 1</td>
             </tr>
             <tr>
                 <td>Certificación</td>
                 <td>Orgánico y Fair Trade (FT)</td>
             </tr>
-            <tr>
-                <td>Volumen Anual</td>
-                <td>502,600 kg (Pergamino)</td>
-            </tr>
         </table>
+    </section>
+
+    <section id="preparation-methods" style="text-align: center;">
+        <h2>Métodos de Preparación</h2>
+        <p class="microcopy">Cada método expresa una cara distinta del sabor.</p>
+        <div class="three-doors-grid">
+            <div class="door-item">
+                <img src="images/v60.jpg" alt="V60" style="filter:none;">
+                <h3>V60</h3>
+                <p>Ratio 1:16</p>
+            </div>
+
+            <div class="door-item">
+                <img src="images/french-press.jpg" alt="French Press" style="filter:none;">
+                <h3>French Press</h3>
+                <p>4 minutos · Molienda gruesa</p>
+            </div>
+
+            <div class="door-item">
+                <img src="images/espresso.jpg" alt="Espresso" style="filter:none;">
+                <h3>Espresso</h3>
+                <p>18g → 36g</p>
+            </div>
+        </div>
     </section>
 
     <footer>
@@ -117,6 +149,42 @@
             <p>&copy; 2025 Café Casa Verde. Todos los derechos reservados.</p>
         </div>
     </footer>
+
     <script src="scripts.js"></script>
+
+    <script>
+        const canvas = document.getElementById('flavorWheelCanvas');
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            const data = [
+                { label: 'Panela', color: '#A67853' },
+                { label: 'Chocolate', color: '#1A1412' },
+                { label: 'Cítrico', color: '#C71F37' },
+                { label: 'Floral', color: '#7A9B7F' },
+                { label: 'Caramelo', color: '#A67853' },
+                { label: 'Especias', color: '#1A1412' },
+            ];
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const radius = 150;
+            let startAngle = 0;
+            data.forEach(segment => {
+                const angle = Math.PI * 2 / data.length;
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.arc(centerX, centerY, radius, startAngle, startAngle + angle);
+                ctx.closePath();
+                ctx.fillStyle = segment.color;
+                ctx.fill();
+                startAngle += angle;
+            });
+            ctx.strokeStyle = 'white';
+            ctx.lineWidth = 5;
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+            ctx.stroke();
+        }
+    </script>
 </body>
 </html>
