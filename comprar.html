@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,22 +7,6 @@
     <title>Comprar Café - Tienda | Casa Verde</title>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@100..900&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .product-layout{ max-width: 900px; margin: 3rem auto; display: flex; gap: 4rem; }
-        .product-image{ flex: 1; text-align: center; }
-        .product-image img{ width: 100%; max-width: 400px; height: auto; border-radius: 5px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .product-details{ flex: 1; }
-        .price{ font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--rojo-cereza); line-height: 1; margin-bottom: 1rem;}
-        .form-group{ margin-bottom: 1.5rem; }
-        .form-group label{ display: block; margin-bottom: 0.5rem; font-weight: 600;}
-        .radio-options label{ display: inline-block; padding: 0.5rem 1rem; border: none; margin-right: 0.5rem; cursor: pointer; transition: all 0.3s; background-color: var(--niebla-matinal); border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .radio-options input[type="radio"]{ display: none; }
-        .radio-options input[type="radio"]:checked + label{ background: var(--tierra-humeda); color: #fff; box-shadow: 0 0 0 2px var(--tierra-humeda); }
-        /* Media Query para Comprar */
-        @media (max-width: 768px) {
-            .product-layout { flex-direction: column; }
-        }
-    </style>
 </head>
 <body>
     <nav id="mainNav" class="navbar">
@@ -60,13 +45,13 @@
         <h2>Producto Estrella</h2>
         <div class="product-layout">
             <div class="product-image">
-                 <div class="placeholder-box" style="max-width: 400px; height: 400px; margin: 0 auto;">
+                 <div class="placeholder-box placeholder-product-img">
                     [MARCADOR: Imagen del Producto - usar `images/bolsa-cafe.png`]
                 </div>
-                <p class="microcopy" style="color: var(--tierra-humeda); font-size: 1rem;">Cada bolsa incluye un código QR de trazabilidad.</p>
+                <p class="microcopy text-dark-small">Cada bolsa incluye un código QR de trazabilidad.</p>
             </div>
             <div class="product-details">
-                <h2 style="font-family: 'Inter', sans-serif; font-weight: 800; font-size: 2.5rem; line-height: 1;">CAFÉ CASA VERDE ORGÁNICO</h2>
+                <h2 class="product-title">CAFÉ CASA VERDE ORGÁNICO</h2>
                 <p>Perfil Sensorial: Panela, Chocolate, Cítrico. Cuerpo Sedoso.</p>
 
                 <div class="price">$15.00 USD</div>
@@ -98,13 +83,13 @@
 
                     <div class="form-group">
                         <label for="qty">Cantidad</label>
-                        <input type="number" id="qty" name="qty" value="1" min="1" style="padding: 0.5rem; width: 80px; text-align: center; border: 1px solid var(--tierra-humeda); border-radius: 4px;">
+                        <input type="number" id="qty" name="qty" value="1" min="1" class="input-qty">
                     </div>
 
-                    <button type="submit" class="cta-hero" style="width: 100%;">Agregar al Carrito</button>
+                    <button type="submit" class="cta-hero cta-full-width">Agregar al Carrito</button>
                 </form>
 
-                <ul style="list-style: none; padding: 1rem 0; margin-top: 2rem;">
+                <ul class="list-unstyled-mt-2">
                     <li>✓ Orgánico Certificado</li>
                     <li>✓ Comercio Justo Garantizado</li>
                     <li>✓ Envío desde Ataco, Colombia 🇨🇴</li>
@@ -138,7 +123,7 @@
                 <h4>Impacto</h4>
                 <a href="sostenibilidad.html">Certificaciones</a>
                 <a href="proceso.html">Proceso</a>
-                <p style="color: var(--niebla-matinal); margin-top: 1rem;">Orgánico y Fair Trade.</p>
+                <p class="text-fique" style="margin-top: 1rem;">Orgánico y Fair Trade.</p>
             </div>
         </div>
         <div class="footer-copyright">
