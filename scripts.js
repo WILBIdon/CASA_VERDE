@@ -1,253 +1,145 @@
-// Variable global para controlar la reproducción de audio (página productores)
-let currentAudio = null;
-
-// Datos de la rueda de sabor para la página cafe.html
-const FLAVOR_DATA = [
-    { label: 'Panela/Caña', color: '#A67853', text: 'Notas a panela y caña, proporcionando un dulzor natural, sedoso y envolvente. Es el corazón de nuestro perfil.' },
-    { label: 'Chocolate/Caramelo', color: '#1A1412', text: 'Toques a chocolate amargo y caramelo tostado, resultado de la tierra volcánica y el proceso de tueste medio. Base robusta.' },
-    { label: 'Cítrico/Floral', color: '#C71F37', text: 'Acidez brillante, cítrica y viva, complementada por un leve aroma floral que añade complejidad y limpieza a la taza.' },
-    { label: 'Especias', color: '#7A9B7F', text: 'Un residual dulce y limpio con sutiles matices a especias como nuez moscada o canela.' },
-];
-
-let flavorSegments = [];
-
+/* SCRIPTS.JS FINAL Y RESPONSIVE
+    (Centralizado y Condicional)
+*/
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Lógica del Menú Hamburguesa (Alto Riesgo de Conflicto - Aseguramos su función)
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    // --- 1. LÓGICA DEL MENÚ HAMBURGUESA (GLOBAL) ---
+    // (Se ejecuta siempre, en móvil y escritorio)
     const menuToggle = document.getElementById('menu-toggle');
     const navLinks = document.querySelector('.nav-links');
+
     if (menuToggle && navLinks) {
         menuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            // Cambiar el texto del botón si es necesario
-            menuToggle.textContent = navLinks.classList.contains('active') ? 'CERRAR' : 'MENÚ';
+            // Cambiar texto del botón
+            if (navLinks.classList.contains('active')) {
+                menuToggle.textContent = 'CERRAR';
+            } else {
+                menuToggle.textContent = 'MENÚ';
+            }
         });
-        // Cerrar menú al hacer clic en un enlace (solo en móvil)
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
-                    navLinks.classList.remove('active');
-                    menuToggle.textContent = 'MENÚ';
+    }
+
+    // --- 2. LÓGICA DE NAVBAR SCROLL (GLOBAL) ---
+    // (Se ejecuta siempre)
+    const mainNav = document.getElementById('mainNav');
+    if (mainNav) {
+        ScrollTrigger.create({
+            trigger: document.body,
+            start: "top top",
+            end: "+=100", // Después de 100px de scroll
+            onUpdate: self => {
+                if (self.direction === 1) { // Scrolleando hacia abajo
+                    mainNav.style.background = "rgba(17, 126, 57, 0.8)"; // Más opaco con blur
+                } else { // Scrolleando hacia arriba
+                    mainNav.style.background = "var(--verde-cafetal)"; // Color sólido
                 }
-            });
-        });
-    }
-
-    // 2. Inicialización de GSAP y ScrollTrigger (Si las librerías están cargadas)
-    if (window.gsap && window.ScrollTrigger) {
-        initScrollAnimations();
-    } else {
-        console.warn("GSAP o ScrollTrigger no se ha cargado. Las animaciones están deshabilitadas.");
-    }
-
-    // 3. Inicialización de Audio (Howler)
-    if (window.Howl) {
-        initAudioOverlays();
-    }
-
-    // 4. Inicializa la rueda de sabores si estamos en la página del café
-    if (document.getElementById('flavorWheelCanvas')) {
-        initFlavorWheel();
-    }
-
-    // 5. Inicialización de Mapa (Leaflet/Three.js)
-    if (window.THREE || window.L) {
-        initMap();
-    }
-});
-
-function initScrollAnimations() {
-    gsap.registerPlugin(ScrollTrigger);
-
-    // Animación Hero Parallax (más impactante)
-    const heroPhoto = document.querySelector('.hero-bg-photo');
-    if (heroPhoto) {
-        gsap.to('.hero-bg-photo', {
-            y: '45%', 
-            scale: 1.25, 
-            ease: 'none',
-            scrollTrigger: {
-                trigger: '.hero-page',
-                start: 'top top',
-                end: 'bottom top',
-                scrub: 1.5,
-            }
-        });
-        
-        gsap.to('.hero-content', {
-            y: '30%', 
-            ease: 'power1.out',
-            scrollTrigger: {
-                trigger: '.hero-page',
-                start: 'top top',
-                end: '50% top',
-                scrub: 1,
-            }
-        });
-    }
-
-    // Animación Scroll Reveal para todas las secciones
-    gsap.utils.toArray('section:not(#hero-home), .timeline-event, .door-item, .portrait-card').forEach(el => {
-        gsap.from(el, {
-            y: 50,
-            opacity: 0,
-            duration: 0.8,
-            ease: "power2.out",
-            scrollTrigger: {
-                trigger: el,
-                start: "top 85%",
-                toggleActions: "play none none reverse"
-            }
-        });
-    });
-
-    // Animación de Contador para Sostenibilidad
-    const counters = document.querySelectorAll('.impact-numbers-grid .number');
-    counters.forEach(counter => {
-        const endValue = parseFloat(counter.textContent.replace(',', ''));
-        const dataUnit = counter.dataset.unit || '';
-        const dataPrecision = parseInt(counter.dataset.precision) || 0;
-
-        gsap.from(counter, {
-            innerText: 0,
-            duration: 2,
-            ease: "power1.out",
-            snap: { innerText: 1 },
-            scrollTrigger: {
-                trigger: counter,
-                start: 'top 80%',
-                toggleActions: 'play none none reverse'
             },
-            onUpdate: () => {
-                let value = parseFloat(counter.innerText).toFixed(dataPrecision);
-                if (dataUnit === 'kg') value = new Intl.NumberFormat('es-CO').format(value);
-                counter.textContent = value + dataUnit;
+            onLeaveBack: () => {
+                mainNav.style.background = "var(--verde-cafetal)"; // Sólido al volver al inicio
             }
         });
-    });
-
-    // Scrollytelling para PROCESO (Activa y desactiva la clase 'active')
-    if (document.getElementById('proceso-page')) {
-        gsap.utils.toArray(".scrolly-section").forEach((section, i) => {
-            const content = section.querySelector('.scrolly-content');
-            ScrollTrigger.create({
-                trigger: section,
-                start: "top center",
-                end: "bottom center",
-                onEnter: () => content.classList.add('active'),
-                onLeaveBack: () => content.classList.remove('active'),
-                onEnterBack: () => content.classList.add('active'),
-                onLeave: () => content.classList.remove('active'),
-            });
-        });
-    }
-}
-
-// Funciones de audio
-function initAudioOverlays() { 
-    // Lógica del modal de audio (reducida para concisión)
-    document.querySelectorAll('.portrait-card').forEach(portrait=>{ 
-        portrait.addEventListener('click',e=>{ 
-            const src=portrait.dataset.audio; 
-            if(src) alert(`Reproduciendo historia de: ${portrait.querySelector('h4').textContent}`);
-        }); 
-    }); 
-}
-
-function closeAudioModal() {
-    const audioModal = document.getElementById('audioModal');
-    if (currentAudio) {
-        currentAudio.stop();
-        currentAudio.unload();
-        currentAudio = null;
-    }
-    audioModal.style.display = 'none';
-}
-
-// Función mapa (placeholder)
-function initMap(){}
-
-// LÓGICA INTERACTIVA DE LA RUEDA DE SABORES
-function initFlavorWheel() {
-    const canvas = document.getElementById('flavorWheelCanvas');
-    if (!canvas) return;
-
-    const ctx = canvas.getContext('2d');
-    const centerX = canvas.width / 2;
-    const centerY = canvas.height / 2;
-    const radius = 150;
-    let startAngle = 0;
-
-    function drawSegments() {
-        flavorSegments = [];
-        startAngle = 0;
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        FLAVOR_DATA.forEach((segment, index) => {
-            const angle = Math.PI * 2 / FLAVOR_DATA.length;
-            const endAngle = startAngle + angle;
-
-            ctx.beginPath();
-            ctx.moveTo(centerX, centerY);
-            ctx.arc(centerX, centerY, radius, startAngle, endAngle);
-            ctx.closePath();
-            ctx.fillStyle = segment.color;
-            ctx.fill();
-
-            flavorSegments.push({
-                ...segment,
-                startAngle: startAngle,
-                endAngle: endAngle
-            });
-
-            startAngle = endAngle;
-        });
-
-        ctx.strokeStyle = 'white';
-        ctx.lineWidth = 5;
-        ctx.beginPath();
-        ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
-        ctx.stroke();
-        
-        ctx.fillStyle = 'white';
-        ctx.font = '20px Bebas Neue';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText('CATA', centerX, centerY);
     }
 
-    canvas.addEventListener('click', (event) => {
-        const rect = canvas.getBoundingClientRect();
-        const mouseX = event.clientX - rect.left;
-        const mouseY = event.clientY - rect.top;
+    // --- 3. LÓGICA DE ANIMACIÓN RESPONSIVA (LA CLAVE) ---
+    ScrollTrigger.matchMedia({
 
-        const distance = Math.sqrt((mouseX - centerX) ** 2 + (mouseY - centerY) ** 2);
+        /* A. SOLO EN DESKTOP (Pantallas > 768px) 
+           Aquí es donde vive el PARALLAX.
+        */
+        "(min-width: 769px)": function() {
+            console.log("Activando Parallax de Escritorio");
 
-        if (distance <= radius) {
-            let angle = Math.atan2(mouseY - centerY, mouseX - centerX);
-            if (angle < 0) angle += Math.PI * 2;
-
-            const clickedSegment = flavorSegments.find(segment => {
-                if (segment.startAngle > segment.endAngle) {
-                    return angle >= segment.startAngle || angle < segment.endAngle;
-                }
-                return angle >= segment.startAngle && angle < segment.endAngle;
+            // 1. Efecto Parallax en TODOS los Hero
+            gsap.utils.toArray('.hero-bg-photo').forEach(bg => {
+                gsap.to(bg, {
+                    scrollTrigger: {
+                        trigger: bg.parentElement, // El .hero-page que lo contiene
+                        start: "top top",
+                        end: "bottom top",
+                        scrub: true // Efecto "pegajoso" al scrollear
+                    },
+                    yPercent: 30 // Mueve la imagen (el % es la intensidad del parallax)
+                });
             });
+        },
 
-            if (clickedSegment) {
-                updateFlavorDescription(clickedSegment);
-            }
+        /* B. SOLO EN MÓVIL (Pantallas <= 768px) 
+           Aquí NO hay parallax.
+        */
+        "(max-width: 768px)": function() {
+            console.log("Parallax de Escritorio DESACTIVADO para móvil.");
+            // No se ejecuta ninguna animación de parallax.
+            // La imagen de fondo se queda estática y centrada 
+            // gracias al CSS (.hero-bg-photo), lo cual
+            // da un rendimiento perfecto en móvil.
+        },
+
+        /* C. GLOBAL (Se ejecuta en todas las pantallas) 
+           Animaciones ligeras que sí queremos en móvil.
+        */
+        "all": function() {
+            console.log("Activando animaciones globales (Scrolly y Números)");
+
+            // 1. Animación de aparición (Scrollytelling en proceso.html)
+            gsap.utils.toArray('.scrolly-content').forEach(content => {
+                gsap.fromTo(content, 
+                    { opacity: 0, y: 40 }, // Estado inicial (invisible)
+                    {
+                        scrollTrigger: {
+                            trigger: content,
+                            start: "top 85%", // Aparece cuando llega al 85% de la pantalla
+                            toggleActions: "play none none reverse" // Se revierte si subes
+                        },
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.8,
+                        ease: "power1.out"
+                    }
+                );
+            });
+            
+            // 2. Animador de Números (Impacto)
+            // Usamos un 'Set' para evitar que se dispare varias veces si el usuario scrollea rápido
+            const animatedNumbers = new Set();
+            gsap.utils.toArray('.number').forEach(numEl => {
+                
+                ScrollTrigger.create({
+                    trigger: numEl,
+                    start: "top 90%",
+                    onEnter: () => {
+                        if (!animatedNumbers.has(numEl)) {
+                            animatedNumbers.add(numEl);
+                            
+                            const endValue = parseFloat(numEl.textContent.replace(/,/g, ''));
+                            const unit = numEl.dataset.unit || '';
+                            const precision = parseInt(numEl.dataset.precision, 10) || 0;
+
+                            gsap.fromTo(numEl, 
+                                { textContent: 0 }, 
+                                {
+                                    textContent: endValue,
+                                    duration: 3,
+                                    ease: "power1.out",
+                                    snap: { textContent: 1 }, // Solo números enteros si no hay precisión
+                                    // Formatear el número mientras anima
+                                    onUpdate: function() {
+                                        let currentVal = parseFloat(this.targets()[0].textContent);
+                                        numEl.textContent = currentVal.toFixed(precision) + unit;
+                                    },
+                                    onComplete: () => {
+                                        // Asegurar valor final exacto con formato
+                                        numEl.textContent = endValue.toFixed(precision) + unit;
+                                    }
+                                }
+                            );
+                        }
+                    }
+                });
+            });
         }
-    });
+    }); // --- Fin de matchMedia ---
 
-    function updateFlavorDescription(segment) {
-        const titleElement = document.getElementById('flavorTitle');
-        const textElement = document.getElementById('flavorText');
-        
-        titleElement.textContent = segment.label.toUpperCase();
-        textElement.textContent = segment.text;
-        
-        titleElement.style.color = segment.color;
-        document.getElementById('flavorDescription').style.borderLeftColor = segment.color;
-    }
-
-    drawSegments();
-}
+}); // --- Fin del DOMContentLoaded ---
