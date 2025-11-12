@@ -9,11 +9,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body id="historia-page">
     <nav id="mainNav" class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <img src="images/LOGO-cafe casa verde (1).png" alt="Logo Casa Verde Café" class="logo-img">
+                <a href="index.html">
+                    <img src="images/LOGO-cafe casa verde (1).png" alt="Logo Casa Verde Café" class="logo-img">
+                </a>
             </div>
             
             <button id="menu-toggle">MENÚ</button>
@@ -22,74 +24,84 @@
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="historia.html">Historia</a></li>
                 <li><a href="cafe.html">El Café</a></li>
+                <li><a href="productores.html">Productores</a></li>
+                <li><a href="proceso.html">Proceso</a></li>
                 <li><a href="sostenibilidad.html">Impacto</a></li>
-                <li><a href="comprar.html">Tienda</a></li>
+                <li><a href="veredas.html">Nuestra Tierra</a></li>
+                <li><a href="comprar.html">Comprar</a></li>
                 <li><select id="langSwitch"><option value="es">ES</option><option value="en">EN</option><option value="fr">FR</option></select></li>
             </ul>
         </div>
     </nav>
 
-    <section id="hero-historia" class="hero-page">
-        <img src="images/historia-hero-bg.jpg" class="hero-bg-photo" alt="Imagen de fondo de Historia">
+    <section id="hero-historia" class="hero-page" style="min-height: 70vh;">
+        <img src="images/historia.png" class="hero-bg-photo" alt="Foto de fundadores">
         <div class="hero-content">
-            <h1 style="font-size: 5rem;">Nuestra Historia</h1>
-            <p class="microcopy" style="color: #fff; font-size: 2rem;">20 años de manos curtidas forjando una comunidad.</p>
+            <h1 style="font-size: 8vw; line-height: 1;">RAÍCES PROFUNDAS</h1>
+            <p class="microcopy" style="color: var(--niebla-matinal);">23 de Octubre, 2003: 113 personas dijeron: Juntos podemos más.</p>
         </div>
     </section>
 
-    <section id="story-timeline">
-        <h2>La Cronología que Forjó la Dignidad</h2>
-        <em style="text-align: center;">Cada tarjeta representa un hito clave en nuestra evolución.</em>
+    <section id="timeline-section" style="background-color: var(--beige-papel);">
+        <h2>Nuestra Historia Año por Año</h2>
         
         <div class="history-event-card">
             <div class="history-content">
-                <h4>2003: LA FUNDACIÓN</h4>
-                <p>
-                    La asociación café casa verde fue conformada el 23 de octubre de 2003. En ese momento, los precios del café pasaban por una época crítica y la región no era tenida en cuenta en proyectos del gobierno.
-                </p>
-                <p>
-                    El propósito inicial fue unir esfuerzos para lograr proyectos en beneficio de los asociados. El grupo fundador inició con 113 personas.
-                </p>
+                <h4>2003: EL PACTO</h4>
+                <p>Nace la asociación Casa Verde. Un grupo de 113 campesinos decide unir fuerzas para evitar la venta a intermediarios.</p>
+                <p>El propósito inicial fue unir esfuerzos para lograr proyectos en beneficio de los asociados.</p>
             </div>
             <div class="history-media">
-                <img src="images/historia-fundacion-2003.jpg" alt="Foto de los fundadores de la asociación en 2003.">
+                <div class="placeholder-box" style="min-height: 300px;">
+                    [MARCADOR DE POSICIÓN: Foto de la firma o fundadores - usar `images/firma-documento.jpg`]
+                </div>
             </div>
         </div>
 
         <div class="history-event-card">
             <div class="history-content">
-                <h4>CONSOLIDACIÓN Y PROYECTOS</h4>
-                <p>
-                    A lo largo de los años, el trabajo como asociación se consolidó. Se ha logrado gestionar varios proyectos clave para la comunidad, como alianzas productivas (beneficiando a 45 asociados) y una ficha integral con mejoramiento de beneficiadero y pozo séptico.
-                </p>
-                <p>
-                    La organización también ha contribuido con proyectos para los socios como el arreglo de máquinas despulpadora.
-                </p>
+                <h4>2008: ORGÁNICO Y FAIR TRADE</h4>
+                <p>Tras años de arduo trabajo, obtenemos nuestras primeras certificaciones: **Orgánico** y **Fair Trade**.</p>
+                <p>La base de datos se actualizó a 100 asociados hábiles y certificados.</p>
             </div>
             <div class="history-media">
-                <img src="images/historia-proyectos-y-campos.jpg" alt="Foto de proyectos de infraestructura o campos de café.">
+                <div class="placeholder-box" style="min-height: 300px;">
+                    [MARCADOR DE POSICIÓN: Fotos de certificados - usar `images/certificacion.jpg`]
+                </div>
             </div>
         </div>
-        
+
         <div class="history-event-card">
             <div class="history-content">
-                <h4>ACTUALIDAD Y CERTIFICACIÓN</h4>
-                <p>
-                    A la fecha, la organización ha actualizado su base de datos y cuenta con **100 asociados hábiles y certificados**.
-                </p>
-                <p>
-                    Los socios están certificados en los sellos **Fair Trade (FT)** y **Orgánico**. Además, contamos con un silo para secado de café con capacidad de 5000 kg y un laboratorio para catación de café.
-                </p>
+                <h4>2015: INFRAESTRUCTURA Y CAPACITACIÓN</h4>
+                <p>Inversión en el silo comunitario con capacidad para 5000 kg y el laboratorio de catación.</p>
+                <p>Se gestionaron alianzas productivas que beneficiaron a 45 asociados (mejoramiento de beneficiadero y pozo séptico).</p>
             </div>
             <div class="history-media">
-                <img src="images/historia-catacion-certificacion.jpg" alt="Foto del laboratorio de catación o logos de las certificaciones FT/Orgánico.">
+                <div class="placeholder-box" style="min-height: 300px;">
+                    [MARCADOR DE POSICIÓN: Fotos del silo o laboratorio - usar `images/silo.jpg`]
+                </div>
             </div>
         </div>
-        
-        <div style="text-align: center; margin-top: 4rem;">
-            <p class="microcopy">La organización continuará gestionando proyectos en beneficio de la comunidad de Ataco.</p>
-            <a href="productores.html" class="cta-hero">Conoce a las 100 Familias</a>
+
+        <div class="history-event-card">
+            <div class="history-content">
+                <h4>2025: EL FUTURO</h4>
+                <p>20+ años de legado. La organización continúa gestionando proyectos en beneficio de la comunidad de Ataco.</p>
+            </div>
+            <div class="history-media">
+                <div class="placeholder-box" style="min-height: 300px;">
+                    [MARCADOR DE POSICIÓN: Foto de paisaje de Tolima]
+                </div>
+            </div>
         </div>
+
+    </section>
+
+    <section id="historia-cta" style="background-color: var(--tierra-humeda); color: #fff; text-align: center;">
+        <h2>Sé parte de los siguientes 20 años</h2>
+        <p>Tu apoyo garantiza que esta historia continúe.</p>
+        <a href="contacto.html" class="cta-hero">Contactar para Alianzas</a>
     </section>
 
     <footer>
