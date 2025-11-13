@@ -1,4 +1,4 @@
-/* SCRIPTS.JS V2.1 (Parallax activado en MÓVIL y Escritorio)
+/* SCRIPTS.JS V2.4 (Parallax Móvil + Botón Fachada de Video)
 */
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -74,7 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     // 3.3. Animador de Números (Impacto)
-    // Usamos un 'Set' para evitar que se dispare varias veces si el usuario scrollea rápido
     const animatedNumbers = new Set();
     gsap.utils.toArray('.number').forEach(numEl => {
         
@@ -95,14 +94,12 @@ document.addEventListener('DOMContentLoaded', () => {
                             textContent: endValue,
                             duration: 3,
                             ease: "power1.out",
-                            snap: { textContent: 1 }, // Solo números enteros si no hay precisión
-                            // Formatear el número mientras anima
+                            snap: { textContent: 1 }, 
                             onUpdate: function() {
                                 let currentVal = parseFloat(this.targets()[0].textContent);
                                 numEl.textContent = currentVal.toFixed(precision) + unit;
                             },
                             onComplete: () => {
-                                // Asegurar valor final exacto con formato
                                 numEl.textContent = endValue.toFixed(precision) + unit;
                             }
                         }
@@ -111,5 +108,30 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // --- 4. LÓGICA DE VIDEO FACADE (CARGA RÁPIDA) ---
+    function initYouTubeFacade(containerId) {
+        const facadeContainer = document.getElementById(containerId);
+        
+        if (facadeContainer) {
+            const youtubeId = facadeContainer.dataset.youtubeId;
+
+            facadeContainer.addEventListener('click', () => {
+                // Crear el iframe
+                const iframe = document.createElement('iframe');
+                iframe.setAttribute('src', `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0&modestbranding=1`);
+                iframe.setAttribute('frameborder', '0');
+                iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+                iframe.setAttribute('allowfullscreen', '');
+                
+                // Limpiar el contenedor y añadir el iframe
+                facadeContainer.innerHTML = '';
+                facadeContainer.appendChild(iframe);
+            });
+        }
+    }
+
+    // Iniciar el 'escuchador' para el video de YouTube
+    initYouTubeFacade('youtube-facade');
 
 }); // --- Fin del DOMContentLoaded ---
