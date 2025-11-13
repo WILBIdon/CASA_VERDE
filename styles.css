@@ -1,4 +1,4 @@
-/* Full styles for Multi-Page Brutal Design V2.7 */
+/* Full styles for Multi-Page Brutal Design V2.9 (Final) */
 *{margin:0;padding:0;box-sizing:border-box}
 /* CAMBIO CLAVE: Nueva paleta y fuentes de carácter (Brutal) */
 body{
@@ -537,7 +537,7 @@ footer{
     
     /* Carga tu imagen de fachada SIN ESPACIOS EN EL NOMBRE */
     background-image: url('images/fachada-video.png'); 
-    background-color: var(--tierra-humeda); /* Color de fondo si la imagen tarda */
+    background-color: var(--tierra-humeda); /* Color de fondo si la imagen falla */
     background-size: cover;
     background-position: center;
     
