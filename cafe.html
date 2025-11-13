@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El Café - Perfil Sensorial | Casa Verde</title>
+    <title>El Café - Casa Verde</title>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@100..900&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -23,7 +23,7 @@
             <ul class="nav-links">
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="historia.html">Historia</a></li>
-                <li><a href="cafe.html">El Café</a></li>
+                <li><a href="cafe.html" class="active-nav">El Café</a></li>
                 <li><a href="productores.html">Productores</a></li>
                 <li><a href="proceso.html">Proceso</a></li>
                 <li><a href="sostenibilidad.html">Impacto</a></li>
@@ -34,87 +34,108 @@
         </div>
     </nav>
 
-    <section id="cafe-hero" class="hero-page">
-        <img src="images/cafe.png" class="hero-bg-photo" alt="Granos de café de especialidad">
-        <div class="hero-content">
-            <h1 class="h1-page">EL ALMA DEL CAFÉ</h1>
-            <p class="microcopy">Orgánico · Fair Trade · 1,960m</p>
-            <a href="comprar.html" class="cta-hero">Comprar Ahora</a>
+    <section id="hero-cafe" class="hero-page">
+        <img src="images/hero-parallax-bg.jpg" class="hero-bg-photo" alt="IMAGEN DE FONDO DE CAFÉ">
+        <div class="hero-content text-dark-translucent">
+            <h1 class="hero-h1">EL VERDADERO SABOR DE LA MONTAÑA</h1>
+            <p class="microcopy">Nuestros granos son la expresión de una tierra privilegiada y un proceso manual impecable.</p>
+        </div>
+    </section>
+
+    <section id="cafe-intro" class="section-light-bg">
+        <div class="intro-grid">
+            <div class="intro-text">
+                <h2>El Café que Nace de la Pasión</h2>
+                <p>Nuestra cooperativa produce café de alta especialidad en las alturas del Tolima. Cada grano es el resultado de la sabiduría ancestral, un compromiso con la tierra y una selección minuciosa.</p>
+                <p>Trabajamos bajo los sellos de **Fair Trade** y **Orgánico**, garantizando no solo un producto de calidad superior, sino también un impacto positivo y sostenible para nuestras 100 familias productoras.</p>
+                <a href="proceso.html" class="cta-hero">Ver el Proceso de Cultivo</a>
+            </div>
+            <div class="intro-image">
+                <img src="images/cafe-en-canasta.jpg" alt="Granos de café recién cosechados">
+            </div>
         </div>
     </section>
 
     <section id="flavor-profile" class="section-fique-bg">
         <h2>Perfil Sensorial</h2>
-        <p class="microcopy">La esencia de nuestra tierra expresada en notas de cata.</p>
+        <p class="microcopy">La esencia de nuestra tierra expresada en notas de cata. ¡Toca o pasa el ratón sobre cada nota para ver dónde reside el sabor!</p>
 
-        <div class="flavor-wheel-container">
-            <div class="placeholder-box flavor-wheel-placeholder">
-                [MARCADOR: Rueda de Sabor (Canvas)]
-            </div>
+        <div class="flavor-map-container">
+            
+            <img src="images/taza-de-cafe.jpg" alt="Taza de Café con notas de sabor" class="main-coffee-cup-img">
 
-            <div class="notes-list notes-list-wrap">
-                <div class="note-item">
-                    <h3>PANELA</h3>
+            <div class="flavor-spot panela" data-note="panela">
+                <span class="note-label">PANELA</span>
+                <div class="popup-box">
+                    <img src="images/panela-cana.jpg" alt="Panela y caña">
                     <p>Dulzor natural que evoca la caña de azúcar.</p>
                 </div>
-                <div class="note-item">
-                    <h3>CHOCOLATE</h3>
+            </div>
+
+            <div class="flavor-spot chocolate" data-note="chocolate">
+                <span class="note-label">CHOCOLATE</span>
+                <div class="popup-box">
+                    <img src="images/chocolate-caramelo.jpg" alt="Chocolate y caramelo">
                     <p>Notas profundas asociadas a la tierra volcánica.</p>
                 </div>
-                <div class="note-item">
-                    <h3>CÍTRICO</h3>
+            </div>
+
+            <div class="flavor-spot citrus" data-note="citrus">
+                <span class="note-label">CÍTRICO</span>
+                <div class="popup-box">
+                    <img src="images/citricos.jpg" alt="Frutos cítricos">
                     <p>Un toque brillante y refrescante.</p>
                 </div>
             </div>
+
         </div>
-        
         <h2 class="section-h2-mt">Especificaciones Técnicas</h2>
         <table class="b2b-specs-table">
-            <tr>
-                <th>Atributo</th>
-                <th>Detalle</th>
-            </tr>
-            <tr>
-                <td>Altura</td>
-                <td>1,500 - 1,960 msnm</td>
-            </tr>
-            <tr>
-                <td>Proceso</td>
-                <td>Lavado Completo (Fermentación de 18h)</td>
-            </tr>
-            <tr>
-                <td>Variedades</td>
-                <td>Colombia, Castillo, Caturra, Cenicafé 1</td>
-            </tr>
-            <tr>
-                <td>Certificación</td>
-                <td>Orgánico y Fair Trade (FT)</td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Atributo</th>
+                    <th>Valor Clásico</th>
+                    <th>Valor Premium</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Altura (m.s.n.m.)</td>
+                    <td>1,500 - 1,800</td>
+                    <td>1,800 - 2,100</td>
+                </tr>
+                <tr>
+                    <td>Variedad</td>
+                    <td>Caturra, Castillo</td>
+                    <td>Bourbón, Geisha (Lotes limitados)</td>
+                </tr>
+                <tr>
+                    <td>Proceso</td>
+                    <td>Lavado Tradicional</td>
+                    <td>Lavado y Honey (Lotes especiales)</td>
+                </tr>
+                <tr>
+                    <td>Puntaje SCA</td>
+                    <td>82 - 84</td>
+                    <td>86+</td>
+                </tr>
+                <tr>
+                    <td>Cuerpo</td>
+                    <td>Medio, Redondo</td>
+                    <td>Sedoso, Complejo</td>
+                </tr>
+                <tr>
+                    <td>Acidez</td>
+                    <td>Media, Cítrica</td>
+                    <td>Alta, Brillante</td>
+                </tr>
+            </tbody>
         </table>
     </section>
 
-    <section id="preparation-methods" class="section-center-text">
-        <h2>Métodos de Preparación</h2>
-        <p class="microcopy">Cada método expresa una cara distinta del sabor.</p>
-        <div class="three-doors-grid">
-            <div class="door-item">
-                <img src="images/v60.jpg" alt="V60" class="filter-none">
-                <h3>V60</h3>
-                <p>Ratio 1:16</p>
-            </div>
-
-            <div class="door-item">
-                <img src="images/french-press.jpg" alt="French Press" class="filter-none">
-                <h3>French Press</h3>
-                <p>4 minutos · Molienda gruesa</p>
-            </div>
-
-            <div class="door-item">
-                <img src="images/espresso.jpg" alt="Espresso" class="filter-none">
-                <h3>Espresso</h3>
-                <p>18g → 36g</p>
-            </div>
-        </div>
+    <section id="cta-comprar" class="section-dark-green text-center">
+        <h2>¿Listo para probar la diferencia?</h2>
+        <a href="comprar.html" class="cta-hero">Explorar la Tienda</a>
     </section>
 
     <footer>
@@ -149,7 +170,6 @@
             <p>&copy; 2025 Café Casa Verde. Todos los derechos reservados.</p>
         </div>
     </footer>
-
     <script src="scripts.js"></script>
 </body>
 </html>
