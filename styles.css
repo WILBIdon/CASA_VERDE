@@ -896,3 +896,198 @@ footer{
         left: 15px;
     }
 }
+
+/* --- ESTILOS V3.1: CORRECCIÓN BOTÓN Y MAPEO SENSORIAL INTERACTIVO --- */
+
+/* Corregir el botón cta-hero en el contexto de la cuadrícula de introducción */
+.intro-grid {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+}
+.intro-grid .intro-text {
+    flex: 1;
+}
+.intro-grid .intro-image {
+    flex: 1;
+    text-align: center;
+}
+/* Asegura que la nueva imagen sea responsive dentro del contenedor */
+.intro-grid .intro-image img { 
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenedor Principal: Necesita ser relativo para posicionar las notas absolutas */
+.flavor-map-container {
+    position: relative;
+    max-width: 800px; /* Ancho máximo del contenedor */
+    margin: 3rem auto;
+    text-align: center;
+}
+
+.flavor-map-container .main-coffee-cup-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* El Marcador de Sabor (flavor-spot) */
+.flavor-spot {
+    position: absolute;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* Etiquetas de Sabor (para indicar qué nota es) */
+.note-label {
+    display: block;
+    background: var(--verde-cafetal);
+    color: white;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-radius: 4px;
+    white-space: nowrap;
+    transition: transform 0.3s;
+}
+.flavor-spot:hover .note-label {
+    transform: scale(1.1);
+}
+
+/* POPUP BOX: donde sale la imagen y la descripción */
+.popup-box {
+    position: absolute;
+    width: 200px; /* Ancho fijo para el popup */
+    background: var(--beige-papel);
+    color: var(--tierra-humeda);
+    border: 3px solid var(--rojo-cereza); /* Borde fuerte tipo brutal */
+    padding: 0.8rem;
+    border-radius: 4px;
+    box-shadow: 5px 5px 0px 0px var(--tierra-humeda); /* Sombra bruta */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s, visibility 0.4s;
+    z-index: 100;
+}
+
+.popup-box img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 0.5rem;
+    border-radius: 2px;
+}
+.popup-box p {
+    font-size: 0.9rem;
+    line-height: 1.3;
+}
+
+/* Mostrar el popup al hacer hover */
+.flavor-spot:hover .popup-box {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* --- POSICIONAMIENTO (Ajustar los porcentajes según tu imagen real de taza) --- */
+/* Los porcentajes son respecto al tamaño de la imagen de la taza. */
+
+/* PANELA (Apuntando a la parte superior derecha de la taza) */
+.flavor-spot.panela {
+    top: 15%; 
+    left: 70%;
+}
+.flavor-spot.panela .popup-box {
+    top: -150px; /* Arriba del label */
+    left: 100%; /* A la derecha del label */
+}
+
+/* CHOCOLATE (Apuntando al centro izquierdo de la taza) */
+.flavor-spot.chocolate {
+    top: 50%;
+    left: 20%;
+}
+.flavor-spot.chocolate .popup-box {
+    top: -150px;
+    left: 100%;
+}
+
+/* CÍTRUS (Apuntando al borde inferior de la taza) */
+.flavor-spot.citrus {
+    top: 90%;
+    left: 50%;
+}
+.flavor-spot.citrus .popup-box {
+    top: -150px;
+    left: 100%;
+}
+
+/* SIMULACIÓN DE FLECHA (Con pseudo-elemento ::before) */
+/* Crea un pequeño rectángulo que apunta desde el popup hacia el punto de sabor */
+.popup-box::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 3px;
+    background-color: var(--rojo-cereza); /* Color de la flecha */
+    opacity: 0;
+    transition: opacity 0.4s;
+    z-index: 1;
+}
+
+.flavor-spot:hover .popup-box::before {
+    opacity: 1;
+}
+
+/* Las flechas siempre salen de la izquierda del popup para apuntar al label */
+.flavor-spot .popup-box::before {
+    top: 50%; 
+    left: -20px;
+}
+
+/* --- Adaptación Responsiva (para móviles) --- */
+@media (max-width: 768px) {
+    /* FIX: Hacemos que la introducción se apile verticalmente */
+    .intro-grid {
+        flex-direction: column;
+        padding: 3rem 1rem;
+    }
+    
+    .flavor-map-container {
+        margin: 1rem 0;
+    }
+    .popup-box {
+        width: 150px; /* Reducir el tamaño del popup en móvil */
+        padding: 0.5rem;
+        box-shadow: 3px 3px 0px 0px var(--tierra-humeda);
+    }
+    .popup-box p {
+        font-size: 0.8rem;
+    }
+    /* Posicionamiento más agresivo en móvil */
+    .flavor-spot.panela,
+    .flavor-spot.chocolate,
+    .flavor-spot.citrus {
+        /* Ajustar la posición horizontal en móvil para evitar el borde */
+        left: 5%; 
+    }
+    .flavor-spot .popup-box {
+        left: 20px; /* El popup sale 20px a la derecha del label */
+        top: 35px; /* El popup sale 35px debajo del label */
+    }
+    .flavor-spot .popup-box::before {
+        /* Flecha apuntando hacia arriba */
+        width: 3px;
+        height: 20px;
+        top: -20px;
+        left: 15px;
+    }
+}
