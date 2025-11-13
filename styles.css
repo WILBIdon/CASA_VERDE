@@ -533,6 +533,13 @@ footer{
         padding: 3rem 1rem; /* Reducido de 5rem 2rem a 3rem 1rem */
     }
     
+    /* ***** ¡NUEVA CORRECCIÓN! ***** */
+    /* CORRECCIÓN BOTONES PARTIDOS: Reducir padding interno en botones */
+    .cta-hero {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
     body { padding-top: 60px; } /* Ajuste de padding en móvil */
     .hero-content .microcopy { font-size: 1.5rem; }
     .hero-content .h1-index { font-size: 10vw; }
