@@ -702,7 +702,32 @@ footer{
     /* Impacto Page */
     .impact-numbers-grid { grid-template-columns: 1fr; }
 }
-/* --- ESTILOS V3.0: MAPEO SENSORIAL INTERACTIVO --- */
+
+/* --- ESTILOS V3.1: CORRECCIÓN BOTÓN Y MAPEO SENSORIAL INTERACTIVO --- */
+
+/* Corregir el botón cta-hero en el contexto de la cuadrícula de introducción */
+.intro-grid {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+}
+.intro-grid .intro-text {
+    flex: 1;
+}
+.intro-grid .intro-image {
+    flex: 1;
+    text-align: center;
+}
+.intro-grid .intro-image img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
 
 /* Contenedor Principal: Necesita ser relativo para posicionar las notas absolutas */
 .flavor-map-container {
@@ -777,7 +802,7 @@ footer{
     visibility: visible;
 }
 
-/* --- POSICIONAMIENTO (Si tu imagen es diferente, ajusta estos valores) --- */
+/* --- POSICIONAMIENTO (Ajustar los porcentajes según tu imagen real de taza) --- */
 /* Los porcentajes son respecto al tamaño de la imagen de la taza. */
 
 /* PANELA (Apuntando a la parte superior derecha de la taza) */
@@ -834,7 +859,13 @@ footer{
 }
 
 /* --- Adaptación Responsiva (para móviles) --- */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+    /* FIX: Hacemos que la introducción se apile verticalmente */
+    .intro-grid {
+        flex-direction: column;
+        padding: 3rem 1rem;
+    }
+
     .flavor-map-container {
         margin: 1rem 0;
     }
@@ -850,7 +881,7 @@ footer{
     .flavor-spot.panela,
     .flavor-spot.chocolate,
     .flavor-spot.citrus {
-        /* Ajustar la posición horizontal en móvil */
+        /* Ajustar la posición horizontal en móvil para evitar el borde */
         left: 5%; 
     }
     .flavor-spot .popup-box {
