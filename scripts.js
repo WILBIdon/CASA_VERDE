@@ -1,4 +1,4 @@
-/* SCRIPTS.JS V2.8 (Parallax Móvil + CORRECCIÓN Botón Fachada de Video)
+/* SCRIPTS.JS V2.9 (Final)
 */
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -116,8 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (facadeContainer) {
             const youtubeId = facadeContainer.dataset.youtubeId;
 
-            // ***** CORRECCIÓN V2.8 *****
-            // Añadimos { once: true } para que el evento solo se dispare una vez.
             facadeContainer.addEventListener('click', () => {
                 // 1. Crear el iframe
                 const iframe = document.createElement('iframe');
@@ -129,8 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // 2. Limpiar el contenido INTERNO (el botón de play)
                 facadeContainer.innerHTML = ''; 
                 
-                // 3. ¡¡LA LÍNEA QUE FALTABA!!
-                //    Quitar la imagen de fondo del CONTENEDOR para revelar el video.
+                // 3. ¡¡LA LÍNEA FINAL!! Quitar la imagen de fondo del CONTENEDOR 
                 facadeContainer.style.backgroundImage = 'none';
 
                 // 4. Añadir el video
