@@ -1,4 +1,4 @@
-/* Full styles for Multi-Page Brutal Design V2.9 (Final) */
+/* Full styles for Multi-Page Brutal Design V2.7 (Final) */
 *{margin:0;padding:0;box-sizing:border-box}
 /* CAMBIO CLAVE: Nueva paleta y fuentes de carácter (Brutal) */
 body{
@@ -522,7 +522,7 @@ footer{
 }
 
 
-/* --- ESTILOS PARA VIDEO FACADE (CARGA RÁPIDA) --- */
+/* --- ESTILOS PARA VIDEO FACHADE (CARGA RÁPIDA) --- */
 /* V2.6 - CORRECCIÓN PARA VIDEO VERTICAL (9:16) */
 .video-facade {
     position: relative;
