@@ -1,4 +1,4 @@
-/* SCRIPTS.JS V2.4 (Parallax Móvil + Botón Fachada de Video)
+/* SCRIPTS.JS V2.8 (Parallax Móvil + CORRECCIÓN Botón Fachada de Video)
 */
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -116,18 +116,26 @@ document.addEventListener('DOMContentLoaded', () => {
         if (facadeContainer) {
             const youtubeId = facadeContainer.dataset.youtubeId;
 
+            // ***** CORRECCIÓN V2.8 *****
+            // Añadimos { once: true } para que el evento solo se dispare una vez.
             facadeContainer.addEventListener('click', () => {
-                // Crear el iframe
+                // 1. Crear el iframe
                 const iframe = document.createElement('iframe');
                 iframe.setAttribute('src', `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0&modestbranding=1`);
                 iframe.setAttribute('frameborder', '0');
                 iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
                 iframe.setAttribute('allowfullscreen', '');
                 
-                // Limpiar el contenedor y añadir el iframe
-                facadeContainer.innerHTML = '';
+                // 2. Limpiar el contenido INTERNO (el botón de play)
+                facadeContainer.innerHTML = ''; 
+                
+                // 3. ¡¡LA LÍNEA QUE FALTABA!!
+                //    Quitar la imagen de fondo del CONTENEDOR para revelar el video.
+                facadeContainer.style.backgroundImage = 'none';
+
+                // 4. Añadir el video
                 facadeContainer.appendChild(iframe);
-            });
+            }, { once: true });
         }
     }
 
