@@ -1,4 +1,4 @@
-/* Full styles for Multi-Page Brutal Design */
+/* Full styles for Multi-Page Brutal Design V2.7 */
 *{margin:0;padding:0;box-sizing:border-box}
 /* CAMBIO CLAVE: Nueva paleta y fuentes de carácter (Brutal) */
 body{
@@ -521,30 +521,184 @@ footer{
     text-align: center;
 }
 
+
 /* --- ESTILOS PARA VIDEO FACADE (CARGA RÁPIDA) --- */
+/* V2.6 - CORRECCIÓN PARA VIDEO VERTICAL (9:16) */
 .video-facade {
     position: relative;
-    width: 300px; /* Ancho fijo para el video vertical */
-    /* Calcula la altura para mantener la proporción 9:16 (vertical) */
-    /* 300px de ancho * (16/9) = ~533px de alto */
-    padding-top: calc(16 / 9 * 100%); /* Truco para mantener el aspect ratio 9:16 */
-    height: 0; /* Reinicia la altura para que padding-top la controle */
+    /* Controla el tamaño en desktop, pero permite que se encoja en móvil */
+    max-width: 300px; /* Ancho máximo del video vertical */
+    width: 100%; /* Ocupa el 100% del contenedor donde está (media-spot) */
     margin: 0 auto; /* Centrar el contenedor del video */
-    background-image: url('images/FACHADA VIDEO.png'); /* Carga tu imagen de fachada */
+    
+    /* Truco para forzar el aspect ratio 9:16 VERTICAL (16 / 9 = 1.7777...) */
+    height: 0;
+    padding-top: 177.77%; /* (16/9 * 100%) */
+    
+    /* Carga tu imagen de fachada SIN ESPACIOS EN EL NOMBRE */
+    background-image: url('images/fachada-video.png'); 
+    background-color: var(--tierra-humeda); /* Color de fondo si la imagen tarda */
     background-size: cover;
     background-position: center;
+    
     border-radius: 8px;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
     cursor: pointer;
     overflow: hidden; /* Asegura que el iframe no se desborde */
-    transition: background-image 0.5s ease-in-out;
 }
 
-.video-facade .play-button {
+/* El 'iframe' que se crea con JS */
+.video-facade iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* El botón de Play falso */
+.play-button-overlay {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 60px;
-    height: 60px;
-    background-color: rgba(179, 26, 47, 0.8); /* Rojo cereza semi-
+    width: 80px;
+    height: 80px;
+    background-color: rgba(255, 255, 255, 0.8); /* Botón blanco, como en tu screenshot */
+    color: #1A1412; /* Icono oscuro */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    line-height: 1;
+    pointer-events: none; /* No interfiere con el clic del div */
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.video-facade:hover .play-button-overlay {
+    background-color: rgba(255, 255, 255, 1);
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+
+@keyframes fadeInUp{0%{opacity:0;transform:translateY(30px)}100%{opacity:1;transform:translateY(0)}}
+
+
+/* MEDIA QUERIES PARA RESPONSIVE MÓVIL (768px y menos) */
+@media (max-width: 768px) {
+    
+    /* CORRECCIÓN DE PADDING: Reduce el padding lateral para que los botones no se "corten" */
+    section {
+        padding: 3rem 1rem; /* Reducido de 5rem 2rem a 3rem 1rem */
+    }
+    
+    /* ***** CORRECCIÓN AGRESIVA DE BOTONES (V2.3 RE-IMPLEMENTADA) ***** */
+    .cta-hero {
+        font-size: 0.9rem; /* Reducido de 1.2rem a 0.9rem para que quepa todo */
+        padding: 0.8rem 0.5rem; /* Padding lateral muy reducido */
+        width: 100%; /* Opcional: para que se vean uniformes */
+        display: block; /* Asegura que tome el ancho y centre el texto */
+    }
+    
+    body { padding-top: 60px; } /* Ajuste de padding en móvil */
+    .hero-content .microcopy { font-size: 1.5rem; }
+    .hero-content .h1-index { font-size: 10vw; }
+    .hero-content .h1-page { font-size: 3rem; }
+    
+    /* Menú: Mostrar botón y ocultar links */
+    .nav-links {
+        display: none; 
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px; /* Asegurarse que coincida con el padding-top del body */
+        left: 0;
+        background: rgba(26, 20, 18, 0.95);
+        padding: 1rem 0;
+    }
+    .nav-links.active {
+        display: flex;
+    }
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+        padding: 0.5rem 0;
+    }
+    #langSwitch {
+        margin-left: 0;
+        margin-top: 10px;
+        width: 80%;
+    }
+    #menu-toggle {
+        display: block; /* Mostrar el botón en móvil */
+    }
+    .nav-container {
+        padding: .5rem 1rem;
+    }
+
+    /* REESTRUCTURACIÓN DE GRIDS A STACK */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .hero-content {
+        max-width: 95%;
+        padding: 1.5rem;
+    }
+    
+    /* Index Page (Vision) */
+    .vision-grid-wrapper { grid-template-columns: 1fr; }
+
+    /* Ajuste de video vertical en móvil */
+    .video-facade {
+        max-width: 80%; /* Ocupa el 80% del ancho del móvil, centrado */
+    }
+    
+    /* Ajuste de Tarjetas a stack (Texto arriba, Imagen abajo) - USANDO LAS NUEVAS CLASES */
+    .history-event-card {
+        grid-template-columns: 1fr;
+        direction: ltr; 
+        text-align: left;
+    }
+    .history-event-card:nth-child(even) {
+        direction: ltr; 
+        text-align: left;
+    }
+    .history-event-card .history-media {
+        order: 2; /* Imagen abajo */
+    }
+    .history-event-card .history-content {
+        order: 1; /* Texto arriba */
+    }
+    
+    /* Ajuste de encabezados en cards */
+    .history-event-card h4 {
+        border-left: none;
+        padding-left: 0;
+    }
+    .history-event-card:nth-child(even) h4 {
+        border-right: none;
+    }
+    
+    /* Cafe Page */
+    .flavor-wheel-container { flex-direction: column; gap: 2rem; }
+    
+    /* Comprar Page */
+    .product-layout{ flex-direction: column; }
+    
+    /* Checkout Page */
+    .checkout-container{ flex-direction: column; }
+    
+    /* Veredas Page */
+    .mapa-layout{ flex-direction: column; }
+    .map-sidebar{ flex: none; width: 100%; border-radius: 8px; margin-bottom: 1rem;}
+    #interactiveMap { border-radius: 8px; min-height: 400px; }
+    
+    /* Productores Page (Masonry grid a 1 columna) */
+    .masonry-grid {columns: 1;}
+    
+    /* Impacto Page */
+    .impact-numbers-grid { grid-template-columns: 1fr; }
+}
