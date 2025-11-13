@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- 4. LÓGICA DE VIDEO FACADE (CARGA RÁPIDA) ---
+    // --- 4. LÓGICA DE VIDEO FACHADE (CARGA RÁPIDA) ---
     function initYouTubeFacade(containerId) {
         const facadeContainer = document.getElementById(containerId);
         
@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // 2. Limpiar el contenido INTERNO (el botón de play)
                 facadeContainer.innerHTML = ''; 
                 
-                // 3. ¡¡LA LÍNEA FINAL!! Quitar la imagen de fondo del CONTENEDOR 
+                // 3. ¡¡LA LÍNEA QUE SOLUCIONA EL PROBLEMA DEL VELO BLANCO!!
                 facadeContainer.style.backgroundImage = 'none';
 
                 // 4. Añadir el video
