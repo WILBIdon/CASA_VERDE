@@ -64,9 +64,12 @@
 
             <div id="media-spot" class="text-center">
                 <h3 class="tierra-microcopy">La Tierra que nos Nutre</h3>
-                <div class="placeholder-box">
-                    MARCADOR DE POSICIÓN: Aquí se insertará el código del **Video de YouTube embebido** o la **Foto del Lago/Paisaje** (ej. `<iframe width="100%" height="350" src="..."></iframe>`)
+                
+                <div class="video-facade" 
+                     data-youtube-id="6GFpHhm0x8I"  id="youtube-facade"
+                     style="background-image:url('images/video-lago-poster.jpg');"> <div class="play-button-overlay">▶</div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -101,9 +104,17 @@
     <section id="video-testimonio" class="section-dark-green">
         <h2>La Voz de la Montaña</h2>
         <div class="content-max-width-800">
-            <div class="placeholder-box placeholder-video-lg">
-                [MARCADOR DE POSICIÓN: Aquí va el Video Testimonial, usar el src="video/don-jose-corto.mp4"]
-            </div>
+            
+            <video 
+                controls 
+                preload="metadata"
+                poster="images/poster-don-jose.jpg"
+                style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 6px 15px rgba(0,0,0,0.15);">
+                
+                <source src="videos/don-jose-corto.mp4" type="video/mp4">
+                Tu navegador no soporta el video.
+            </video>
+            
             <p class="microcopy text-fique">Don José: "Mis manos manchadas de tierra son mi orgullo."</p>
         </div>
         <div class="cta-wrap content-mt-2"><a href="productores.html" class="cta-hero">Conoce todas las historias</a></div>
