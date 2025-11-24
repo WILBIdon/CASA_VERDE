@@ -1648,7 +1648,7 @@ footer {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-/* --- ESTILOS V3.4: MAPEO CORREGIDO (LEVITACIÓN SOBRE EL COLOR) --- */
+/* --- ESTILOS V3.5: MAPEO INTERACTIVO (ETIQUETA -> IMAGEN) --- */
 
 /* 1. El Contenedor y la Taza */
 .flavor-map-container {
@@ -1666,174 +1666,122 @@ footer {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-/* 2. El Punto de Anclaje (Invisible pero vital para ubicar) */
+/* 2. El Punto de Anclaje (El Wrapper) */
 .flavor-spot {
     position: absolute;
-    width: 10px;
-    /* Pequeño punto de referencia */
-    height: 10px;
-    /* background: red; Descomenta esto si necesitas ver dónde está el punto para ubicarlo */
     z-index: 10;
-    transform: translate(-50%, -50%);
-    /* Centrar el punto exactamente en la coordenada */
+    cursor: pointer;
+    /* El punto en sí no tiene tamaño visual, es un contenedor de posición */
+    width: 0;
+    height: 0;
 }
 
-/* 3. La Imagen Flotante (Popup/Ingrediente) */
+/* 3. La Etiqueta (VISIBLE SIEMPRE) */
+.note-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    /* Centrado exacto en la coordenada */
+    background: var(--verde-cafetal);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    white-space: nowrap;
+    transition: transform 0.3s, background 0.3s;
+    z-index: 15;
+}
+
+.flavor-spot:hover .note-label {
+    transform: translate(-50%, -50%) scale(1.1);
+    background: var(--rojo-cereza);
+}
+
+/* 4. El Popup (OCULTO POR DEFECTO) */
 .popup-box {
     position: absolute;
-    /* CENTRADO PERFECTO SOBRE EL PUNTO DE ANCLAJE */
-    top: 50%;
+    bottom: 30px;
+    /* Aparece encima de la etiqueta */
     left: 50%;
-    width: 120px;
-    /* Tamaño de la imagen flotante */
+    transform: translateX(-50%) translateY(10px);
+    /* Un poco más abajo para animar entrada */
+    width: 160px;
 
-    /* Animación y Estado */
-    opacity: 1;
-    visibility: visible;
-    background: transparent;
-    border: none;
-    box-shadow: none;
+    /* Estado Inicial: Oculto */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* Efecto rebote suave */
 
-    /* Animación de levitación */
-    animation: levitate 6s ease-in-out infinite;
-    cursor: pointer;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 0.5rem;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    z-index: 20;
+    pointer-events: none;
+    /* Evita parpadeos si el mouse toca el popup */
 }
 
-/* Ajuste de la imagen PNG */
+/* Mostrar al Hover */
+.flavor-spot:hover .popup-box {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
 .popup-box img {
     width: 100%;
     height: auto;
     display: block;
-    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.4));
-    /* Sombra para dar profundidad 3D */
-}
-
-/* Texto oculto (Solo aparece al pasar el mouse) */
-.popup-box p {
-    display: none;
-    /* Oculto por defecto */
-    background: rgba(255, 255, 255, 0.95);
-    color: var(--tierra-humeda);
-    padding: 0.5rem;
+    margin-bottom: 0.5rem;
     border-radius: 4px;
+}
+
+.popup-box p {
     font-size: 0.8rem;
-    position: absolute;
-    bottom: -60px;
-    /* Debajo de la imagen */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 150px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    z-index: 20;
-    pointer-events: none;
+    color: var(--tierra-humeda);
+    line-height: 1.3;
+    margin: 0;
 }
 
-/* Etiqueta del nombre (PANELA, ETC) */
-.note-label {
-    position: absolute;
-    top: -30px;
-    /* Encima de la imagen flotante */
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--verde-cafetal);
-    color: white;
-    padding: 2px 8px;
-    border-radius: 10px;
-    font-size: 0.7rem;
-    font-weight: bold;
-    opacity: 0.8;
-    white-space: nowrap;
-}
+/* 5. COORDENADAS (PORCENTAJES) */
 
-/* Interacción Hover */
-.flavor-spot:hover .popup-box img {
-    transform: scale(1.1);
-    /* Crece un poco al tocarlo */
-    transition: transform 0.3s;
-}
-
-.flavor-spot:hover .popup-box p {
-    display: block;
-    /* Muestra el texto */
-}
-
-
-/* 4. ANIMACIÓN DE LEVITACIÓN (FLOTE) */
-@keyframes levitate {
-    0% {
-        margin-top: 0px;
-        transform: translate(-50%, -50%) rotate(0deg);
-    }
-
-    50% {
-        margin-top: -20px;
-        transform: translate(-50%, -50%) rotate(3deg);
-    }
-
-    100% {
-        margin-top: 0px;
-        transform: translate(-50%, -50%) rotate(0deg);
-    }
-}
-
-
-/* ==============================================================
-   5. COORDENADAS DE PUNTERÍA (AQUÍ ES DONDE AJUSTAS)
-   ============================================================== 
-   Juega con los porcentajes de TOP (Vertical) y LEFT (Horizontal)
-   hasta que la imagen flote exactamente sobre el color de la taza.
-*/
-
-/* PANELA (Naranja - Generalmente arriba a la derecha) */
+/* PANELA (Naranja - Arriba Derecha) */
 .flavor-spot.panela {
-    top: 25%;
-    /* Baja o sube este número */
+    top: 20%;
     left: 75%;
-    /* Mueve a izquierda o derecha */
 }
 
-.flavor-spot.panela .popup-box {
-    animation-duration: 7s;
-}
-
-/* Velocidad única */
-
-/* CHOCOLATE (Marrón - Generalmente centro o izquierda) */
+/* CHOCOLATE (Marrón - Centro Izquierda) */
 .flavor-spot.chocolate {
     top: 55%;
     left: 25%;
 }
 
-.flavor-spot.chocolate .popup-box {
-    animation-duration: 5s;
-}
-
-/* CÍTRICOS (Amarillo/Verde - Generalmente abajo) */
+/* CÍTRICO (Amarillo - Abajo Centro) */
 .flavor-spot.citrus {
-    top: 80%;
-    left: 60%;
+    top: 85%;
+    left: 55%;
 }
-
-.flavor-spot.citrus .popup-box {
-    animation-duration: 6s;
-}
-
 
 /* --- RESPONSIVE (MÓVIL) --- */
 @media (max-width: 768px) {
-    .popup-box {
-        width: 80px;
-        /* Imágenes más pequeñas en celular */
-    }
-
     .note-label {
-        font-size: 0.6rem;
-        top: -20px;
+        font-size: 0.7rem;
+        padding: 0.3rem 0.6rem;
     }
 
-    /* Ajuste de posiciones para móvil si la imagen cambia de proporción */
+    .popup-box {
+        width: 120px;
+        bottom: 25px;
+    }
+
+    /* Ajustes finos para móvil si la imagen cambia */
     .flavor-spot.panela {
-        top: 20%;
+        top: 15%;
         left: 80%;
     }
 
@@ -1843,8 +1791,8 @@ footer {
     }
 
     .flavor-spot.citrus {
-        top: 80%;
-        left: 60%;
+        top: 85%;
+        left: 50%;
     }
 }
 
