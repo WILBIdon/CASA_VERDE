@@ -1716,13 +1716,18 @@ footer {
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     /* Efecto rebote suave */
 
-    background: rgba(255, 255, 255, 0.95);
-    padding: 0.5rem;
-    border-radius: 8px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    /* CAMBIO: Fondo transparente para que la imagen "flote" libremente */
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+
     z-index: 20;
     pointer-events: none;
     /* Evita parpadeos si el mouse toca el popup */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Mostrar al Hover */
@@ -1737,7 +1742,8 @@ footer {
     height: auto;
     display: block;
     margin-bottom: 0.5rem;
-    border-radius: 4px;
+    /* Sombra suave para la imagen flotante */
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.3));
 }
 
 .popup-box p {
@@ -1745,6 +1751,14 @@ footer {
     color: var(--tierra-humeda);
     line-height: 1.3;
     margin: 0;
+
+    /* CAMBIO: El fondo blanco ahora está solo en el texto */
+    background: rgba(255, 255, 255, 0.95);
+    padding: 0.8rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 100%;
 }
 
 /* 5. COORDENADAS (PORCENTAJES) */
