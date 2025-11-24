@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Café Casa Verde - El Verdadero Sabor de las Montañas del Tolima</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@100..900&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@100..900&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap"
+        rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <nav id="mainNav" class="navbar">
         <div class="nav-container">
@@ -18,7 +22,7 @@
                     <img src="images/LOGO-cafe casa verde (1).png" alt="Logo Casa Verde Café" class="logo-img">
                 </a>
             </div>
-            
+
             <button id="menu-toggle">MENÚ</button>
 
             <ul class="nav-links">
@@ -30,7 +34,11 @@
                 <li><a href="sostenibilidad.html">Impacto</a></li>
                 <li><a href="veredas.html">Nuestra Tierra</a></li>
                 <li><a href="comprar.html">Comprar</a></li>
-                <li><select id="langSwitch"><option value="es">ES</option><option value="en">EN</option><option value="fr">FR</option></select></li>
+                <li><select id="langSwitch">
+                        <option value="es">ES</option>
+                        <option value="en">EN</option>
+                        <option value="fr">FR</option>
+                    </select></li>
             </ul>
         </div>
     </nav>
@@ -51,31 +59,32 @@
 
     <section id="vision-y-tierra" class="section-light-bg">
         <div class="vision-grid-wrapper">
-            
+
             <div class="manifesto-content manifesto-content-padding">
                 <h2 class="manifesto-h2">Nuestra Visión: Más que Café</h2>
                 <ul>
-                    <li>No vendemos café. Compartimos 20 años de manos curtidas, 100 familias que decidieron que juntas podían más.</li>
-                    <li>Cada taza lleva historias de abuelos que enseñaron a sus hijos el secreto de la tierra buena.</li>
-                    <li>Nuestro compromiso es con la calidad, la sostenibilidad y la autonomía de nuestros productores.</li>
+                    <li>No vendemos café. Compartimos 20 años de manos curtidas, 100 familias que decidieron que juntas
+                        podían más.</li>
+                    <li>Cada taza lleva historias de abuelos que enseñaron a sus hijos el secreto de la tierra buena.
+                    </li>
+                    <li>Nuestro compromiso es con la calidad, la sostenibilidad y la autonomía de nuestros productores.
+                    </li>
                 </ul>
                 <a href="sostenibilidad.html" class="cta-hero">Conoce Nuestro Impacto</a>
             </div>
 
             <div id="media-spot" class="text-center">
                 <h3 class="tierra-microcopy">La Tierra que nos Nutre</h3>
-                
-                <div class="video-facade" 
-                     data-youtube-id="6GFpHhm0x8I"
-                     id="youtube-facade">
-                    
+
+                <div class="video-facade" data-youtube-id="6GFpHhm0x8I" id="youtube-facade">
+
                     <div class="play-button-overlay">▶</div>
                 </div>
 
             </div>
         </div>
     </section>
-    
+
     <section id="productos-destacados">
         <h2>Nuestro Café: Selecciona tu Origen</h2>
         <div class="three-doors-grid">
@@ -106,20 +115,18 @@
     <section id="video-testimonio" class="section-dark-green">
         <h2>La Voz de la Montaña</h2>
         <div class="content-max-width-800">
-            
-            <video 
-                controls 
-                preload="metadata"
-                poster="images/poster-don-jose.jpg"
+
+            <video controls preload="metadata" poster="images/poster-don-jose.jpg"
                 style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 6px 15px rgba(0,0,0,0.15);">
-                
+
                 <source src="videos/don-jose-corto.mp4" type="video/mp4">
                 Tu navegador no soporta el video.
             </video>
-            
+
             <p class="microcopy text-fique">Don José: "Mis manos manchadas de tierra son mi orgullo."</p>
         </div>
-        <div class="cta-wrap content-mt-2"><a href="productores.html" class="cta-hero">Conoce todas las historias</a></div>
+        <div class="cta-wrap content-mt-2"><a href="productores.html" class="cta-hero">Conoce todas las historias</a>
+        </div>
     </section>
 
     <footer>
@@ -151,9 +158,10 @@
             </div>
         </div>
         <div class="footer-copyright">
-            <p>&copy; 2025 Café Casa Verde. Todos los derechos reservados.</p>
+            <p>&copy; 2025 Café Casa Verde. Todos los derechos reservados. | Actualizado</p>
         </div>
     </footer>
     <script src="scripts.js"></script>
 </body>
+
 </html>
