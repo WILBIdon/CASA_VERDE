@@ -18,6 +18,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 menuToggle.textContent = 'MENÚ';
             }
         });
+
+        // CERRAR MENÚ AL HACER CLICK EN UN LINK
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.textContent = 'MENÚ';
+            });
+        });
     }
 
     // --- 2. LÓGICA DE NAVBAR SCROLL (GLOBAL) ---
@@ -57,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3.2. Animación de aparición (Scrollytelling en proceso.html)
     gsap.utils.toArray('.scrolly-content').forEach(content => {
-        gsap.fromTo(content, 
+        gsap.fromTo(content,
             { opacity: 0, y: 40 }, // Estado inicial (invisible)
             {
                 scrollTrigger: {
@@ -72,30 +80,30 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         );
     });
-    
+
     // 3.3. Animador de Números (Impacto)
     const animatedNumbers = new Set();
     gsap.utils.toArray('.number').forEach(numEl => {
-        
+
         ScrollTrigger.create({
             trigger: numEl,
             start: "top 90%",
             onEnter: () => {
                 if (!animatedNumbers.has(numEl)) {
                     animatedNumbers.add(numEl);
-                    
+
                     const endValue = parseFloat(numEl.textContent.replace(/,/g, ''));
                     const unit = numEl.dataset.unit || '';
                     const precision = parseInt(numEl.dataset.precision, 10) || 0;
 
-                    gsap.fromTo(numEl, 
-                        { textContent: 0 }, 
+                    gsap.fromTo(numEl,
+                        { textContent: 0 },
                         {
                             textContent: endValue,
                             duration: 3,
                             ease: "power1.out",
-                            snap: { textContent: 1 }, 
-                            onUpdate: function() {
+                            snap: { textContent: 1 },
+                            onUpdate: function () {
                                 let currentVal = parseFloat(this.targets()[0].textContent);
                                 numEl.textContent = currentVal.toFixed(precision) + unit;
                             },
@@ -112,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 4. LÓGICA DE VIDEO FACHADE (CARGA RÁPIDA) ---
     function initYouTubeFacade(containerId) {
         const facadeContainer = document.getElementById(containerId);
-        
+
         if (facadeContainer) {
             const youtubeId = facadeContainer.dataset.youtubeId;
 
@@ -123,10 +131,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 iframe.setAttribute('frameborder', '0');
                 iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
                 iframe.setAttribute('allowfullscreen', '');
-                
+
                 // 2. Limpiar el contenido INTERNO (el botón de play)
-                facadeContainer.innerHTML = ''; 
-                
+                facadeContainer.innerHTML = '';
+
                 // 3. ¡¡LA LÍNEA QUE SOLUCIONA EL PROBLEMA DEL VELO BLANCO!!
                 facadeContainer.style.backgroundImage = 'none';
 
