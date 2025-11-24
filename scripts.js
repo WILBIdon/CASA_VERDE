@@ -147,4 +147,49 @@ document.addEventListener('DOMContentLoaded', () => {
     // Iniciar el 'escuchador' para el video de YouTube
     initYouTubeFacade('youtube-facade');
 
+    // --- 5. EFECTO PARALLAX INTERACTIVO (FLAVOR MAP) ---
+    const flavorMap = document.getElementById('flavorMap');
+    if (flavorMap) {
+        const ingredients = flavorMap.querySelectorAll('.floating-ingredient');
+
+        flavorMap.addEventListener('mousemove', (e) => {
+            // Calcular el centro del mapa
+            const rect = flavorMap.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+
+            // Calcular la distancia del mouse al centro
+            const mouseX = e.clientX - centerX;
+            const mouseY = e.clientY - centerY;
+
+            ingredients.forEach(ingredient => {
+                const speed = parseFloat(ingredient.dataset.speed) || 0.05;
+
+                // Movimiento invertido (Parallax)
+                const x = -mouseX * speed;
+                const y = -mouseY * speed;
+
+                // Usamos GSAP para suavizar el movimiento (el "amortiguador")
+                gsap.to(ingredient, {
+                    x: x,
+                    y: y,
+                    duration: 1, // Duración del suavizado
+                    ease: "power2.out"
+                });
+            });
+        });
+
+        // Resetear al salir (opcional, para que vuelvan suavemente a su sitio)
+        flavorMap.addEventListener('mouseleave', () => {
+            ingredients.forEach(ingredient => {
+                gsap.to(ingredient, {
+                    x: 0,
+                    y: 0,
+                    duration: 1,
+                    ease: "power2.out"
+                });
+            });
+        });
+    }
+
 }); // --- Fin del DOMContentLoaded ---
