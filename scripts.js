@@ -150,7 +150,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 5. EFECTO PARALLAX INTERACTIVO (FLAVOR MAP) ---
     const flavorMap = document.getElementById('flavorMap');
     if (flavorMap) {
-        const ingredients = flavorMap.querySelectorAll('.floating-ingredient');
+        // Ahora apuntamos a los puntos de sabor (.flavor-spot) o directamente a las cajas (.popup-box)
+        // Si queremos que se mueva todo el conjunto (punto + imagen), movemos .flavor-spot
+        const ingredients = flavorMap.querySelectorAll('.flavor-spot');
 
         flavorMap.addEventListener('mousemove', (e) => {
             // Calcular el centro del mapa
@@ -163,13 +165,22 @@ document.addEventListener('DOMContentLoaded', () => {
             const mouseY = e.clientY - centerY;
 
             ingredients.forEach(ingredient => {
-                const speed = parseFloat(ingredient.dataset.speed) || 0.05;
+                // Asignamos velocidades distintas según el ingrediente para profundidad
+                let speed = 0.05;
+                if (ingredient.classList.contains('panela')) speed = 0.03;
+                if (ingredient.classList.contains('chocolate')) speed = 0.06;
+                if (ingredient.classList.contains('citrus')) speed = 0.04;
 
                 // Movimiento invertido (Parallax)
                 const x = -mouseX * speed;
                 const y = -mouseY * speed;
 
                 // Usamos GSAP para suavizar el movimiento (el "amortiguador")
+                // IMPORTANTE: Como .flavor-spot tiene transform: translate(-50%, -50%),
+                // debemos asegurarnos de que GSAP no sobrescriba eso, o usar xPercent/yPercent.
+                // Sin embargo, GSAP maneja 'x' y 'y' como translate3d/translate, que se suma al layout.
+                // Para evitar conflictos con el centrado CSS, animaremos el hijo .popup-box o usaremos x/y que se suman.
+
                 gsap.to(ingredient, {
                     x: x,
                     y: y,
@@ -179,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Resetear al salir (opcional, para que vuelvan suavemente a su sitio)
+        // Resetear al salir
         flavorMap.addEventListener('mouseleave', () => {
             ingredients.forEach(ingredient => {
                 gsap.to(ingredient, {

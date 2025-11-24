@@ -1648,138 +1648,203 @@ footer {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-/* --- FLAVOR MAP V4.0: LEVITACIÓN Y PARALLAX --- */
+/* --- ESTILOS V3.4: MAPEO CORREGIDO (LEVITACIÓN SOBRE EL COLOR) --- */
 
+/* 1. El Contenedor y la Taza */
 .flavor-map-container {
     position: relative;
     max-width: 800px;
-    margin: 4rem auto;
+    margin: 3rem auto;
     text-align: center;
-    height: 600px;
-    /* Altura fija para el contenedor de la escena */
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
-.main-coffee-cup-img {
-    width: 300px;
-    /* Tamaño base de la taza */
-    height: auto;
-    z-index: 10;
-    position: relative;
-    filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.4));
-}
-
-/* Estilos base para ingredientes flotantes */
-.floating-ingredient {
-    position: absolute;
-    z-index: 5;
-    /* Detrás de la taza o alrededor */
-    pointer-events: none;
-    /* Para que el mouse no se trabe en ellos */
-}
-
-.floating-ingredient img {
+.flavor-map-container .main-coffee-cup-img {
     width: 100%;
     height: auto;
-    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-.ingredient-label {
-    background: var(--verde-cafetal);
-    color: #fff;
-    padding: 0.3rem 0.8rem;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    font-weight: bold;
-    text-align: center;
+/* 2. El Punto de Anclaje (Invisible pero vital para ubicar) */
+.flavor-spot {
     position: absolute;
-    bottom: -30px;
+    width: 10px;
+    /* Pequeño punto de referencia */
+    height: 10px;
+    /* background: red; Descomenta esto si necesitas ver dónde está el punto para ubicarlo */
+    z-index: 10;
+    transform: translate(-50%, -50%);
+    /* Centrar el punto exactamente en la coordenada */
+}
+
+/* 3. La Imagen Flotante (Popup/Ingrediente) */
+.popup-box {
+    position: absolute;
+    /* CENTRADO PERFECTO SOBRE EL PUNTO DE ANCLAJE */
+    top: 50%;
+    left: 50%;
+    width: 120px;
+    /* Tamaño de la imagen flotante */
+
+    /* Animación y Estado */
+    opacity: 1;
+    visibility: visible;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+
+    /* Animación de levitación */
+    animation: levitate 6s ease-in-out infinite;
+    cursor: pointer;
+}
+
+/* Ajuste de la imagen PNG */
+.popup-box img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.4));
+    /* Sombra para dar profundidad 3D */
+}
+
+/* Texto oculto (Solo aparece al pasar el mouse) */
+.popup-box p {
+    display: none;
+    /* Oculto por defecto */
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--tierra-humeda);
+    padding: 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    position: absolute;
+    bottom: -60px;
+    /* Debajo de la imagen */
     left: 50%;
     transform: translateX(-50%);
+    width: 150px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 20;
+    pointer-events: none;
+}
+
+/* Etiqueta del nombre (PANELA, ETC) */
+.note-label {
+    position: absolute;
+    top: -30px;
+    /* Encima de la imagen flotante */
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--verde-cafetal);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    font-weight: bold;
     opacity: 0.8;
     white-space: nowrap;
 }
 
-/* POSICIONAMIENTO Y ANIMACIÓN INDIVIDUAL */
-
-/* 1. PANELA (Arriba derecha - Sobre el borde) */
-.ingredient-panela {
-    width: 150px;
-    /* Un poco más pequeño para no tapar todo */
-    top: 0%;
-    right: 25%;
-    /* Más centrado hacia la taza */
-    animation: float 7s ease-in-out infinite;
+/* Interacción Hover */
+.flavor-spot:hover .popup-box img {
+    transform: scale(1.1);
+    /* Crece un poco al tocarlo */
+    transition: transform 0.3s;
 }
 
-/* 2. CHOCOLATE (Izquierda - Sobre el cuerpo) */
-.ingredient-chocolate {
-    width: 180px;
-    top: 35%;
-    left: 20%;
-    /* Mucho más adentro */
-    z-index: 12;
-    animation: float 5s ease-in-out infinite;
-    animation-delay: 1s;
+.flavor-spot:hover .popup-box p {
+    display: block;
+    /* Muestra el texto */
 }
 
-/* 3. CÍTRICO (Abajo - Sobre la base) */
-.ingredient-citrus {
-    width: 140px;
-    bottom: 15%;
-    right: 30%;
-    /* Más centrado */
-    z-index: 12;
-    animation: float 6.5s ease-in-out infinite;
-    animation-delay: 2s;
-}
 
-/* KEYFRAMES DE LEVITACIÓN */
-@keyframes float {
+/* 4. ANIMACIÓN DE LEVITACIÓN (FLOTE) */
+@keyframes levitate {
     0% {
-        transform: translateY(0px) rotate(0deg);
+        margin-top: 0px;
+        transform: translate(-50%, -50%) rotate(0deg);
     }
 
     50% {
-        transform: translateY(-20px) rotate(2deg);
+        margin-top: -20px;
+        transform: translate(-50%, -50%) rotate(3deg);
     }
 
     100% {
-        transform: translateY(0px) rotate(0deg);
+        margin-top: 0px;
+        transform: translate(-50%, -50%) rotate(0deg);
     }
 }
 
-/* RESPONSIVE PARA EL MAPA FLOTANTE */
+
+/* ==============================================================
+   5. COORDENADAS DE PUNTERÍA (AQUÍ ES DONDE AJUSTAS)
+   ============================================================== 
+   Juega con los porcentajes de TOP (Vertical) y LEFT (Horizontal)
+   hasta que la imagen flote exactamente sobre el color de la taza.
+*/
+
+/* PANELA (Naranja - Generalmente arriba a la derecha) */
+.flavor-spot.panela {
+    top: 25%;
+    /* Baja o sube este número */
+    left: 75%;
+    /* Mueve a izquierda o derecha */
+}
+
+.flavor-spot.panela .popup-box {
+    animation-duration: 7s;
+}
+
+/* Velocidad única */
+
+/* CHOCOLATE (Marrón - Generalmente centro o izquierda) */
+.flavor-spot.chocolate {
+    top: 55%;
+    left: 25%;
+}
+
+.flavor-spot.chocolate .popup-box {
+    animation-duration: 5s;
+}
+
+/* CÍTRICOS (Amarillo/Verde - Generalmente abajo) */
+.flavor-spot.citrus {
+    top: 80%;
+    left: 60%;
+}
+
+.flavor-spot.citrus .popup-box {
+    animation-duration: 6s;
+}
+
+
+/* --- RESPONSIVE (MÓVIL) --- */
 @media (max-width: 768px) {
-    .flavor-map-container {
-        height: auto;
-        flex-direction: column;
-        margin-top: 2rem;
+    .popup-box {
+        width: 80px;
+        /* Imágenes más pequeñas en celular */
     }
 
-    .main-coffee-cup-img {
-        width: 200px;
-        margin-bottom: 2rem;
+    .note-label {
+        font-size: 0.6rem;
+        top: -20px;
     }
 
-    /* En móvil, desactivamos la posición absoluta compleja y los ponemos en grid o stack */
-    .floating-ingredient {
-        position: relative;
-        top: auto !important;
-        left: auto !important;
-        right: auto !important;
-        bottom: auto !important;
-        width: 120px;
-        margin: 1rem;
-        display: inline-block;
-        animation: float 4s ease-in-out infinite;
-        /* Animación más rápida en móvil */
+    /* Ajuste de posiciones para móvil si la imagen cambia de proporción */
+    .flavor-spot.panela {
+        top: 20%;
+        left: 80%;
     }
 
-    .ingredient-chocolate {
-        z-index: 5;
+    .flavor-spot.chocolate {
+        top: 50%;
+        left: 20%;
+    }
+
+    .flavor-spot.citrus {
+        top: 80%;
+        left: 60%;
     }
 }
 
