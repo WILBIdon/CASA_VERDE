@@ -1704,35 +1704,36 @@ footer {
 
 /* POSICIONAMIENTO Y ANIMACIÓN INDIVIDUAL */
 
-/* 1. PANELA (Arriba derecha) */
+/* 1. PANELA (Arriba derecha - Sobre el borde) */
 .ingredient-panela {
-    width: 180px;
-    top: 10%;
-    right: 10%;
+    width: 150px;
+    /* Un poco más pequeño para no tapar todo */
+    top: 0%;
+    right: 25%;
+    /* Más centrado hacia la taza */
     animation: float 7s ease-in-out infinite;
 }
 
-/* 2. CHOCOLATE (Izquierda centro) */
+/* 2. CHOCOLATE (Izquierda - Sobre el cuerpo) */
 .ingredient-chocolate {
-    width: 200px;
-    top: 40%;
-    left: 5%;
+    width: 180px;
+    top: 35%;
+    left: 20%;
+    /* Mucho más adentro */
     z-index: 12;
-    /* Por encima de la taza un poco */
     animation: float 5s ease-in-out infinite;
     animation-delay: 1s;
-    /* Desfase */
 }
 
-/* 3. CÍTRICO (Abajo derecha) */
+/* 3. CÍTRICO (Abajo - Sobre la base) */
 .ingredient-citrus {
-    width: 160px;
-    bottom: 10%;
-    right: 20%;
+    width: 140px;
+    bottom: 15%;
+    right: 30%;
+    /* Más centrado */
     z-index: 12;
     animation: float 6.5s ease-in-out infinite;
     animation-delay: 2s;
-    /* Desfase */
 }
 
 /* KEYFRAMES DE LEVITACIÓN */
